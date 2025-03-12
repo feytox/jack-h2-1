@@ -1,6 +1,25 @@
 class Main {
-    function void main() {
-        do Output.printString("Hello World!");
+    function void main(){
+        do Block.initBlocks();
+
+        do Main.test();
+        return;
+    }
+
+    function void test(){
+        var Array strArray;
+        var Map map;
+
+        let strArray = Array.new(5);
+        let strArray[0] = "# # #";
+        let strArray[1] = " ### ";
+        let strArray[2] = "# # #";
+        let strArray[3] = " # # ";
+        let strArray[4] = "# # #";
+
+        let map = Map.parse(strArray, 5, 5);
+        do map.render(10, 10, 32, 32);
+
         return;
     }
 }

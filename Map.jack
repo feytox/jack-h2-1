@@ -1,0 +1,63 @@
+/** Игровая карта, состоящая из отдельных блоков */
+class Map {
+    field Array _blockArray;
+    field int _width;
+    field int _height;
+
+    constructor Map new(Array blockArray, int width, int height){
+        let _blockArray = blockArray;
+        let _width = width;
+        let _height = height;
+        return this;
+    }
+
+    /** Возвращает блок по координатам. Для оптимизации в рамках класса инлайньте этот код */
+    method Block getBlock(int x, int y){
+        return _blockArray[y * _width + x];
+    }
+
+    /** Отрисовывает карту с определённым началом координат (левый верхний угол) и размерами блоков */
+    method void render(int startX, int startY, int blockWidth, int blockHeight){
+        var Block block;
+        var int mapSize;
+        var int x;
+        var int y;
+
+        while (y < _height){
+            while (x < _width){
+                let block = _blockArray[y * _width + x];
+                do block.render(startX + (x * blockWidth), startY + (y * blockHeight), blockWidth, blockHeight);
+
+                let x = x + 1;
+            }
+
+            let x = 0;
+            let y = y + 1;
+        }
+
+        return;
+    }
+
+    /** Парсит карту из массива строк */
+    function Map parse(Array strArray, int width, int height){
+        var Array blockArray;
+        var String line;
+        var int x;
+        var int y;
+
+        let blockArray = Array.new(width * height);
+        while (y < height){
+            let line = strArray[y];
+
+            while (x < width){
+                let blockArray[y * width + x] = Block.parse(line.charAt(x));
+                let x = x + 1;
+            }
+
+            let x = 0;
+            let y = y + 1;
+        }
+
+        return Map.new(blockArray, width, height);
+    }
+}

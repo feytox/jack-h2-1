@@ -1,0 +1,53 @@
+/** Класс, отвечающий за типы блоков. */
+class Block {
+    static Block air;
+    static Block stone;
+
+    field int id;
+    field boolean moveThrough;
+
+    constructor Block new(int blockId, boolean canMoveThrough){
+        let id = blockId;
+        let moveThrough = canMoveThrough;
+        return this;
+    }
+
+    /** Инициализирует типы блоков */
+    function void initBlocks(){
+        let air = Block.new(0, true);
+        let stone = Block.new(1, false);
+        return;
+    }
+
+    /** Парсит блок из символа */
+    function Block parse(char blockChar){
+        if (blockChar = 32){ // ' ' = air
+            return air;
+        }
+
+        if (blockChar = 35){ // '#' = stone
+            return stone;
+        }
+
+        do Sys.error(42);
+        return 0;
+    }
+
+    /** Отрисовывает блок с учётом координаты левого края и размеров */
+    method void render(int x, int y, int width, int height){
+        if (id = 0){
+            return;
+        }
+        if (id = 1){
+            do _renderFull(x, y, width, height);
+        }
+        return;
+    }
+
+    /** Рендерит полностью закрашенный квадрат */
+    method void _renderFull(int x, int y, int width, int height){
+        // TODO: оптимизировать
+        do Screen.drawRectangle(x, y, x + width, y + height);
+        return;
+    }
+}
