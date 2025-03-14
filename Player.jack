@@ -8,9 +8,20 @@ class Player {
         return this;
     }
 
+    /** Отрисовывает игрока в виде круга на карте
+     * mapStartX, mapStartY - координаты левого верхнего угла карты
+     * Игрок отрисовывается как круг радиусом 4 пикселя в центре своей клетки
+     * Размер клетки - 16x16 пикселей
+     * Центр круга смещается на 8 пикселей вправо и вниз от левого верхнего угла клетки
+     */
     method void render(int mapStartX, int mapStartY) {
-        // TODO: player render
-        do Screen.drawCircle(mapStartX + (_gameX * 16) + 8, mapStartY + (_gameY * 16) + 8, 4);
+        var int centerX, centerY;
+        
+        // Вычисляем координаты центра круга
+        let centerX = mapStartX + (_gameX * 16) + 8; // Смещаем на половину клетки (8px) вправо
+        let centerY = mapStartY + (_gameY * 16) + 8; // Смещаем на половину клетки (8px) вниз
+        
+        do Screen.drawCircle(centerX, centerY, 4);
         return;
     }
 }

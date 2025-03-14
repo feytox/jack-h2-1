@@ -46,8 +46,22 @@ class Block {
 
     /** Рендерит полностью закрашенный квадрат */
     method void _renderFull(int x, int y, int width, int height){
-        // TODO: оптимизировать
-        do Screen.drawRectangle(x, y, x + width, y + height);
+        var int i, j;
+        var int endX, endY;
+        
+        let endX = x + width;
+        let endY = y + height;
+        
+        // рисует построчно для оптимизации
+        while (y < endY) {
+            let i = x;
+            while (i < endX) {
+                do Screen.setColor(true);
+                do Screen.drawPixel(i, y);
+                let i = i + 1;
+            }
+            let y = y + 1;
+        }
         return;
     }
 }
