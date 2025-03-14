@@ -21,7 +21,7 @@ class Block {
 
     /** Парсит блок из символа */
     function Block parse(char blockChar){
-        if (blockChar = 32){ // ' ' = air
+        if ((blockChar = 32) | (blockChar = 80)){ // ' ' or 'P' = air
             return air;
         }
 
@@ -29,7 +29,7 @@ class Block {
             return stone;
         }
 
-        do Sys.error(42);
+        do Exception.throw("Block: invalid block");
         return 0;
     }
 

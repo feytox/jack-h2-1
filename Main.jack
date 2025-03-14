@@ -8,17 +8,17 @@ class Main {
 
     function void test(){
         var Array strArray;
-        var Map map;
+        var Game game;
 
         let strArray = Array.new(5);
         let strArray[0] = "# # #";
         let strArray[1] = " ### ";
-        let strArray[2] = "# # #";
+        let strArray[2] = "#P# #";
         let strArray[3] = " # # ";
         let strArray[4] = "# # #";
 
-        let map = Map.parse(strArray, 5, 5);
-        do map.render(10, 10, 32, 32);
+        let game = Game.parse(strArray, 5, 5);
+        do game.render(10, 10);
 
         return;
     }

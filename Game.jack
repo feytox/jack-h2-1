@@ -1,0 +1,48 @@
+class Game {
+    field Map _map;
+    field Player _player;
+
+    constructor Game new(Map map, Player player){
+        let _map = map;
+        let _player = player;
+        return this;
+    }
+
+    method void render(int startX, int startY){
+        do _map.render(startX, startY, 16, 16);
+        do _player.render(startX, startY);
+        return;
+    }
+
+    /** Парсит карту и игрока из массива строк */
+    function Game parse(Array strArray, int width, int height){
+        var Map map;
+        var Player player;
+        var char currentChar;
+        var Array blockArray;
+        var String line;
+        var int x;
+        var int y;
+
+        let blockArray = Array.new(width * height);
+        while (y < height){
+            let line = strArray[y];
+
+            while (x < width){
+                let currentChar = line.charAt(x);
+                if (currentChar = 80){ // 'P' = player
+                    let player = Player.new(x, y);
+                }
+
+                let blockArray[y * width + x] = Block.parse(currentChar);
+                let x = x + 1;
+            }
+
+            let x = 0;
+            let y = y + 1;
+        }
+
+        let map = Map.new(blockArray, width, height);
+        return Game.new(map, player);
+    }
+}

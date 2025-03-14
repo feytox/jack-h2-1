@@ -37,27 +37,4 @@ class Map {
 
         return;
     }
-
-    /** Парсит карту из массива строк */
-    function Map parse(Array strArray, int width, int height){
-        var Array blockArray;
-        var String line;
-        var int x;
-        var int y;
-
-        let blockArray = Array.new(width * height);
-        while (y < height){
-            let line = strArray[y];
-
-            while (x < width){
-                let blockArray[y * width + x] = Block.parse(line.charAt(x));
-                let x = x + 1;
-            }
-
-            let x = 0;
-            let y = y + 1;
-        }
-
-        return Map.new(blockArray, width, height);
-    }
 }
