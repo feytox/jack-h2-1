@@ -1,0 +1,18 @@
+class Levels {
+    
+    function Level test() {
+        var Array strArray;
+        var Level level;
+
+        let strArray = Array.new(5);
+        let strArray[0] = "#####";
+        let strArray[1] = "#P# #";
+        let strArray[2] = "# # #";
+        let strArray[3] = "#   #";
+        let strArray[4] = "#####";
+
+        let level = Level.parse(strArray, 5, 5);
+        do strArray.dispose();
+        return level;
+    }
+}
