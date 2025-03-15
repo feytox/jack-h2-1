@@ -25,18 +25,18 @@ class Levels {
         return Levels.level3();
     }
 
-    /** Уровень 1 - простой путь к финишу */
+    /** Уровень 1 - L-образный путь */
     function Level level1() {
         var Array strArray;
         var Level level;
 
         let strArray = Array.new(7);
         let strArray[0] = "#######";
-        let strArray[1] = "#P  M #";
-        let strArray[2] = "# ### #";
-        let strArray[3] = "#  M  #";
-        let strArray[4] = "# ### #";
-        let strArray[5] = "#K   F#";
+        let strArray[1] = "#P#  M#";
+        let strArray[2] = "#     #";
+        let strArray[3] = "#     #";
+        let strArray[4] = "##### #";
+        let strArray[5] = "#F   K#";
         let strArray[6] = "#######";
 
         let level = Level.parse(strArray, 7, 7);
@@ -44,20 +44,20 @@ class Levels {
         return level;
     }
 
-    /** Уровень 2 - более сложный маршрут */
+    /** Уровень 2 - лабиринт с препятствиями */
     function Level level2() {
         var Array strArray;
         var Level level;
 
         let strArray = Array.new(9);
         let strArray[0] = "#########";
-        let strArray[1] = "#P  M  ##";
-        let strArray[2] = "# ##### #";
-        let strArray[3] = "#   M   #";
-        let strArray[4] = "##### # #";
-        let strArray[5] = "#K     ##";
+        let strArray[1] = "#  M#####";
+        let strArray[2] = "#   ### #";
+        let strArray[3] = "#P      #";
+        let strArray[4] = "#       #";
+        let strArray[5] = "###    K#";
         let strArray[6] = "# ##### #";
-        let strArray[7] = "#     F #";
+        let strArray[7] = "#F    M #";
         let strArray[8] = "#########";
 
         let level = Level.parse(strArray, 9, 9);
@@ -65,23 +65,23 @@ class Levels {
         return level;
     }
 
-    /** Уровень 3 - самый сложный */
+    /** Уровень 3 - минималистичный */
     function Level level3() {
         var Array strArray;
         var Level level;
 
         let strArray = Array.new(11);
-        let strArray[0] = "###########";
-        let strArray[1] = "#P  M    #";
-        let strArray[2] = "# ####### #";
-        let strArray[3] = "#    M    #";
-        let strArray[4] = "##### #####";
-        let strArray[5] = "#K        #";
-        let strArray[6] = "# ####### #";
-        let strArray[7] = "#         #";
-        let strArray[8] = "# ####### #";
-        let strArray[9] = "#       F #";
-        let strArray[10]= "###########";
+        let strArray[0] = "##########";
+        let strArray[1] = "#       M#";
+        let strArray[2] = "#       ##";
+        let strArray[3] = "#        #";
+        let strArray[4] = "#        #";
+        let strArray[5] = "#        #";
+        let strArray[6] = "#        #";
+        let strArray[7] = "#        #";
+        let strArray[8] = "#        #";
+        let strArray[9] = "#P     K #";
+        let strArray[10]= "########F#";
 
         let level = Level.parse(strArray, 11, 11);
         do strArray.dispose();
