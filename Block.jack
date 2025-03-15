@@ -2,7 +2,8 @@
 class Block {
     static Block air;
     static Block stone;
-    static Coin money;
+    static Block money;
+    static Block key;
 
     field int id;
     field boolean moveThrough;
@@ -18,6 +19,7 @@ class Block {
         let air = Block.new(0, true);
         let stone = Block.new(1, false);
         let money = Block.new(2, true);
+        let key = Block.new(3, true);
         return;
     }
 
@@ -33,6 +35,10 @@ class Block {
 
         if (blockChar = 77){ // 'M' = money
             return money;
+        }
+
+        if (blockChar = 75){ // 'K' = key
+            return key;
         }
 
         do Exception.throw("Block: invalid block");
