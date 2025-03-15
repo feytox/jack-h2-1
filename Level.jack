@@ -59,8 +59,11 @@ class Level {
         var boolean running;
         let running = true;
         
+        // Начальная отрисовка карты
+        do Screen.clearScreen();
+        do render(32, 32);
+        
         while (running) {
-            // Очищаем экран только когда что-то изменилось
             let key = Keyboard.keyPressed();
             
             if (key = 81) { // Q - выход
