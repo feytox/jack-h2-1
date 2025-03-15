@@ -2,6 +2,7 @@
 class Block {
     static Block air;
     static Block stone;
+    static Coin money;
 
     field int id;
     field boolean moveThrough;
@@ -16,6 +17,7 @@ class Block {
     function void initBlocks(){
         let air = Block.new(0, true);
         let stone = Block.new(1, false);
+        let money = Block.new(2, true);
         return;
     }
 
@@ -27,6 +29,10 @@ class Block {
 
         if (blockChar = 35){ // '#' = stone
             return stone;
+        }
+
+        if (blockChar = 77){ // 'M' = money
+            return money;
         }
 
         do Exception.throw("Block: invalid block");
@@ -41,11 +47,20 @@ class Block {
         if (id = 1){
             do _renderFull(x, y, width, height);
         }
+        if (id = 2){
+            do _renderCoin(x, y, width, height);
+        }
         return;
     }
 
     /** Рендерит полностью закрашенный квадрат */
     method void _renderFull(int x, int y, int width, int height){
+        // TODO: оптимизировать
+        do Screen.drawRectangle(x, y, x + width, y + height);
+        return;
+    }
+
+    method void _renderCoin(int x, int y, int width, int height){
         // TODO: оптимизировать
         do Screen.drawRectangle(x, y, x + width, y + height);
         return;

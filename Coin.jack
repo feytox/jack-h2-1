@@ -1,0 +1,16 @@
+class Coin {
+    field int _coinX;
+    field int _coinY;
+
+    constructor Coin new(int x, int y) {
+        let _coinX = x;
+        let _coinY = y;
+        return this;
+    }
+
+    method void render(int mapStartX, int mapStartY) {
+        // TODO: coin render
+        do Screen.drawCircle(mapStartX + (_coinX * 16) + 8, mapStartY + (_coinY * 16) + 8, 4);
+        return;
+    }
+}

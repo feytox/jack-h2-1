@@ -8,7 +8,7 @@ class Levels {
         let strArray[0] = "#####";
         let strArray[1] = "#P# #";
         let strArray[2] = "# # #";
-        let strArray[3] = "#   #";
+        let strArray[3] = "# M #";
         let strArray[4] = "#####";
 
         let level = Level.parse(strArray, 5, 5);

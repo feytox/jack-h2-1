@@ -1,0 +1,25 @@
+class Score {
+    field int counter;
+
+    constructor Score new() {
+        let counter = 0;
+        return this;
+    }
+
+    method void IncreaseCounter() {
+        let counter = counter + 1;
+        return;
+    }
+
+    // Вывести значение счетчика на экран
+    function void PrintCounter() {
+        // TODO
+        return;
+    }
+
+    // Деструктор
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}
