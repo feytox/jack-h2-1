@@ -68,6 +68,18 @@ class Block {
         if (id = 4){  // finish
             do _renderFinish(x, y, width, height);
         }
+        if (id = 5){  // player normal
+            do _renderPlayer(x, y, width, height);
+        }
+        if (id = 6){  // player right wall
+            do _renderPlayerRight(x, y, width, height);
+        }
+        if (id = 7){  // player top
+            do _renderPlayerTop(x, y, width, height);
+        }
+        if (id = 8){  // player left wall
+            do _renderPlayerLeft(x, y, width, height);
+        }
         return;
     }
 
@@ -125,38 +137,123 @@ class Block {
         return;
     }
 
-    /** Рендерит ромб (финиш) */
+    /** Рендерит финиш (замок) */
     method void _renderFinish(int x, int y, int width, int height) {
-        var int centerX, centerY;
-        var Array diamondX, diamondY;
-        
-        let centerX = x + (width / 2);
-        let centerY = y + (height / 2);
-        
-        // Создаем массивы для координат ромба
-        let diamondX = Array.new(4);
-        let diamondY = Array.new(4);
-        
-        // Задаем координаты ромба
-        let diamondX[0] = centerX;      // Верхняя точка
-        let diamondX[1] = centerX + 4;  // Правая точка
-        let diamondX[2] = centerX;      // Нижняя точка
-        let diamondX[3] = centerX - 4;  // Левая точка
-        
-        let diamondY[0] = centerY - 4;  // Верхняя точка
-        let diamondY[1] = centerY;      // Правая точка
-        let diamondY[2] = centerY + 4;  // Нижняя точка
-        let diamondY[3] = centerY;      // Левая точка
-        
-        // Рисуем линии ромба
-        do Screen.drawLine(diamondX[0], diamondY[0], diamondX[1], diamondY[1]);
-        do Screen.drawLine(diamondX[1], diamondY[1], diamondX[2], diamondY[2]);
-        do Screen.drawLine(diamondX[2], diamondY[2], diamondX[3], diamondY[3]);
-        do Screen.drawLine(diamondX[3], diamondY[3], diamondX[0], diamondY[0]);
-        
-        // Освобождаем память
-        do diamondX.dispose();
-        do diamondY.dispose();
+        var int location, memAddress;
+        let location = ((y * 32) + (x / 16));
+        let memAddress = 16384 + location;
+        do Memory.poke(memAddress + 0, 0);
+        do Memory.poke(memAddress + 32, 2016);
+        do Memory.poke(memAddress + 64, 3120);
+        do Memory.poke(memAddress + 96, 2448);
+        do Memory.poke(memAddress + 128, 2640);
+        do Memory.poke(memAddress + 160, 2640);
+        do Memory.poke(memAddress + 192, 2640);
+        do Memory.poke(memAddress + 224, 2640);
+        do Memory.poke(memAddress + 256, 8184);
+        do Memory.poke(memAddress + 288, 12300);
+        do Memory.poke(memAddress + 320, 8196);
+        do Memory.poke(memAddress + 352, 8196);
+        do Memory.poke(memAddress + 384, 8196);
+        do Memory.poke(memAddress + 416, 8196);
+        do Memory.poke(memAddress + 448, 12300);
+        do Memory.poke(memAddress + 480, 8184);
+        return;
+    }
+
+    /** Рендерит обычный спрайт игрока */
+    method void _renderPlayer(int x, int y, int width, int height) {
+        var int location, memAddress;
+        let location = ((y * 32) + (x / 16));
+        let memAddress = 16384 + location;
+        do Memory.poke(memAddress + 0, 0);
+        do Memory.poke(memAddress + 32, 0);
+        do Memory.poke(memAddress + 64, 0);
+        do Memory.poke(memAddress + 96, 8184);
+        do Memory.poke(memAddress + 128, 12300);
+        do Memory.poke(memAddress + 160, 8196);
+        do Memory.poke(memAddress + 192, 9828);
+        do Memory.poke(memAddress + 224, 9828);
+        do Memory.poke(memAddress + 256, 8196);
+        do Memory.poke(memAddress + 288, 8196);
+        do Memory.poke(memAddress + 320, 9238);
+        do Memory.poke(memAddress + 352, 13282);
+        do Memory.poke(memAddress + 384, 4098);
+        do Memory.poke(memAddress + 416, 6130);
+        do Memory.poke(memAddress + 448, 5142);
+        do Memory.poke(memAddress + 480, 7196);
+        return;
+    }
+
+    /** Рендерит спрайт игрока у правой стены */
+    method void _renderPlayerRight(int x, int y, int width, int height) {
+        var int location, memAddress;
+        let location = ((y * 32) + (x / 16));
+        let memAddress = 16384 + location;
+        do Memory.poke(memAddress + 0, 0);
+        do Memory.poke(memAddress + 32, 0);
+        do Memory.poke(memAddress + 64, 4080);
+        do Memory.poke(memAddress + 96, -2024);
+        do Memory.poke(memAddress + 128, -32760);
+        do Memory.poke(memAddress + 160, -6968);
+        do Memory.poke(memAddress + 192, 10440);
+        do Memory.poke(memAddress + 224, 10248);
+        do Memory.poke(memAddress + 256, 10248);
+        do Memory.poke(memAddress + 288, 10440);
+        do Memory.poke(memAddress + 320, 10440);
+        do Memory.poke(memAddress + 352, -7160);
+        do Memory.poke(memAddress + 384, -32744);
+        do Memory.poke(memAddress + 416, -14352);
+        do Memory.poke(memAddress + 448, 31744);
+        do Memory.poke(memAddress + 480, 0);
+        return;
+    }
+
+    /** Рендерит спрайт игрока на потолке */
+    method void _renderPlayerTop(int x, int y, int width, int height) {
+        var int location, memAddress;
+        let location = ((y * 32) + (x / 16));
+        let memAddress = 16384 + location;
+        do Memory.poke(memAddress + 0, 14392);
+        do Memory.poke(memAddress + 32, 26664);
+        do Memory.poke(memAddress + 64, 20456);
+        do Memory.poke(memAddress + 96, 16392);
+        do Memory.poke(memAddress + 128, 18380);
+        do Memory.poke(memAddress + 160, 26660);
+        do Memory.poke(memAddress + 192, 8196);
+        do Memory.poke(memAddress + 224, 8196);
+        do Memory.poke(memAddress + 256, 9828);
+        do Memory.poke(memAddress + 288, 9828);
+        do Memory.poke(memAddress + 320, 8196);
+        do Memory.poke(memAddress + 352, 12300);
+        do Memory.poke(memAddress + 384, 8184);
+        do Memory.poke(memAddress + 416, 0);
+        do Memory.poke(memAddress + 448, 0);
+        do Memory.poke(memAddress + 480, 0);
+        return;
+    }
+
+    /** Рендерит спрайт игрока у левой стены */
+    method void _renderPlayerLeft(int x, int y, int width, int height) {
+        var int location, memAddress;
+        let location = ((y * 32) + (x / 16));
+        let memAddress = 16384 + location;
+        do Memory.poke(memAddress + 0, 0);
+        do Memory.poke(memAddress + 32, 0);
+        do Memory.poke(memAddress + 64, 4080);
+        do Memory.poke(memAddress + 96, 6175);
+        do Memory.poke(memAddress + 128, 4097);
+        do Memory.poke(memAddress + 160, 4903);
+        do Memory.poke(memAddress + 192, 4884);
+        do Memory.poke(memAddress + 224, 4116);
+        do Memory.poke(memAddress + 256, 4116);
+        do Memory.poke(memAddress + 288, 4884);
+        do Memory.poke(memAddress + 320, 4884);
+        do Memory.poke(memAddress + 352, 4135);
+        do Memory.poke(memAddress + 384, 6145);
+        do Memory.poke(memAddress + 416, 4067);
+        do Memory.poke(memAddress + 448, 62);
+        do Memory.poke(memAddress + 480, 0);
         return;
     }
 
