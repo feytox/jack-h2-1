@@ -11,13 +11,18 @@ class Map {
         return this;
     }
 
-    /** Возвращает блок по координатам. Для оптимизации в рамках класса инлайньте этот код */
+    /** Возвращает блок по координатам. Если блок не найден или произошёл выход за пределы, возвращает -1 */
     method Block getBlock(int x, int y){
+        if ((x < 0) | (y < 0) | (x + 1 > _width) | (y + 1 > _height)){
+            return -1;
+        }
+
         return _blockArray[y * _width + x];
     }
 
     /** Отрисовывает карту с определённым началом координат (левый верхний угол) и размерами блоков */
     method void render(int startX, int startY, int blockWidth, int blockHeight){
+        // TODO: убрать размеры блока, они же точно уже 16 на 16
         var Block block;
         var int mapSize;
         var int x;
@@ -33,6 +38,27 @@ class Map {
 
             let x = 0;
             let y = y + 1;
+        }
+
+        return;
+    }
+
+    /** Перерисовывает блок на указанной позиции */
+    method void reRender(int startX, int startY, int gameX, int gameY) {
+        var int x;
+        var int y;
+        var Block block;
+
+        let x = startX + (gameX * 16);
+        let y = startY + (gameY * 16);
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + 16, y + 16);
+        do Screen.setColor(true);
+
+        let block = getBlock(gameX, gameY);
+        if (~(block = -1)) {
+            do block.render(x, y, 16, 16);
         }
 
         return;

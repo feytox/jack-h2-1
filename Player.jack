@@ -1,16 +1,66 @@
 class Player {
     field int _gameX;
     field int _gameY;
+    field int _legsDirection;
 
-    constructor Player new(int gameX, int gameY) {
+    constructor Player new(int gameX, int gameY){
         let _gameX = gameX;
         let _gameY = gameY;
         return this;
     }
 
-    method void render(int mapStartX, int mapStartY) {
+    /** 
+    Обрабатывает движение игрока в сторону.
+    0 - up, 1 - down, 2 - left, 3 - right    
+    */
+    method void tryMove(Map map, int direction){
+        var Block block;
+        var int dx;
+        var int dy;
+        var int x;
+        var int y;
+
+        let x = _gameX;
+        let y = _gameY;
+        let _legsDirection = direction;
+
+        while (true){
+            let _gameX = x;
+            let _gameY = y;
+            do Main.reRender();
+
+            if (direction = 0){
+                let y = y - 1;
+            }
+            if (direction = 1){
+                let y = y + 1;
+            }
+            if (direction = 2){
+                let x = x - 1;
+            }
+            if (direction = 3){
+                let x = x + 1;
+            }
+
+            let block = map.getBlock(x, y);
+            if (block = -1) {
+                return;
+            }
+
+            if (~block.canMoveThrough()){
+                return;
+            }
+        }
+
+        return;
+    }
+
+
+    method void render(int mapStartX, int mapStartY){
         // TODO: player render
         do Screen.drawCircle(mapStartX + (_gameX * 16) + 8, mapStartY + (_gameY * 16) + 8, 4);
         return;
     }
+
+
 }

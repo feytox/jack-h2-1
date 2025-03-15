@@ -1,10 +1,85 @@
 class Game {
-    static Level currentLevel;
+    field Level currentLevel;
+    field int _startX;
+    field int _startY;
 
-    function void loadGame() {
+    constructor Game new(int startX, int startY){
+        let _startX = startX;
+        let _startY = startY;
+        return this;
+    }
+
+    method void loadGame(){
         let currentLevel = Levels.test();
+        return;
+    }
 
-        do currentLevel.render(32, 32);
+    method void render() {
+        do currentLevel.render(_startX, _startY);
+        return;
+    }
+
+    method void run(){
+        var char key;
+        
+        do render();
+        while (true){
+            while (key = 0){
+                let key = Keyboard.keyPressed();
+                do tick();
+            }
+
+            do handleKey(key);
+
+            while (~(key = 0)){
+                let key = Keyboard.keyPressed();
+                do tick();
+            }
+        }
+
+        return;
+    }
+
+    method void tick(){
+        return;
+    }
+
+    method void handleKey(char key){
+        if ((key = 131) | (key = 57)){ // up or 'W' = move up
+            do handleMovement(0);
+            return;
+        }
+
+        if ((key = 133) | (key = 53)){ // down or 'S' = move down
+            do handleMovement(1);
+            return;
+        }
+
+        if ((key = 130) | (key = 41)){ // left or 'A' = move up
+            do handleMovement(2);
+            return;
+        }
+
+        if ((key = 132) | (key = 44)){ // right or 'D' = move up
+            do handleMovement(3);
+            return;
+        }
+
+        return;
+    }
+
+    /** 
+    Обрабатывает движение игрока в сторону.
+    0 - up, 1 - down, 2 - left, 3 - right    
+    */
+    method void handleMovement(int direction){
+        var Player player;
+        var Map map;
+
+        let player = currentLevel.getPlayer();
+        let map = currentLevel.getMap();
+
+        do player.tryMove(map, direction);
         return;
     }
 }
