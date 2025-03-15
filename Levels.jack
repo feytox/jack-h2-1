@@ -27,7 +27,11 @@ class Levels {
             return level;
         }
         
-        // Если все уровни пройдены, возвращаем null
+        // Если все уровни пройдены, показываем сообщение
+        do Screen.clearScreen();
+        do Output.moveCursor(10, 25);  // Перемещаем курсор в центр экрана
+        do Output.printString("FIIT - THE BEAST");
+        do Sys.wait(3000);  // Ждем 3 секунды
         return null;
     }
 
