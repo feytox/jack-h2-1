@@ -21,22 +21,11 @@ class Player {
         var Block nextBlock;
         var int nextX;
         
-        if (_map = null) {
-            do Output.moveCursor(16, 0);
-            do Output.printString("Error: Map not set!");
-            return;
-        }
+        if (_map = null) { return; }
         
         let nextX = _gameX - 1;
-        
-        // Двигаемся влево, пока не встретим препятствие
         while (nextX > -1) {
             let nextBlock = _map.getBlock(nextX, _gameY);
-            
-            do Output.moveCursor(17, 0);
-            do Output.printString("Moving left. Next X: ");
-            do Output.printInt(nextX);
-            
             if (~(nextBlock.canMoveThrough())) {
                 return;  // Встретили стену
             }
@@ -51,15 +40,9 @@ class Player {
         var Block nextBlock;
         var int nextX;
         
-        if (_map = null) {
-            do Output.moveCursor(16, 0);
-            do Output.printString("Error: Map not set!");
-            return;
-        }
+        if (_map = null) { return; }
         
         let nextX = _gameX + 1;
-        
-        // Двигаемся вправо, пока не встретим препятствие
         while (nextX < _map.getWidth()) {
             let nextBlock = _map.getBlock(nextX, _gameY);
             if (~(nextBlock.canMoveThrough())) {
@@ -76,15 +59,9 @@ class Player {
         var Block nextBlock;
         var int nextY;
         
-        if (_map = null) {
-            do Output.moveCursor(16, 0);
-            do Output.printString("Error: Map not set!");
-            return;
-        }
+        if (_map = null) { return; }
         
         let nextY = _gameY - 1;
-        
-        // Двигаемся вверх, пока не встретим препятствие
         while (nextY > -1) {
             let nextBlock = _map.getBlock(_gameX, nextY);
             if (~(nextBlock.canMoveThrough())) {
@@ -101,15 +78,9 @@ class Player {
         var Block nextBlock;
         var int nextY;
         
-        if (_map = null) {
-            do Output.moveCursor(16, 0);
-            do Output.printString("Error: Map not set!");
-            return;
-        }
+        if (_map = null) { return; }
         
         let nextY = _gameY + 1;
-        
-        // Двигаемся вниз, пока не встретим препятствие
         while (nextY < _map.getHeight()) {
             let nextBlock = _map.getBlock(_gameX, nextY);
             if (~(nextBlock.canMoveThrough())) {

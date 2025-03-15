@@ -55,23 +55,41 @@ class Level {
 
     /** Запускает игровой цикл */
     method void run() {
-        var boolean exit;
-        let exit = false;
+        var char key;
+        var boolean running;
+        let running = true;
         
-        while (~exit) {
-            do render(32, 32);  // Рендерим игру с отступом 32 пикселя
+        while (running) {
+            // Очищаем экран только когда что-то изменилось
+            let key = Keyboard.keyPressed();
+            
+            if (key = 81) { // Q - выход
+                let running = false;
+            }
+            
+            if ((key = 87) | (key = 83) | (key = 65) | (key = 68)) {  // WASD
+                do Screen.clearScreen();
+                
+                if (key = 87) { do _player.moveUp(); }    // W
+                if (key = 83) { do _player.moveDown(); }  // S
+                if (key = 65) { do _player.moveLeft(); }  // A
+                if (key = 68) { do _player.moveRight(); } // D
+                
+                do _map.render(32, 32, 16, 16);
+                do _player.render(32, 32);
+                do _score.PrintCounters();
+                do update();
+            }
+            
+            do Sys.wait(50);
         }
         return;
     }
 
     method void render(int startX, int startY){
-        do Screen.clearScreen();  // Очищаем экран перед отрисовкой
         do _map.render(startX, startY, 16, 16);
         do _player.render(startX, startY);
         do _score.PrintCounters();
-        do handleKey();  // Обрабатываем нажатия клавиш
-        do update();     // Обновляем состояние уровня
-        do Sys.wait(50); // Добавляем небольшую задержку
         return;
     }
 
