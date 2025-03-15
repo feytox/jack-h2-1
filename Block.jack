@@ -2,7 +2,7 @@
 class Block {
     static Block air;
     static Block stone;
-    static Coin money;
+    static Block money;
 
     field int id;
     field boolean moveThrough;
