@@ -131,6 +131,12 @@ class Level {
     /** Проверяет и обрабатывает сбор монетки на указанной позиции */
     method void checkAndCollectCoin(int x, int y){
         var Block block;
+        
+        // Проверяем, что координаты в пределах карты
+        if ((x < 0) | (x > (_map.getWidth() - 1)) | (y < 0) | (y > (_map.getHeight() - 1))) {
+            return;
+        }
+        
         let block = _map.getBlock(x, y);
         
         if (block.isCoin()){
@@ -146,8 +152,21 @@ class Level {
         let playerX = _player.getX();
         let playerY = _player.getY();
         
-        // Проверяем, не стоит ли игрок на монетке
-        do checkAndCollectCoin(playerX, playerY);
+        // Проверяем монеты вокруг игрока
+        do checkCoinsAround(playerX, playerY);
+        return;
+    }
+
+    /** Проверяет монеты вокруг указанной позиции */
+    method void checkCoinsAround(int x, int y) {
+        // Проверяем текущую позицию
+        do checkAndCollectCoin(x, y);
+        
+        // Проверяем клетки вокруг игрока
+        do checkAndCollectCoin(x-1, y);   // Слева
+        do checkAndCollectCoin(x+1, y);   // Справа
+        do checkAndCollectCoin(x, y-1);   // Сверху
+        do checkAndCollectCoin(x, y+1);   // Снизу
         return;
     }
 }
