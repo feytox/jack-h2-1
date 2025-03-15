@@ -102,34 +102,26 @@ class Block {
     }
 
     /** Рендерит ключ */
-    method void _renderKey(int x, int y, int width, int height){
-        var int centerX, centerY;
-        var Array triangleX, triangleY;
-        
-        let centerX = x + (width / 2);
-        let centerY = y + (height / 2);
-        
-        // Создаем массивы для координат треугольника
-        let triangleX = Array.new(3);
-        let triangleY = Array.new(3);
-        
-        // Задаем координаты треугольника
-        let triangleX[0] = centerX;           // Вершина
-        let triangleX[1] = centerX - 4;       // Левый нижний угол
-        let triangleX[2] = centerX + 4;       // Правый нижний угол
-        
-        let triangleY[0] = centerY - 4;       // Вершина
-        let triangleY[1] = centerY + 4;       // Левый нижний угол
-        let triangleY[2] = centerY + 4;       // Правый нижний угол
-        
-        // Рисуем линии треугольника
-        do Screen.drawLine(triangleX[0], triangleY[0], triangleX[1], triangleY[1]);
-        do Screen.drawLine(triangleX[1], triangleY[1], triangleX[2], triangleY[2]);
-        do Screen.drawLine(triangleX[2], triangleY[2], triangleX[0], triangleY[0]);
-        
-        // Освобождаем память
-        do triangleX.dispose();
-        do triangleY.dispose();
+    method void _renderKey(int x, int y, int width, int height) {
+        var int location, memAddress;
+        let location = ((y * 32) + (x / 16));
+        let memAddress = 16384 + location;
+        do Memory.poke(memAddress + 0, 0);
+        do Memory.poke(memAddress + 32, 0);
+        do Memory.poke(memAddress + 64, 0);
+        do Memory.poke(memAddress + 96, 0);
+        do Memory.poke(memAddress + 128, 0);
+        do Memory.poke(memAddress + 160, 28);
+        do Memory.poke(memAddress + 192, 38);
+        do Memory.poke(memAddress + 224, 13814);
+        do Memory.poke(memAddress + 256, 32766);
+        do Memory.poke(memAddress + 288, 62);
+        do Memory.poke(memAddress + 320, 28);
+        do Memory.poke(memAddress + 352, 0);
+        do Memory.poke(memAddress + 384, 0);
+        do Memory.poke(memAddress + 416, 0);
+        do Memory.poke(memAddress + 448, 0);
+        do Memory.poke(memAddress + 480, 0);
         return;
     }
 
