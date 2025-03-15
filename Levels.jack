@@ -75,7 +75,7 @@ class Levels {
         return level;
     }
 
-    /** Уровень 3 - минималистичный */
+    /** Уровень 3 - простой лабиринт */
     function Level level3() {
         var Array strArray;
         var Level level;
