@@ -1,23 +1,30 @@
 class Score {
-    field int counter;
+    field int coinCounter;
+    field int keyCounter;
 
     constructor Score new() {
-        let counter = 0;
+        let coinCounter = 0;
+        let keyCounter = 0;
         return this;
     }
 
-    method void IncreaseCounter() {
-        let counter = counter + 1;
+    method void IncreaseCoinCounter() {
+        let coinCounter = coinCounter + 1;
         return;
     }
 
-    // Вывести значение счетчика на экран
-    function void PrintCounter() {
-        // TODO
+    method void IncreaseKeyCounter() {
+        let keyCounter = keyCounter + 1;
         return;
     }
 
-    // Деструктор
+    // Вывести значение счетчиков на экран
+    function void PrintCounters() {
+        // TODO: вывести количество монет и ключей
+        return;
+    }
+
+    // Деструктор 
     method void dispose() {
         do Memory.deAlloc(this);
         return;
