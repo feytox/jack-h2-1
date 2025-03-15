@@ -79,12 +79,25 @@ class Block {
     }
 
     method void _renderCoin(int x, int y, int width, int height) {
-        var int centerX, centerY, radius;
-        let centerX = x + (width / 2);
-        let centerY = y + (height / 2);
-        let radius = Math.min(width, height) / 4;  // Радиус монетки
-        
-        do Screen.drawCircle(centerX, centerY, radius);
+        var int location, memAddress;
+        let location = ((y * 32) + (x / 16));
+        let memAddress = 16384 + location;
+        do Memory.poke(memAddress + 0, 0);
+        do Memory.poke(memAddress + 32, 960);
+        do Memory.poke(memAddress + 64, 4080);
+        do Memory.poke(memAddress + 96, 7224);
+        do Memory.poke(memAddress + 128, 15324);
+        do Memory.poke(memAddress + 160, 12876);
+        do Memory.poke(memAddress + 192, 25158);
+        do Memory.poke(memAddress + 224, 25542);
+        do Memory.poke(memAddress + 256, 24646);
+        do Memory.poke(memAddress + 288, 24646);
+        do Memory.poke(memAddress + 320, 12364);
+        do Memory.poke(memAddress + 352, 14428);
+        do Memory.poke(memAddress + 384, 7224);
+        do Memory.poke(memAddress + 416, 4080);
+        do Memory.poke(memAddress + 448, 960);
+        do Memory.poke(memAddress + 480, 0);
         return;
     }
 
