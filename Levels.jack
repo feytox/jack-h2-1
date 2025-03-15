@@ -4,14 +4,16 @@ class Levels {
         var Array strArray;
         var Level level;
 
-        let strArray = Array.new(5);
-        let strArray[0] = "#####";
-        let strArray[1] = "#P# #";
-        let strArray[2] = "# # #";
-        let strArray[3] = "# M #";
-        let strArray[4] = "#####";
+        let strArray = Array.new(7);
+        let strArray[0] = "#######";
+        let strArray[1] = "#P# M #";
+        let strArray[2] = "# # # #";
+        let strArray[3] = "#  M  #";
+        let strArray[4] = "# # # #";
+        let strArray[5] = "#  K  #";
+        let strArray[6] = "#######";
 
-        let level = Level.parse(strArray, 5, 5);
+        let level = Level.parse(strArray, 7, 7);
         do strArray.dispose();
         return level;
     }

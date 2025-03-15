@@ -57,11 +57,16 @@ class Level {
     method void run() {
         var char key;
         var boolean running;
+        var int oldX, oldY, newX, newY, i;
         let running = true;
         
         // Начальная отрисовка карты
         do Screen.clearScreen();
         do render(32, 32);
+        
+        // Проверяем начальную позицию игрока
+        do checkAndCollectCoin(_player.getX(), _player.getY());
+        do checkAndCollectKey(_player.getX(), _player.getY());
         
         while (running) {
             let key = Keyboard.keyPressed();
@@ -73,15 +78,61 @@ class Level {
             if ((key = 87) | (key = 83) | (key = 65) | (key = 68)) {  // WASD
                 do Screen.clearScreen();
                 
+                // Запоминаем текущую позицию
+                let oldX = _player.getX();
+                let oldY = _player.getY();
+                
+                // Двигаем игрока
                 if (key = 87) { do _player.moveUp(); }    // W
                 if (key = 83) { do _player.moveDown(); }  // S
                 if (key = 65) { do _player.moveLeft(); }  // A
                 if (key = 68) { do _player.moveRight(); } // D
                 
+                // Получаем новую позицию
+                let newX = _player.getX();
+                let newY = _player.getY();
+                
+                // Если позиция изменилась, проверяем все клетки на пути
+                if ((~(oldX = newX)) | (~(oldY = newY))) {
+                    if (~(oldX = newX)) { // Движение по горизонтали
+                        if (oldX < newX) { // Движение вправо
+                            let i = oldX;
+                            while (i < (newX + 1)) {
+                                do checkAndCollectCoin(i, oldY);
+                                do checkAndCollectKey(i, oldY);
+                                let i = i + 1;
+                            }
+                        } else { // Движение влево
+                            let i = oldX;
+                            while (i > (newX - 1)) {
+                                do checkAndCollectCoin(i, oldY);
+                                do checkAndCollectKey(i, oldY);
+                                let i = i - 1;
+                            }
+                        }
+                    }
+                    if (~(oldY = newY)) { // Движение по вертикали
+                        if (oldY < newY) { // Движение вниз
+                            let i = oldY;
+                            while (i < (newY + 1)) {
+                                do checkAndCollectCoin(oldX, i);
+                                do checkAndCollectKey(oldX, i);
+                                let i = i + 1;
+                            }
+                        } else { // Движение вверх
+                            let i = oldY;
+                            while (i > (newY - 1)) {
+                                do checkAndCollectCoin(oldX, i);
+                                do checkAndCollectKey(oldX, i);
+                                let i = i - 1;
+                            }
+                        }
+                    }
+                }
+                
                 do _map.render(32, 32, 16, 16);
                 do _player.render(32, 32);
                 do _score.PrintCounters();
-                do update();
             }
             
             do Sys.wait(50);
@@ -146,27 +197,33 @@ class Level {
         return;
     }
 
+    /** Проверяет и обрабатывает сбор ключа на указанной позиции */
+    method void checkAndCollectKey(int x, int y){
+        var Block block;
+        
+        // Проверяем, что координаты в пределах карты
+        if ((x < 0) | (x > (_map.getWidth() - 1)) | (y < 0) | (y > (_map.getHeight() - 1))) {
+            return;
+        }
+        
+        let block = _map.getBlock(x, y);
+        
+        if (block.isKey()){
+            do _score.IncreaseKeyCounter();
+            do _map.setBlock(x, y, Block.getAir());
+        }
+        return;
+    }
+
     /** Обновляет состояние уровня */
     method void update() {
         var int playerX, playerY;
         let playerX = _player.getX();
         let playerY = _player.getY();
         
-        // Проверяем монеты вокруг игрока
-        do checkCoinsAround(playerX, playerY);
-        return;
-    }
-
-    /** Проверяет монеты вокруг указанной позиции */
-    method void checkCoinsAround(int x, int y) {
-        // Проверяем текущую позицию
-        do checkAndCollectCoin(x, y);
-        
-        // Проверяем клетки вокруг игрока
-        do checkAndCollectCoin(x-1, y);   // Слева
-        do checkAndCollectCoin(x+1, y);   // Справа
-        do checkAndCollectCoin(x, y-1);   // Сверху
-        do checkAndCollectCoin(x, y+1);   // Снизу
+        // Проверяем только текущую позицию игрока
+        do checkAndCollectCoin(playerX, playerY);
+        do checkAndCollectKey(playerX, playerY);
         return;
     }
 }

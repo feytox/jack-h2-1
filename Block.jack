@@ -82,16 +82,32 @@ class Block {
     /** Рендерит ключ */
     method void _renderKey(int x, int y, int width, int height){
         var int centerX, centerY;
+        var Array triangleX, triangleY;
+        
         let centerX = x + (width / 2);
         let centerY = y + (height / 2);
         
-        // Рисуем круг для головки ключа
-        do Screen.drawCircle(centerX, centerY - 4, 3);
-        // Рисуем "ножку" ключа
-        do Screen.drawLine(centerX, centerY - 1, centerX, centerY + 4);
-        // Рисуем "зубчики" ключа
-        do Screen.drawLine(centerX, centerY + 4, centerX + 2, centerY + 4);
-        do Screen.drawLine(centerX, centerY + 2, centerX + 2, centerY + 2);
+        // Создаем массивы для координат треугольника
+        let triangleX = Array.new(3);
+        let triangleY = Array.new(3);
+        
+        // Задаем координаты треугольника
+        let triangleX[0] = centerX;           // Вершина
+        let triangleX[1] = centerX - 4;       // Левый нижний угол
+        let triangleX[2] = centerX + 4;       // Правый нижний угол
+        
+        let triangleY[0] = centerY - 4;       // Вершина
+        let triangleY[1] = centerY + 4;       // Левый нижний угол
+        let triangleY[2] = centerY + 4;       // Правый нижний угол
+        
+        // Рисуем линии треугольника
+        do Screen.drawLine(triangleX[0], triangleY[0], triangleX[1], triangleY[1]);
+        do Screen.drawLine(triangleX[1], triangleY[1], triangleX[2], triangleY[2]);
+        do Screen.drawLine(triangleX[2], triangleY[2], triangleX[0], triangleY[0]);
+        
+        // Освобождаем память
+        do triangleX.dispose();
+        do triangleY.dispose();
         return;
     }
 
@@ -103,6 +119,11 @@ class Block {
     /** Проверяет, является ли блок монеткой */
     method boolean isCoin(){
         return getId() = 2;  // 2 - это ID монетки
+    }
+
+    /** Проверяет, является ли блок ключом */
+    method boolean isKey(){
+        return getId() = 3;  // 3 - это ID ключа
     }
 
     /** Проверяет, можно ли пройти через блок */
