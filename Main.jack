@@ -1,7 +1,13 @@
 class Main {
     function void main(){
+        var Game game;
+
         do Block.initBlocks();
-        do Game.loadGame();
+
+        let game = Game.new(32, 32);
+        do game.loadGame();
+        do game.run();
+
         return;
     }
 }

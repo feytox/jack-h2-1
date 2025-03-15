@@ -4,11 +4,11 @@ class Block {
     static Block stone;
 
     field int id;
-    field boolean moveThrough;
+    field boolean _moveThrough;
 
-    constructor Block new(int blockId, boolean canMoveThrough){
+    constructor Block new(int blockId, boolean moveThrough){
         let id = blockId;
-        let moveThrough = canMoveThrough;
+        let _moveThrough = moveThrough;
         return this;
     }
 
@@ -49,5 +49,9 @@ class Block {
         // TODO: оптимизировать
         do Screen.drawRectangle(x, y, x + width, y + height);
         return;
+    }
+    
+    method boolean canMoveThrough() {
+        return _moveThrough;
     }
 }

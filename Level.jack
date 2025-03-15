@@ -14,6 +14,14 @@ class Level {
         return;
     }
 
+    method Map getMap() {
+        return _map;
+    }
+
+    method Player getPlayer() {
+        return _player;
+    }
+
     /** Парсит карту и игрока из массива строк */
     function Level parse(Array strArray, int width, int height){
         var Map map;
