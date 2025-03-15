@@ -13,7 +13,7 @@ class Map {
 
     /** Возвращает блок по координатам. Если блок не найден или произошёл выход за пределы, возвращает -1 */
     method Block getBlock(int x, int y){
-        if ((x < 0) | (y < 0) | (x > _width - 1) | (y > _height - 1)){
+        if ((x < 0) | (y < 0) | (x + 1 > _width) | (y + 1 > _height)){
             return -1;
         }
 

@@ -1,13 +1,19 @@
 class Main {
-    function void main(){
-        var Game game;
+    static Game game;
 
+    function void main(){
         do Block.initBlocks();
 
         let game = Game.new(32, 32);
         do game.loadGame();
         do game.run();
 
+        return;
+    }
+
+    function void reRender() {
+        do Screen.clearScreen();
+        do game.render();
         return;
     }
 }

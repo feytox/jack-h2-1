@@ -13,24 +13,21 @@ class Player {
     Обрабатывает движение игрока в сторону.
     0 - up, 1 - down, 2 - left, 3 - right    
     */
-    method void tryMove(Map map, int direction, int startX, int startY){
+    method void tryMove(Map map, int direction){
         var Block block;
-        var boolean loop;
         var int dx;
         var int dy;
         var int x;
         var int y;
 
-        let loop = true;
         let x = _gameX;
         let y = _gameY;
         let _legsDirection = direction;
 
-        while (loop){
-            do map.reRender(startX, startY, _gameX, _gameY);
+        while (true){
             let _gameX = x;
             let _gameY = y;
-            do render(startX, startY);
+            do Main.reRender();
 
             if (direction = 0){
                 let y = y - 1;
@@ -47,12 +44,10 @@ class Player {
 
             let block = map.getBlock(x, y);
             if (block = -1) {
-                do Output.printString("---");
                 return;
             }
 
             if (~block.canMoveThrough()){
-                do Output.printString("dasda");
                 return;
             }
         }

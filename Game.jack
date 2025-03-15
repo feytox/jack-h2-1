@@ -11,7 +11,10 @@ class Game {
 
     method void loadGame(){
         let currentLevel = Levels.test();
+        return;
+    }
 
+    method void render() {
         do currentLevel.render(_startX, _startY);
         return;
     }
@@ -19,7 +22,7 @@ class Game {
     method void run(){
         var char key;
         
-
+        do render();
         while (true){
             while (key = 0){
                 let key = Keyboard.keyPressed();
@@ -76,7 +79,7 @@ class Game {
         let player = currentLevel.getPlayer();
         let map = currentLevel.getMap();
 
-        do player.tryMove(map, direction, _startX, _startY);
+        do player.tryMove(map, direction);
         return;
     }
 }
