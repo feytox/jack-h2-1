@@ -9,20 +9,26 @@ class Levels {
     
     /** Возвращает следующий уровень */
     function Level nextLevel() {
+        var Level level;
+        
         if (currentLevel = 1) {
-            let currentLevel = currentLevel + 1;
-            return Levels.level1();
+            let currentLevel = 2;
+            let level = Levels.level1();
+            return level;
         }
         if (currentLevel = 2) {
-            let currentLevel = currentLevel + 1;
-            return Levels.level2();
+            let currentLevel = 3;
+            let level = Levels.level2();
+            return level;
         }
         if (currentLevel = 3) {
-            let currentLevel = currentLevel + 1;
-            return Levels.level3();
+            let currentLevel = 4;
+            let level = Levels.level3();
+            return level;
         }
-        // Если все уровни пройдены, возвращаем последний
-        return Levels.level3();
+        
+        // Если все уровни пройдены, возвращаем null
+        return null;
     }
 
     /** Уровень 1 - L-образный путь */
@@ -70,20 +76,18 @@ class Levels {
         var Array strArray;
         var Level level;
 
-        let strArray = Array.new(11);
-        let strArray[0] = "##########";
-        let strArray[1] = "#       M#";
-        let strArray[2] = "#       ##";
-        let strArray[3] = "#        #";
-        let strArray[4] = "#        #";
-        let strArray[5] = "#        #";
-        let strArray[6] = "#        #";
-        let strArray[7] = "#        #";
-        let strArray[8] = "#        #";
-        let strArray[9] = "#P     K #";
-        let strArray[10]= "########F#";
+        let strArray = Array.new(9);
+        let strArray[0] = "#########";
+        let strArray[1] = "#F    M #";
+        let strArray[2] = "#####   #";
+        let strArray[3] = "#       #";
+        let strArray[4] = "#       #";
+        let strArray[5] = "#       #";
+        let strArray[6] = "#       #";
+        let strArray[7] = "#P    K #";
+        let strArray[8] = "#########";
 
-        let level = Level.parse(strArray, 11, 11);
+        let level = Level.parse(strArray, 9, 9);
         do strArray.dispose();
         return level;
     }
