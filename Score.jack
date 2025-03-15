@@ -19,8 +19,14 @@ class Score {
     }
 
     // Вывести значение счетчиков на экран
-    function void PrintCounters() {
-        // TODO: вывести количество монет и ключей
+    method void PrintCounters() {
+        do Output.moveCursor(0, 0);  // Перемещаем курсор в верхний левый угол (строка 0, столбец 0)
+        do Output.printString("Money: ");
+        do Output.printInt(coinCounter);
+        
+        do Output.moveCursor(0, 15);  // Перемещаем курсор правее для вывода количества ключей
+        do Output.printString("Keys: ");
+        do Output.printInt(keyCounter);
         return;
     }
 

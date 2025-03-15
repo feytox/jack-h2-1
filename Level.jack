@@ -1,16 +1,19 @@
 class Level {
     field Map _map;
     field Player _player;
+    field Score _score;
 
     constructor Level new(Map map, Player player){
         let _map = map;
         let _player = player;
+        let _score = Score.new();
         return this;
     }
 
     method void render(int startX, int startY){
         do _map.render(startX, startY, 16, 16);
         do _player.render(startX, startY);
+        do _score.PrintCounters();
         return;
     }
 
