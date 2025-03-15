@@ -43,4 +43,14 @@ class Map {
         let _blockArray[y * _width + x] = block;
         return;
     }
+
+    /** Возвращает ширину карты */
+    method int getWidth() {
+        return _width;
+    }
+
+    /** Возвращает высоту карты */
+    method int getHeight() {
+        return _height;
+    }
 }

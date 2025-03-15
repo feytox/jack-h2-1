@@ -1,11 +1,124 @@
 class Player {
     field int _gameX;
     field int _gameY;
+    field Map _map;  // Добавляем ссылку на карту для проверки столкновений
 
     constructor Player new(int gameX, int gameY) {
         let _gameX = gameX;
         let _gameY = gameY;
+        let _map = null;  // Инициализируем как null, карта будет установлена позже
         return this;
+    }
+
+    /** Устанавливает карту для проверки столкновений */
+    method void setMap(Map map) {
+        let _map = map;
+        return;
+    }
+
+    /** Двигается влево до упора */
+    method void moveLeft() {
+        var Block nextBlock;
+        var int nextX;
+        
+        if (_map = null) {
+            do Output.moveCursor(16, 0);
+            do Output.printString("Error: Map not set!");
+            return;
+        }
+        
+        let nextX = _gameX - 1;
+        
+        // Двигаемся влево, пока не встретим препятствие
+        while (nextX > -1) {
+            let nextBlock = _map.getBlock(nextX, _gameY);
+            
+            do Output.moveCursor(17, 0);
+            do Output.printString("Moving left. Next X: ");
+            do Output.printInt(nextX);
+            
+            if (~(nextBlock.canMoveThrough())) {
+                return;  // Встретили стену
+            }
+            let _gameX = nextX;
+            let nextX = nextX - 1;
+        }
+        return;
+    }
+
+    /** Двигается вправо до упора */
+    method void moveRight() {
+        var Block nextBlock;
+        var int nextX;
+        
+        if (_map = null) {
+            do Output.moveCursor(16, 0);
+            do Output.printString("Error: Map not set!");
+            return;
+        }
+        
+        let nextX = _gameX + 1;
+        
+        // Двигаемся вправо, пока не встретим препятствие
+        while (nextX < _map.getWidth()) {
+            let nextBlock = _map.getBlock(nextX, _gameY);
+            if (~(nextBlock.canMoveThrough())) {
+                return;  // Встретили стену
+            }
+            let _gameX = nextX;
+            let nextX = nextX + 1;
+        }
+        return;
+    }
+
+    /** Двигается вверх до упора */
+    method void moveUp() {
+        var Block nextBlock;
+        var int nextY;
+        
+        if (_map = null) {
+            do Output.moveCursor(16, 0);
+            do Output.printString("Error: Map not set!");
+            return;
+        }
+        
+        let nextY = _gameY - 1;
+        
+        // Двигаемся вверх, пока не встретим препятствие
+        while (nextY > -1) {
+            let nextBlock = _map.getBlock(_gameX, nextY);
+            if (~(nextBlock.canMoveThrough())) {
+                return;  // Встретили стену
+            }
+            let _gameY = nextY;
+            let nextY = nextY - 1;
+        }
+        return;
+    }
+
+    /** Двигается вниз до упора */
+    method void moveDown() {
+        var Block nextBlock;
+        var int nextY;
+        
+        if (_map = null) {
+            do Output.moveCursor(16, 0);
+            do Output.printString("Error: Map not set!");
+            return;
+        }
+        
+        let nextY = _gameY + 1;
+        
+        // Двигаемся вниз, пока не встретим препятствие
+        while (nextY < _map.getHeight()) {
+            let nextBlock = _map.getBlock(_gameX, nextY);
+            if (~(nextBlock.canMoveThrough())) {
+                return;  // Встретили стену
+            }
+            let _gameY = nextY;
+            let nextY = nextY + 1;
+        }
+        return;
     }
 
     method void render(int mapStartX, int mapStartY) {

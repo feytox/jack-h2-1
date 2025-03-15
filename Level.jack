@@ -7,14 +7,71 @@ class Level {
         let _map = map;
         let _player = player;
         let _score = Score.new();
+        do player.setMap(map);  // Устанавливаем карту для проверки столкновений
+        
+        // Отладочная информация
+        do Output.moveCursor(14, 0);
+        do Output.printString("Map set. Width: ");
+        do Output.printInt(map.getWidth());
+        do Output.printString(" Height: ");
+        do Output.printInt(map.getHeight());
+        
         return this;
     }
 
+    /** Обрабатывает нажатия клавиш */
+    method void handleKey() {
+        var char key;
+        let key = Keyboard.keyPressed();
+        
+        // Отладочная информация о нажатой клавише
+        do Output.moveCursor(15, 0);
+        do Output.printString("Key pressed: ");
+        do Output.printInt(key);
+        
+        if (key = 87) {  // W - вверх
+            do Output.printString(" UP");
+            do _player.moveUp();
+        }
+        if (key = 83) {  // S - вниз
+            do Output.printString(" DOWN");
+            do _player.moveDown();
+        }
+        if (key = 65) {  // A - влево
+            do Output.printString(" LEFT");
+            do _player.moveLeft();
+        }
+        if (key = 68) {  // D - вправо
+            do Output.printString(" RIGHT");
+            do _player.moveRight();
+        }
+        
+        // Очищаем буфер клавиатуры
+        while (~(Keyboard.keyPressed() = 0)) {
+            // Ждем, пока клавиша не будет отпущена
+        }
+        return;
+    }
+
+    /** Запускает игровой цикл */
+    method void run() {
+        var boolean exit;
+        let exit = false;
+        
+        while (~exit) {
+            do render(32, 32);  // Рендерим игру с отступом 32 пикселя
+        }
+        return;
+    }
+
     method void render(int startX, int startY){
+        do Screen.clearScreen();  // Очищаем экран перед отрисовкой
         do _map.render(startX, startY, 16, 16);
         do _player.render(startX, startY);
         do _score.PrintCounters();
-        do update();  // Обновляем состояние уровня
+        do handleKey();  // Обрабатываем нажатия клавиш
+        do update();     // Обновляем состояние уровня
+        do Sys.wait(50); // Добавляем небольшую задержку
         return;
     }
 

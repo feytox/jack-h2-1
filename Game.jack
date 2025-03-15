@@ -3,8 +3,7 @@ class Game {
 
     function void loadGame() {
         let currentLevel = Levels.test();
-
-        do currentLevel.render(32, 32);
+        do currentLevel.run();  // Запускаем игровой цикл
         return;
     }
 }
