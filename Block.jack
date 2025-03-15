@@ -4,6 +4,7 @@ class Block {
     static Block stone;
     static Block money;
     static Block key;
+    static Block finish;
 
     field int id;
     field boolean moveThrough;
@@ -20,6 +21,7 @@ class Block {
         let stone = Block.new(1, false);
         let money = Block.new(2, true);
         let key = Block.new(3, true);
+        let finish = Block.new(4, true);
         return;
     }
 
@@ -41,6 +43,10 @@ class Block {
             return key;
         }
 
+        if (blockChar = 70){ // 'F' = finish
+            return finish;
+        }
+
         do Exception.throw("Block: invalid block");
         return 0;
     }
@@ -58,6 +64,9 @@ class Block {
         }
         if (id = 3){  // key
             do _renderKey(x, y, width, height);
+        }
+        if (id = 4){  // finish
+            do _renderFinish(x, y, width, height);
         }
         return;
     }
@@ -111,6 +120,41 @@ class Block {
         return;
     }
 
+    /** Рендерит ромб (финиш) */
+    method void _renderFinish(int x, int y, int width, int height) {
+        var int centerX, centerY;
+        var Array diamondX, diamondY;
+        
+        let centerX = x + (width / 2);
+        let centerY = y + (height / 2);
+        
+        // Создаем массивы для координат ромба
+        let diamondX = Array.new(4);
+        let diamondY = Array.new(4);
+        
+        // Задаем координаты ромба
+        let diamondX[0] = centerX;      // Верхняя точка
+        let diamondX[1] = centerX + 4;  // Правая точка
+        let diamondX[2] = centerX;      // Нижняя точка
+        let diamondX[3] = centerX - 4;  // Левая точка
+        
+        let diamondY[0] = centerY - 4;  // Верхняя точка
+        let diamondY[1] = centerY;      // Правая точка
+        let diamondY[2] = centerY + 4;  // Нижняя точка
+        let diamondY[3] = centerY;      // Левая точка
+        
+        // Рисуем линии ромба
+        do Screen.drawLine(diamondX[0], diamondY[0], diamondX[1], diamondY[1]);
+        do Screen.drawLine(diamondX[1], diamondY[1], diamondX[2], diamondY[2]);
+        do Screen.drawLine(diamondX[2], diamondY[2], diamondX[3], diamondY[3]);
+        do Screen.drawLine(diamondX[3], diamondY[3], diamondX[0], diamondY[0]);
+        
+        // Освобождаем память
+        do diamondX.dispose();
+        do diamondY.dispose();
+        return;
+    }
+
     /** Возвращает ID блока */
     method int getId(){
         return id;
@@ -124,6 +168,11 @@ class Block {
     /** Проверяет, является ли блок ключом */
     method boolean isKey(){
         return getId() = 3;  // 3 - это ID ключа
+    }
+
+    /** Проверяет, является ли блок финишем */
+    method boolean isFinish() {
+        return getId() = 4;  // 4 - это ID финиша
     }
 
     /** Проверяет, можно ли пройти через блок */

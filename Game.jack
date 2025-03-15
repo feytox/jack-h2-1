@@ -2,8 +2,18 @@ class Game {
     static Level currentLevel;
 
     function void loadGame() {
-        let currentLevel = Levels.test();
-        do currentLevel.run();  // Запускаем игровой цикл
+        do Levels.init();  // Инициализируем уровни
+        let currentLevel = Levels.nextLevel();
+        
+        while (~(currentLevel = null)) {
+            do currentLevel.run();  // Запускаем текущий уровень
+            
+            // Если уровень пройден (игрок дошел до финиша), загружаем следующий
+            let currentLevel = Levels.nextLevel();
+            
+            // Очищаем экран перед новым уровнем
+            do Screen.clearScreen();
+        }
         return;
     }
 }

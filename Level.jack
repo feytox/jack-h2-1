@@ -100,6 +100,10 @@ class Level {
                             while (i < (newX + 1)) {
                                 do checkAndCollectCoin(i, oldY);
                                 do checkAndCollectKey(i, oldY);
+                                // Проверяем финиш
+                                if (canFinish(i, oldY)) {
+                                    let running = false;
+                                }
                                 let i = i + 1;
                             }
                         } else { // Движение влево
@@ -107,6 +111,10 @@ class Level {
                             while (i > (newX - 1)) {
                                 do checkAndCollectCoin(i, oldY);
                                 do checkAndCollectKey(i, oldY);
+                                // Проверяем финиш
+                                if (canFinish(i, oldY)) {
+                                    let running = false;
+                                }
                                 let i = i - 1;
                             }
                         }
@@ -117,6 +125,10 @@ class Level {
                             while (i < (newY + 1)) {
                                 do checkAndCollectCoin(oldX, i);
                                 do checkAndCollectKey(oldX, i);
+                                // Проверяем финиш
+                                if (canFinish(oldX, i)) {
+                                    let running = false;
+                                }
                                 let i = i + 1;
                             }
                         } else { // Движение вверх
@@ -124,6 +136,10 @@ class Level {
                             while (i > (newY - 1)) {
                                 do checkAndCollectCoin(oldX, i);
                                 do checkAndCollectKey(oldX, i);
+                                // Проверяем финиш
+                                if (canFinish(oldX, i)) {
+                                    let running = false;
+                                }
                                 let i = i - 1;
                             }
                         }
@@ -225,5 +241,23 @@ class Level {
         do checkAndCollectCoin(playerX, playerY);
         do checkAndCollectKey(playerX, playerY);
         return;
+    }
+
+    /** Проверяет, может ли игрок пройти на финиш */
+    method boolean canFinish(int x, int y) {
+        var Block block;
+        
+        // Проверяем, что координаты в пределах карты
+        if ((x < 0) | (x > (_map.getWidth() - 1)) | (y < 0) | (y > (_map.getHeight() - 1))) {
+            return false;
+        }
+        
+        let block = _map.getBlock(x, y);
+        
+        // Можно пройти на финиш только если есть ключ
+        if (block.isFinish()) {
+            return (_score.GetKeyCount() > 0);
+        }
+        return false;
     }
 }

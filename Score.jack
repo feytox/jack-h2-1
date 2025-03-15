@@ -8,6 +8,11 @@ class Score {
         return this;
     }
 
+    /** Возвращает количество собранных ключей */
+    method int GetKeyCount() {
+        return keyCounter;
+    }
+
     method void IncreaseCoinCounter() {
         let coinCounter = coinCounter + 1;
         return;

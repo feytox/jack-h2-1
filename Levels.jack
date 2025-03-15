@@ -1,19 +1,89 @@
 class Levels {
+    static int currentLevel;  // Текущий уровень
     
-    function Level test() {
+    /** Инициализирует уровни */
+    function void init() {
+        let currentLevel = 1;
+        return;
+    }
+    
+    /** Возвращает следующий уровень */
+    function Level nextLevel() {
+        if (currentLevel = 1) {
+            let currentLevel = currentLevel + 1;
+            return Levels.level1();
+        }
+        if (currentLevel = 2) {
+            let currentLevel = currentLevel + 1;
+            return Levels.level2();
+        }
+        if (currentLevel = 3) {
+            let currentLevel = currentLevel + 1;
+            return Levels.level3();
+        }
+        // Если все уровни пройдены, возвращаем последний
+        return Levels.level3();
+    }
+
+    /** Уровень 1 - простой путь к финишу */
+    function Level level1() {
         var Array strArray;
         var Level level;
 
         let strArray = Array.new(7);
         let strArray[0] = "#######";
-        let strArray[1] = "#P# M #";
-        let strArray[2] = "# # # #";
+        let strArray[1] = "#P  M #";
+        let strArray[2] = "# ### #";
         let strArray[3] = "#  M  #";
-        let strArray[4] = "# # # #";
-        let strArray[5] = "#  K  #";
+        let strArray[4] = "# ### #";
+        let strArray[5] = "#K   F#";
         let strArray[6] = "#######";
 
         let level = Level.parse(strArray, 7, 7);
+        do strArray.dispose();
+        return level;
+    }
+
+    /** Уровень 2 - более сложный маршрут */
+    function Level level2() {
+        var Array strArray;
+        var Level level;
+
+        let strArray = Array.new(9);
+        let strArray[0] = "#########";
+        let strArray[1] = "#P  M  ##";
+        let strArray[2] = "# ##### #";
+        let strArray[3] = "#   M   #";
+        let strArray[4] = "##### # #";
+        let strArray[5] = "#K     ##";
+        let strArray[6] = "# ##### #";
+        let strArray[7] = "#     F #";
+        let strArray[8] = "#########";
+
+        let level = Level.parse(strArray, 9, 9);
+        do strArray.dispose();
+        return level;
+    }
+
+    /** Уровень 3 - самый сложный */
+    function Level level3() {
+        var Array strArray;
+        var Level level;
+
+        let strArray = Array.new(11);
+        let strArray[0] = "###########";
+        let strArray[1] = "#P  M    #";
+        let strArray[2] = "# ####### #";
+        let strArray[3] = "#    M    #";
+        let strArray[4] = "##### #####";
+        let strArray[5] = "#K        #";
+        let strArray[6] = "# ####### #";
+        let strArray[7] = "#         #";
+        let strArray[8] = "# ####### #";
+        let strArray[9] = "#       F #";
+        let strArray[10]= "###########";
+
+        let level = Level.parse(strArray, 11, 11);
         do strArray.dispose();
         return level;
     }
