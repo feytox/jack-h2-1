@@ -14,6 +14,7 @@ class Level {
         do _map.render(startX, startY, 16, 16);
         do _player.render(startX, startY);
         do _score.PrintCounters();
+        do update();  // Обновляем состояние уровня
         return;
     }
 
@@ -47,5 +48,28 @@ class Level {
 
         let map = Map.new(blockArray, width, height);
         return Level.new(map, player);
+    }
+
+    /** Проверяет и обрабатывает сбор монетки на указанной позиции */
+    method void checkAndCollectCoin(int x, int y){
+        var Block block;
+        let block = _map.getBlock(x, y);
+        
+        if (block.isCoin()){
+            do _score.IncreaseCoinCounter();
+            do _map.setBlock(x, y, Block.getAir());
+        }
+        return;
+    }
+
+    /** Обновляет состояние уровня */
+    method void update() {
+        var int playerX, playerY;
+        let playerX = _player.getX();
+        let playerY = _player.getY();
+        
+        // Проверяем, не стоит ли игрок на монетке
+        do checkAndCollectCoin(playerX, playerY);
+        return;
     }
 }

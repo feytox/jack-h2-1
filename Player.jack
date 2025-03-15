@@ -9,8 +9,24 @@ class Player {
     }
 
     method void render(int mapStartX, int mapStartY) {
-        // TODO: player render
-        do Screen.drawCircle(mapStartX + (_gameX * 16) + 8, mapStartY + (_gameY * 16) + 8, 4);
+        var int x, y;
+        let x = mapStartX + (_gameX * 16) + 8;  // центр клетки по X
+        let y = mapStartY + (_gameY * 16);      // верх клетки по Y
+        
+        // Рисуем вертикальную линию (тело)
+        do Screen.drawLine(x, y + 2, x, y + 12);
+        // Рисуем горизонтальную линию (руки)
+        do Screen.drawLine(x - 4, y + 6, x + 4, y + 6);
         return;
+    }
+
+    /** Возвращает X координату игрока */
+    method int getX() {
+        return _gameX;
+    }
+
+    /** Возвращает Y координату игрока */
+    method int getY() {
+        return _gameY;
     }
 }

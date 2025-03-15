@@ -47,14 +47,17 @@ class Block {
 
     /** Отрисовывает блок с учётом координаты левого края и размеров */
     method void render(int x, int y, int width, int height){
-        if (id = 0){
+        if (id = 0){  // air
             return;
         }
-        if (id = 1){
+        if (id = 1){  // stone
             do _renderFull(x, y, width, height);
         }
-        if (id = 2){
+        if (id = 2){  // money
             do _renderCoin(x, y, width, height);
+        }
+        if (id = 3){  // key
+            do _renderKey(x, y, width, height);
         }
         return;
     }
@@ -66,9 +69,49 @@ class Block {
         return;
     }
 
-    method void _renderCoin(int x, int y, int width, int height){
-        // TODO: оптимизировать
-        do Screen.drawRectangle(x, y, x + width, y + height);
+    method void _renderCoin(int x, int y, int width, int height) {
+        var int centerX, centerY, radius;
+        let centerX = x + (width / 2);
+        let centerY = y + (height / 2);
+        let radius = Math.min(width, height) / 4;  // Радиус монетки
+        
+        do Screen.drawCircle(centerX, centerY, radius);
         return;
+    }
+
+    /** Рендерит ключ */
+    method void _renderKey(int x, int y, int width, int height){
+        var int centerX, centerY;
+        let centerX = x + (width / 2);
+        let centerY = y + (height / 2);
+        
+        // Рисуем круг для головки ключа
+        do Screen.drawCircle(centerX, centerY - 4, 3);
+        // Рисуем "ножку" ключа
+        do Screen.drawLine(centerX, centerY - 1, centerX, centerY + 4);
+        // Рисуем "зубчики" ключа
+        do Screen.drawLine(centerX, centerY + 4, centerX + 2, centerY + 4);
+        do Screen.drawLine(centerX, centerY + 2, centerX + 2, centerY + 2);
+        return;
+    }
+
+    /** Возвращает ID блока */
+    method int getId(){
+        return id;
+    }
+
+    /** Проверяет, является ли блок монеткой */
+    method boolean isCoin(){
+        return getId() = 2;  // 2 - это ID монетки
+    }
+
+    /** Проверяет, можно ли пройти через блок */
+    method boolean canMoveThrough() {
+        return moveThrough;
+    }
+
+    /** Возвращает блок воздуха */
+    function Block getAir(){
+        return air;
     }
 }

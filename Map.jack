@@ -37,4 +37,10 @@ class Map {
 
         return;
     }
+
+    /** Устанавливает блок по координатам */
+    method void setBlock(int x, int y, Block block) {
+        let _blockArray[y * _width + x] = block;
+        return;
+    }
 }
