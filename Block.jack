@@ -89,14 +89,26 @@ class Block {
             do map.removeBlock(x, y);
         }
         if (this = finish){ // TODO next level
-
-            do map.removeBlock(x,y);
+            do Levels.test();
         }
         if (this = spikesUp){ // TODO restart level
-            let score = level.getScore();
-            do score.ResetScore();
+            do die(level, map, x, y, score);
+        }
+        if (this = spikesRight){ // TODO restart level
+            do die(level, map, x, y, score);
+        }
+        if (this = spikesDown){ // TODO restart level
+            do die(level, map, x, y, score);
+        }
+        if (this = spikesLeft){ // TODO restart level
+            do die(level, map, x, y, score);
         }
 
+        return;
+    }
+
+    method void die(Level level, Map map, int x, int y, Score score){
+        // ???
         return;
     }
 
