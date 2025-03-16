@@ -3,16 +3,17 @@ class Level {
     field Player _player;
     field Score _score;
 
-    constructor Level new(Map map, Player player){
+    constructor Level new(int levelId, Map map, Player player){
         let _map = map;
         let _player = player;
-        let _score = Score.new();
+        let _score = Score.new(levelId);
         return this;
     }
 
     method void render(int startX, int startY){
         do _map.render(startX, startY, 16, 16);
         do _player.render(startX, startY);
+        do _score.render();
         return;
     }
 
@@ -29,7 +30,7 @@ class Level {
     }
 
     /** Парсит карту и игрока из массива строк */
-    function Level parse(Array strArray, int width, int height){
+    function Level parse(int levelId, Array strArray, int width, int height){
         var Map map;
         var Player player;
         var char currentChar;
@@ -57,6 +58,6 @@ class Level {
         }
 
         let map = Map.new(blockArray, width, height);
-        return Level.new(map, player);
+        return Level.new(levelId, map, player);
     }
 }

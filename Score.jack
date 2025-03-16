@@ -1,20 +1,39 @@
 class Score {
-    field int coins;
-    field int keys;
+    field int _levelId;
+    field int _coins;
+    field int _keys;
 
-    constructor Score new() {
-        let coins = 0;
-        let keys = 0;
+    constructor Score new(int levelId) {
+        let _coins = 0;
+        let _keys = 0;
+        let _levelId = levelId;
         return this;
     }
 
     method void IncrementCoins() {
-        let coins = coins + 1;
+        let _coins = _coins + 1;
+        do render();
         return;
     }
 
     method void IncrementKeys() {
-        let keys = keys + 1;
+        let _keys = _keys + 1;
+        do render();
+        return;
+    }
+
+    method void render() {
+        do Output.moveCursor(0, 0);
+        do Output.printString("Level ");
+        do Output.printInt(_levelId);
+
+        do Output.moveCursor(0, 15);
+        do Output.printString("Coins: ");
+        do Output.printInt(_coins);
+        
+        do Output.moveCursor(0, 31);
+        do Output.printString("Keys: ");
+        do Output.printInt(_keys);
         return;
     }
 
