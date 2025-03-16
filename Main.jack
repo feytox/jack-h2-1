@@ -4,6 +4,8 @@ class Main {
     function void main(){
         do Block.initBlocks();
 
+        do Main.waitForContinue("Tomb of the NAND");
+
         let game = Game.new(32, 32);
         do game.loadGame();
         do game.run();
@@ -11,10 +13,23 @@ class Main {
         return;
     }
 
-    /** Deprecated */
-    function void reRender() {
+    function void waitForContinue(String message) {
+        var int textX;
+        var char key;
+
+        let textX = 32 - (message.length() / 2);
+        
         do Screen.clearScreen();
-        do game.render();
+        do Output.moveCursor(9, textX);
+        do Output.printString(message);
+        do Output.moveCursor(11, 20);
+        do Output.printString("Press any key to continue");
+
+        while (key = 0) {
+            let key = Keyboard.keyPressed();
+        }
+
+        do Screen.clearScreen();
         return;
     }
 }

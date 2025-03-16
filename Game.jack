@@ -26,21 +26,15 @@ class Game {
         while (true){
             while (key = 0){
                 let key = Keyboard.keyPressed();
-                do tick();
             }
-
+ 
             do handleKey(key);
 
             while (~(key = 0)){
                 let key = Keyboard.keyPressed();
-                do tick();
             }
         }
 
-        return;
-    }
-
-    method void tick(){
         return;
     }
 
