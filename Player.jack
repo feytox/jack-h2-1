@@ -13,13 +13,15 @@ class Player {
     Обрабатывает движение игрока в сторону.
     0 - up, 1 - down, 2 - left, 3 - right    
     */
-    method void tryMove(Map map, int direction, int startX, int startY){
+    method void tryMove(Level level, int direction, int startX, int startY){
+        var Map map;
         var Block block;
         var int dx;
         var int dy;
         var int x;
         var int y;
-
+        
+        let map = level.getMap();
         let x = _gameX;
         let y = _gameY;
         let _legsDirection = direction;
@@ -51,6 +53,8 @@ class Player {
             if (~block.canMoveThrough()){
                 return;
             }
+
+            do block.onStepped(level, map, x, y);
         }
 
         return;
@@ -58,28 +62,26 @@ class Player {
 
 
     method void render(int mapStartX, int mapStartY){
-        var int location;
-        let location = ((_gameY * 16 + mapStartY) * 32) + (_gameX * 16 + mapStartX / 16);
+        var int memAddress;
+        let memAddress = 16384 + ((_gameY * 16 + mapStartY) * 32) + (_gameX * 16 + mapStartX / 16);
 
         if (_legsDirection = 0) {
-            do renderUp(location);
+            do renderUp(memAddress);
         }
         if (_legsDirection = 1) {
-            do renderDown(location);
+            do renderDown(memAddress);
         }
         if (_legsDirection = 2) {
-            do renderLeft(location);
+            do renderLeft(memAddress);
         }
         if (_legsDirection = 3) {
-            do renderRight(location);
+            do renderRight(memAddress);
         }
 
         return;
     }
 
-    method void renderUp(int location) {
-        var int memAddress;
-        let memAddress = 16384 + location;
+    method void renderUp(int memAddress) {
         do Memory.poke(memAddress + 0, 14392);
         do Memory.poke(memAddress + 32, 26664);
         do Memory.poke(memAddress + 64, 20456);
@@ -99,9 +101,7 @@ class Player {
         return;
     }
 
-    method void renderDown(int location) {
-        var int memAddress;
-        let memAddress = 16384 + location;
+    method void renderDown(int memAddress) {
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 0);
         do Memory.poke(memAddress + 64, 0);
@@ -121,9 +121,7 @@ class Player {
         return;
     }
 
-    method void renderLeft(int location) {
-        var int memAddress;
-        let memAddress = 16384 + location;
+    method void renderLeft(int memAddress) {
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 62);
         do Memory.poke(memAddress + 64, 4067);
@@ -143,9 +141,7 @@ class Player {
         return;
     }
 
-    method void renderRight(int location) {
-        var int memAddress;
-        let memAddress = 16384 + location;
+    method void renderRight(int memAddress) {
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 0);
         do Memory.poke(memAddress + 64, 4080);

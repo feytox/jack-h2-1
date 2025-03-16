@@ -20,6 +20,11 @@ class Map {
         return _blockArray[y * _width + x];
     }
 
+    method void removeBlock(int x, int y) {
+        let _blockArray[y * _width + x] = Block.getAir();
+        return;
+    }
+
     /** Отрисовывает карту с определённым началом координат (левый верхний угол) и размерами блоков */
     method void render(int startX, int startY, int blockWidth, int blockHeight){
         // TODO: убрать размеры блока, они же точно уже 16 на 16

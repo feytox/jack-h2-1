@@ -2,8 +2,10 @@
 class Block {
     static Block air;
     static Block stone;
-    static Block money;
+    static Block coin;
+    static Block key;
 
+    // TODO: убрать айдишники
     field int id;
     field boolean _moveThrough;
 
@@ -17,7 +19,8 @@ class Block {
     function void initBlocks(){
         let air = Block.new(0, true);
         let stone = Block.new(1, false);
-        let money = Block.new(2, true);
+        let coin = Block.new(2, true);
+        let key = Block.new(3, true);
         return;
     }
 
@@ -31,42 +34,122 @@ class Block {
             return stone;
         }
 
-        if (blockChar = 77){ // 'M' = money
-            return money;
+        if (blockChar = 67){ // 'C' = coin
+            return coin;
+        }
+
+        if (blockChar = 75){ // 'K' = key
+            return key;
         }
 
         do Exception.throw("Block: invalid block");
         return 0;
     }
 
+    method void onStepped(Level level, Map map, int x, int y){
+        var Score score;
+
+        if (id = 2){
+            let score = level.getScore();
+            do score.IncrementCoins();
+            do map.removeBlock(x, y);
+        }
+        if (id = 3){
+            let score = level.getScore();
+            do score.IncrementKeys();
+            do map.removeBlock(x, y);
+        }
+
+        return;
+    }
+
     /** Отрисовывает блок с учётом координаты левого края и размеров */
     method void render(int x, int y, int width, int height){
+        // TODO: убрать размеры, они бесполезны
+        var int memAddress;
+        let memAddress = 16384 + (y * 32) + (x / 16);
+
         if (id = 0){
             return;
         }
         if (id = 1){
-            do _renderFull(x, y, width, height);
+            do _renderFull(memAddress);
         }
         if (id = 2){
-            do _renderCoin(x, y, width, height);
+            do _renderCoin(memAddress);
+        }
+        if (id = 3){
+            do _renderKey(memAddress);
         }
         return;
     }
 
     /** Рендерит полностью закрашенный квадрат */
-    method void _renderFull(int x, int y, int width, int height){
-        // TODO: оптимизировать
-        do Screen.drawRectangle(x, y, x + width - 1, y + height - 1);
+    method void _renderFull(int memAddress){
+        do Memory.poke(memAddress + 0, -1);
+        do Memory.poke(memAddress + 32, -1);
+        do Memory.poke(memAddress + 64, -1);
+        do Memory.poke(memAddress + 96, -1);
+        do Memory.poke(memAddress + 128, -1);
+        do Memory.poke(memAddress + 160, -1);
+        do Memory.poke(memAddress + 192, -1);
+        do Memory.poke(memAddress + 224, -1);
+        do Memory.poke(memAddress + 256, -1);
+        do Memory.poke(memAddress + 288, -1);
+        do Memory.poke(memAddress + 320, -1);
+        do Memory.poke(memAddress + 352, -1);
+        do Memory.poke(memAddress + 384, -1);
+        do Memory.poke(memAddress + 416, -1);
+        do Memory.poke(memAddress + 448, -1);
+        do Memory.poke(memAddress + 480, -1);
         return;
     }
 
-    method void _renderCoin(int x, int y, int width, int height){
-        // TODO: оптимизировать
-        do Screen.drawRectangle(x, y, x + width - 1, y + height - 1);
+    method void _renderCoin(int memAddress){
+        do Memory.poke(memAddress + 0, 0);
+        do Memory.poke(memAddress + 32, 960);
+        do Memory.poke(memAddress + 64, 4080);
+        do Memory.poke(memAddress + 96, 7224);
+        do Memory.poke(memAddress + 128, 15324);
+        do Memory.poke(memAddress + 160, 12876);
+        do Memory.poke(memAddress + 192, 25158);
+        do Memory.poke(memAddress + 224, 25542);
+        do Memory.poke(memAddress + 256, 24646);
+        do Memory.poke(memAddress + 288, 24646);
+        do Memory.poke(memAddress + 320, 12364);
+        do Memory.poke(memAddress + 352, 14428);
+        do Memory.poke(memAddress + 384, 7224);
+        do Memory.poke(memAddress + 416, 4080);
+        do Memory.poke(memAddress + 448, 960);
+        do Memory.poke(memAddress + 480, 0);
         return;
     }
-    
-    method boolean canMoveThrough() {
+
+    method void _renderKey(int memAddress) {
+        do Memory.poke(memAddress + 0, 0);
+        do Memory.poke(memAddress + 32, 0);
+        do Memory.poke(memAddress + 64, 0);
+        do Memory.poke(memAddress + 96, 0);
+        do Memory.poke(memAddress + 128, 0);
+        do Memory.poke(memAddress + 160, 28);
+        do Memory.poke(memAddress + 192, 38);
+        do Memory.poke(memAddress + 224, 13814);
+        do Memory.poke(memAddress + 256, 32766);
+        do Memory.poke(memAddress + 288, 62);
+        do Memory.poke(memAddress + 320, 28);
+        do Memory.poke(memAddress + 352, 0);
+        do Memory.poke(memAddress + 384, 0);
+        do Memory.poke(memAddress + 416, 0);
+        do Memory.poke(memAddress + 448, 0);
+        do Memory.poke(memAddress + 480, 0);
+        return;
+    }
+
+    method boolean canMoveThrough(){
         return _moveThrough;
+    }
+
+    function Block getAir(){
+        return air;
     }
 }

@@ -74,12 +74,10 @@ class Game {
     */
     method void handleMovement(int direction){
         var Player player;
-        var Map map;
 
         let player = currentLevel.getPlayer();
-        let map = currentLevel.getMap();
 
-        do player.tryMove(map, direction, _startX, _startY);
+        do player.tryMove(currentLevel, direction, _startX, _startY);
         return;
     }
 }
