@@ -5,22 +5,19 @@ class Block {
     static Block coin;
     static Block key;
 
-    // TODO: убрать айдишники
-    field int id;
     field boolean _moveThrough;
 
-    constructor Block new(int blockId, boolean moveThrough){
-        let id = blockId;
+    constructor Block new(boolean moveThrough){
         let _moveThrough = moveThrough;
         return this;
     }
 
     /** Инициализирует типы блоков */
     function void initBlocks(){
-        let air = Block.new(0, true);
-        let stone = Block.new(1, false);
-        let coin = Block.new(2, true);
-        let key = Block.new(3, true);
+        let air = Block.new(true);
+        let stone = Block.new(false);
+        let coin = Block.new(true);
+        let key = Block.new(true);
         return;
     }
 
@@ -49,12 +46,12 @@ class Block {
     method void onStepped(Level level, Map map, int x, int y){
         var Score score;
 
-        if (id = 2){
+        if (this = coin){
             let score = level.getScore();
             do score.IncrementCoins();
             do map.removeBlock(x, y);
         }
-        if (id = 3){
+        if (this = key){
             let score = level.getScore();
             do score.IncrementKeys();
             do map.removeBlock(x, y);
@@ -69,16 +66,13 @@ class Block {
         var int memAddress;
         let memAddress = 16384 + (y * 32) + (x / 16);
 
-        if (id = 0){
-            return;
-        }
-        if (id = 1){
+        if (this = stone){
             do _renderFull(memAddress);
         }
-        if (id = 2){
+        if (this = coin){
             do _renderCoin(memAddress);
         }
-        if (id = 3){
+        if (this = key){
             do _renderKey(memAddress);
         }
         return;
