@@ -16,7 +16,7 @@ class Levels {
         let strArray[8] = "#   #    #";
         let strArray[9] = "##########";
 
-        let level = Level.parse(strArray, 10, 10);
+        let level = Level.parse(1, strArray, 10, 10);
         do strArray.dispose();
         return level;
     }
