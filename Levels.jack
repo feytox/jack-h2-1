@@ -30,4 +30,46 @@ class Levels {
         do strArray.dispose();
         return level;
     }
+
+    function Level medium() {
+        var Array strArray;
+        var Level level;
+
+        let strArray = Array.new(10);
+        let strArray[0] = "##########";
+        let strArray[1] = "#P  #   K#";
+        let strArray[2] = "#### ### #";
+        let strArray[3] = "#    ##  #";
+        let strArray[4] = "# ##C## ##";
+        let strArray[5] = "#   ### ##";
+        let strArray[6] = "### ### ##";
+        let strArray[7] = "#L  ###  #";
+        let strArray[8] = "#### ## F#";
+        let strArray[9] = "##########";
+
+        let level = Level.parse(2, strArray, 10, 10);
+        do strArray.dispose();
+        return level;
+    }
+
+    function Level hard() {
+        var Array strArray; 
+        var Level level;
+
+        let strArray = Array.new(10);
+        let strArray[0] = "##########";
+        let strArray[1] = "#P##### K#";
+        let strArray[2] = "# #    ###";
+        let strArray[3] = "#   ### ##";
+        let strArray[4] = "### ### ##";
+        let strArray[5] = "#C  ### L#";
+        let strArray[6] = "# # ### ##";
+        let strArray[7] = "#   ###  #";
+        let strArray[8] = "##### # F#";
+        let strArray[9] = "##########";
+
+        let level = Level.parse(3, strArray, 10, 10);
+        do strArray.dispose();
+        return level;
+    }
 }
