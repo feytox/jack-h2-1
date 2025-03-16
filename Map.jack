@@ -31,6 +31,7 @@ class Map {
 
     /** Рисует всю карту с указанным смещением и размером блоков */
     method void render(int startX, int startY, int blockWidth, int blockHeight){
+        // TODO: убрать размеры блока, они же точно уже 16 на 16
         var Block block;
         var int mapSize;
         var int x;

@@ -1,3 +1,4 @@
+/** Класс, отвечающий за типы блоков. */
 class Block {
     static Block air;      // пустота
     static Block stone;    // стена
@@ -6,7 +7,6 @@ class Block {
     static Block finish;   // финиш
     static Block lock;     // замок
 
-    // Проверка на проходимость
     field boolean _moveThrough;
 
     /** Создает новый блок с параметром проходимости */
@@ -111,7 +111,7 @@ class Block {
     /** Рисует блок на экране (по координатам) */
     method void render(int x, int y, int width, int height){
         var int memAddress;
-        
+
         let memAddress = 16384 + (y * 32) + (x / 16);
 
         if (this = stone){

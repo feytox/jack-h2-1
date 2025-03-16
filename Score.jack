@@ -11,21 +11,18 @@ class Score {
         return this;
     }
 
-    /** Увеличивает счетчик монет на 1 */
     method void IncrementCoins() {
         let _coins = _coins + 1;
         do render();
         return;
     }
 
-    /** Увеличивает счетчик ключей на 1 */
     method void IncrementKeys() {
         let _keys = _keys + 1;
         do render();
         return;
     }
 
-    /** Уменьшает счетчик ключей на 1 (при использовании ключа) */
     method void DecrementKeys() {
         let _keys = _keys - 1;
         do render();

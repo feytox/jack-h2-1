@@ -1,6 +1,3 @@
-/** 
-* Класс для управления уровнями игры
-*/
 class Levels {
     
     function Level test() {
