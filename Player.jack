@@ -31,6 +31,7 @@ class Player {
             let _gameX = x;
             let _gameY = y;
             do render(startX, startY);
+            do Sys.wait(15);
 
             if (direction = 0){
                 let y = y - 1;
