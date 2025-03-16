@@ -1,9 +1,13 @@
+/** 
+* Класс для отслеживания игрового прогресса
+* Хранит и отображает количество собранных монет и ключей
+*/
 class Score {
-    field int _levelId;  // номер текущего уровня
-    field int _coins;    // кол-во собранных монет
-    field int _keys;     // кол-во собранных ключей
+    field int _levelId;  // Номер текущего уровня
+    field int _coins;    // Количество собранных монет
+    field int _keys;     // Количество собранных ключей
 
-    /** создает новый счетчик для указанного уровня */
+    /** Создает новый счетчик для указанного уровня */
     constructor Score new(int levelId) {
         let _coins = 0;
         let _keys = 0;
@@ -11,52 +15,48 @@ class Score {
         return this;
     }
 
-    /** увеличивает счетчик монет на 1 */
+    /** Увеличивает счетчик монет на 1 */
     method void IncrementCoins() {
         let _coins = _coins + 1;
         do render();
         return;
     }
 
-    /** увеличивает счетчик ключей на 1 */
+    /** Увеличивает счетчик ключей на 1 */
     method void IncrementKeys() {
         let _keys = _keys + 1;
         do render();
         return;
     }
 
-    /** уменьшает счетчик ключей на 1 (при использовании ключа) */
+    /** Уменьшает счетчик ключей на 1 (при использовании ключа) */
     method void DecrementKeys() {
         let _keys = _keys - 1;
         do render();
         return;
     }
 
-    /** проверяет, есть ли у игрока ключ */
+    /** Проверяет, есть ли у игрока ключ */
     method boolean hasKey() {
         return _keys > 0;
     }
 
-    /** отображает текущий счет на экране */
+    /** Отображает текущий счет на экране */
     method void render() {
-        // отображаем номер уровня
         do Output.moveCursor(0, 0);
         do Output.printString("Level ");
         do Output.printInt(_levelId);
 
-        // отображаем количество монет
         do Output.moveCursor(0, 15);
         do Output.printString("Coins: ");
         do Output.printInt(_coins);
         
-        // отображаем количество ключей
         do Output.moveCursor(0, 31);
         do Output.printString("Keys: ");
         do Output.printInt(_keys);
         return;
     }
 
-    /** освобождает память */
     method void dispose() {
         do Memory.deAlloc(this);
         return;

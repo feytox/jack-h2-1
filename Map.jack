@@ -3,7 +3,7 @@ class Map {
     field int _width;        // ширина карты в блоках
     field int _height;       // высота карты в блоках
 
-    /** создает новую карту с указанными размерами и массивом блоков */
+    /** Создает новую карту с указанными размерами и массивом блоков */
     constructor Map new(Array blockArray, int width, int height){
         let _blockArray = blockArray;
         let _width = width;
@@ -12,8 +12,8 @@ class Map {
     }
 
     /** 
-    * возвращает блок по координатам на карте
-    * если координаты вне карты, возвращает -1 
+    * Возвращает блок по координатам на карте
+    * Если координаты вне карты, возвращает -1 
     */
     method Block getBlock(int x, int y){
         if ((x < 0) | (y < 0) | (x + 1 > _width) | (y + 1 > _height)){
@@ -23,20 +23,19 @@ class Map {
         return _blockArray[y * _width + x];
     }
 
-    /** заменяет блок на указанной позиции на air (пустота) */
+    /** Заменяет блок на указанной позиции на air (пустота) */
     method void removeBlock(int x, int y) {
         let _blockArray[y * _width + x] = Block.getAir();
         return;
     }
 
-    /** рисует всю карту с указанным смещением и размером блоков */
+    /** Рисует всю карту с указанным смещением и размером блоков */
     method void render(int startX, int startY, int blockWidth, int blockHeight){
         var Block block;
         var int mapSize;
         var int x;
         var int y;
 
-        // рисуем все блоки
         while (y < _height){
             while (x < _width){
                 let block = _blockArray[y * _width + x];
@@ -53,39 +52,26 @@ class Map {
     }
 
     /** 
-    * перерисовывает один блок на определенной позиции
-    * юзаем для оптимизации отрисовки при изменении одного блока
+    * Перерисовывает один блок на определенной позиции
+    * Используется для оптимизации отрисовки при изменении одного блока
     */
     method void reRender(int startX, int startY, int gameX, int gameY) {
         var int x;
         var int y;
         var Block block;
 
-        // вычисляем координаты
         let x = startX + (gameX * 16);
         let y = startY + (gameY * 16);
 
-        // очищаем область блока
         do Screen.setColor(false);
         do Screen.drawRectangle(x, y, x + 15, y + 15);
         do Screen.setColor(true);
 
-        // рисуем новый блок
         let block = getBlock(gameX, gameY);
         if (~(block = -1)) {
             do block.render(x, y, 16, 16);
         }
 
         return;
-    }
-
-    /** возвращает ширину карты в блоках */
-    method int getWidth() {
-        return _width;
-    }
-
-    /** возвращает высоту карты в блоках */
-    method int getHeight() {
-        return _height;
     }
 }

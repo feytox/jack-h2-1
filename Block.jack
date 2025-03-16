@@ -6,16 +6,16 @@ class Block {
     static Block finish;   // финиш
     static Block lock;     // замок
 
-    // проверка на проходимость
+    // Проверка на проходимость
     field boolean _moveThrough;
 
-    /** создает новый блок с параметром проходимости */
+    /** Создает новый блок с параметром проходимости */
     constructor Block new(boolean moveThrough){
         let _moveThrough = moveThrough;
         return this;
     }
 
-    /** инициализирует все типы блоков */
+    /** Инициализирует все типы блоков */
     function void initBlocks(){
         let air = Block.new(true);      // пустота - проходимый
         let stone = Block.new(false);   // стена - непроходимая
@@ -26,7 +26,7 @@ class Block {
         return;
     }
 
-    /** преобразует символ в блок на карте */
+    /** Преобразует символ в блок на карте */
     function Block parse(char blockChar){
         if ((blockChar = 32) | (blockChar = 80)){ // ' ' или 'P' = воздух
             return air;
@@ -57,13 +57,12 @@ class Block {
     }
 
     /** 
-    * обрабатывает попытку движения игрока через блок
-    * возвращает true, если движение возможно
+    * Обрабатывает попытку движения игрока через блок
+    * Возвращает true, если движение возможно
     */
     method boolean onTryMove(Level level, Map map, int x, int y){
         var Score score;
 
-        // логика для замка - открывается ключом
         if (this = lock){
             let score = level.getScore();
             if (score.hasKey()){
@@ -76,23 +75,22 @@ class Block {
         return false;
     }
 
-    /** обрабатывает нахождение игрока на блок */
+    /** Обрабатывает нахождение игрока на блоке */
     method void onStepped(Level level, Map map, int x, int y){
         var Score score;
 
-        // подбор монеты
         if (this = coin){
             let score = level.getScore();
             do score.IncrementCoins();
             do map.removeBlock(x, y);
         }
-        // подбор ключа
+
         if (this = key){
             let score = level.getScore();
             do score.IncrementKeys();
             do map.removeBlock(x, y);
         }
-        // достижение финиша
+
         if (this = finish){
             do map.removeBlock(x, y);
         }
@@ -100,23 +98,22 @@ class Block {
         return;
     }
 
-    /** возвращает true, если через блок можно пройти */
+    /** Возвращает true, если через блок можно пройти */
     method boolean canMoveThrough(){
         return _moveThrough;
     }
 
-    /** возвращает блок air (пустой блок) */
+    /** Возвращает блок air (пустой блок) */
     function Block getAir(){
         return air;
     }
 
-    /** рисует блок на экране (по координатам) */
+    /** Рисует блок на экране (по координатам) */
     method void render(int x, int y, int width, int height){
         var int memAddress;
-        // вычисляем адрес в памяти
+        
         let memAddress = 16384 + (y * 32) + (x / 16);
 
-        // рисуем соответствующий sprite
         if (this = stone){
             do _renderFull(memAddress);
         }
@@ -135,7 +132,7 @@ class Block {
         return;
     }
 
-    /** отрисовка стены */
+    /** Отрисовка стены */
     method void _renderFull(int memAddress){
         do Memory.poke(memAddress + 0, -1);
         do Memory.poke(memAddress + 32, -1);
@@ -156,7 +153,7 @@ class Block {
         return;
     }
 
-    /** отрисовка монеты */
+    /** Отрисовка монеты */
     method void _renderCoin(int memAddress){
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 960);
@@ -177,7 +174,7 @@ class Block {
         return;
     }
 
-    /** отрисовка ключа */
+    /** Отрисовка ключа */
     method void _renderKey(int memAddress){
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 0);
@@ -198,7 +195,7 @@ class Block {
         return;
     }
 
-    /** отрисовка финиша */
+    /** Отрисовка финиша */
     method void _renderFinish(int memAddress){
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 0);
@@ -219,7 +216,7 @@ class Block {
         return;
     }
 
-    /** отрисовка замка */
+    /** Отрисовка замка */
     method void _renderLock(int memAddress) {
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 2016);
