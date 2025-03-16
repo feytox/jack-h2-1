@@ -5,6 +5,7 @@ class Block {
     static Block coin;
     static Block key;
     static Block finish;
+    static Block lock;
 
     field boolean _moveThrough;
 
@@ -20,6 +21,7 @@ class Block {
         let coin = Block.new(true);
         let key = Block.new(true);
         let finish = Block.new(true);
+        let lock = Block.new(false);
         return;
     }
 
@@ -45,8 +47,27 @@ class Block {
             return finish;
         }
 
+        if (blockChar = 76){ // 'L' = lock
+            return lock;
+        }
+
         do Exception.throw("Block: invalid block");
         return 0;
+    }
+
+    method boolean onTryMove(Level level, Map map, int x, int y){
+        var Score score;
+
+        if (this = lock){
+            let score = level.getScore();
+            if (score.hasKey()){
+                do score.DecrementKeys();
+                do map.removeBlock(x, y);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     method void onStepped(Level level, Map map, int x, int y){
@@ -64,10 +85,18 @@ class Block {
         }
         if (this = finish){ // next level
 
-            do map.removeBlock(x,y);
+            do map.removeBlock(x, y);
         }
 
         return;
+    }
+
+    method boolean canMoveThrough(){
+        return _moveThrough;
+    }
+
+    function Block getAir(){
+        return air;
     }
 
     /** Отрисовывает блок с учётом координаты левого края и размеров */
@@ -87,6 +116,9 @@ class Block {
         }
         if (this = finish){
             do _renderFinish(memAddress);
+        }
+        if (this = lock){
+            do _renderLock(memAddress);
         }
         return;
     }
@@ -132,7 +164,7 @@ class Block {
         return;
     }
 
-    method void _renderKey(int memAddress) {
+    method void _renderKey(int memAddress){
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 0);
         do Memory.poke(memAddress + 64, 0);
@@ -152,7 +184,7 @@ class Block {
         return;
     }
 
-     method void _renderFinish(int memAddress) {
+    method void _renderFinish(int memAddress){
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 0);
         do Memory.poke(memAddress + 64, 16380);
@@ -172,11 +204,23 @@ class Block {
         return;
     }
 
-    method boolean canMoveThrough(){
-        return _moveThrough;
-    }
-
-    function Block getAir(){
-        return air;
+    method void _renderLock(int memAddress) {
+        do Memory.poke(memAddress + 0, 0);
+        do Memory.poke(memAddress + 32, 2016);
+        do Memory.poke(memAddress + 64, 3120);
+        do Memory.poke(memAddress + 96, 2448);
+        do Memory.poke(memAddress + 128, 2640);
+        do Memory.poke(memAddress + 160, 2640);
+        do Memory.poke(memAddress + 192, 2640);
+        do Memory.poke(memAddress + 224, 2640);
+        do Memory.poke(memAddress + 256, 8184);
+        do Memory.poke(memAddress + 288, 12300);
+        do Memory.poke(memAddress + 320, 8196);
+        do Memory.poke(memAddress + 352, 8196);
+        do Memory.poke(memAddress + 384, 8196);
+        do Memory.poke(memAddress + 416, 8196);
+        do Memory.poke(memAddress + 448, 12300);
+        do Memory.poke(memAddress + 480, 8184);
+        return;
     }
 }

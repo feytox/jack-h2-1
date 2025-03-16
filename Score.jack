@@ -22,6 +22,16 @@ class Score {
         return;
     }
 
+    method void DecrementKeys() {
+        let _keys = _keys - 1;
+        do render();
+        return;
+    }
+
+    method boolean hasKey() {
+        return _keys > 0;
+    }
+
     method void render() {
         do Output.moveCursor(0, 0);
         do Output.printString("Level ");

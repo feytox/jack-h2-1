@@ -50,7 +50,7 @@ class Player {
                 return;
             }
 
-            if (~block.canMoveThrough()){
+            if (~block.canMoveThrough() & ~block.onTryMove(level,map,x,y)){
                 return;
             }
 

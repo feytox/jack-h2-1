@@ -13,7 +13,7 @@ class Levels {
         let strArray[5] = "#   ##  ##";
         let strArray[6] = "# # ## ###";
         let strArray[7] = "# # ## # #";
-        let strArray[8] = "#   #  F #";
+        let strArray[8] = "#   L  F #";
         let strArray[9] = "##########";
 
         let level = Level.parse(1, strArray, 10, 10);
