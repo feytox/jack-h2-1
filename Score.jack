@@ -11,19 +11,19 @@ class Score {
         return this;
     }
 
-    method void IncrementCoins() {
+    method void incrementCoins() {
         let _coins = _coins + 1;
         do render();
         return;
     }
 
-    method void IncrementKeys() {
+    method void incrementKeys() {
         let _keys = _keys + 1;
         do render();
         return;
     }
 
-    method void DecrementKeys() {
+    method void decrementKeys() {
         let _keys = _keys - 1;
         do render();
         return;

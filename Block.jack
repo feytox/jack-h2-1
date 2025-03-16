@@ -66,7 +66,7 @@ class Block {
         if (this = lock){
             let score = level.getScore();
             if (score.hasKey()){
-                do score.DecrementKeys();
+                do score.decrementKeys();
                 do map.removeBlock(x, y);
                 return true;
             }
@@ -81,13 +81,13 @@ class Block {
 
         if (this = coin){
             let score = level.getScore();
-            do score.IncrementCoins();
+            do score.incrementCoins();
             do map.removeBlock(x, y);
         }
 
         if (this = key){
             let score = level.getScore();
-            do score.IncrementKeys();
+            do score.incrementKeys();
             do map.removeBlock(x, y);
         }
 
