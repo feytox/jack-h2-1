@@ -1,34 +1,65 @@
 class Game {
-    field Level currentLevel;
+    field int _levelId;
+    field Level _currentLevel;
     field int _startX;
     field int _startY;
+    field boolean _stopLevel;
+
+    // TODO: sort methods
 
     constructor Game new(int startX, int startY){
         let _startX = startX;
         let _startY = startY;
+        let _currentLevel = 0;
+        let _stopLevel = false;
         return this;
     }
 
-    method void loadGame(){
-        let currentLevel = Levels.test();
+    method void loadLevel(){
+        // TODO: dispose old level
+        // TODO: переносить количество монеток на новый уровень
+        let _currentLevel = Levels.loadLevel(_levelId);
         return;
     }
 
-    method void render() {
-        do currentLevel.render(_startX, _startY);
+    method void render(){
+        do _currentLevel.render(_startX, _startY);
+        return;
+    }
+
+    method void nextLevel() {
+        let _levelId = _levelId + 1;
+        let _stopLevel = true;
         return;
     }
 
     method void run(){
-        var char key;
-        
-        do render();
         while (true){
+            let _stopLevel = false;
+            do loadLevel();
+            do runLevel();
+            if (_levelId = 0) // игрок умер
+            {
+                return;
+            }
+        }
+
+        return;
+    }
+
+    method void runLevel(){
+        var char key;
+
+        do render();
+        while (~_stopLevel){
             while (key = 0){
                 let key = Keyboard.keyPressed();
             }
- 
+
             do handleKey(key);
+            if (_stopLevel){
+                return;
+            }
 
             while (~(key = 0)){
                 let key = Keyboard.keyPressed();
@@ -69,9 +100,9 @@ class Game {
     method void handleMovement(int direction){
         var Player player;
 
-        let player = currentLevel.getPlayer();
+        let player = _currentLevel.getPlayer();
 
-        do player.tryMove(currentLevel, direction, _startX, _startY);
+        do player.tryMove(_currentLevel, direction, _startX, _startY);
         return;
     }
 }

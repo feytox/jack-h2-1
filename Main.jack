@@ -7,9 +7,13 @@ class Main {
         do Main.waitForContinue("Tomb of the NAND");
 
         let game = Game.new(32, 32);
-        do game.loadGame();
         do game.run();
 
+        return;
+    }
+
+    function void nextLevel() {
+        do game.nextLevel();
         return;
     }
 

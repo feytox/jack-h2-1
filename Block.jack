@@ -77,6 +77,7 @@ class Block {
 
     /** Обрабатывает нахождение игрока на блоке */
     method void onStepped(Level level, Map map, int x, int y){
+        // TODO: добавить return в if ветках, возможно даже везде, чтобы ОПТИМИЗАЦИЯ
         var Score score;
 
         if (this = coin){
@@ -92,7 +93,7 @@ class Block {
         }
 
         if (this = finish){
-            do map.removeBlock(x, y);
+            do Main.nextLevel();
         }
 
         return;

@@ -1,5 +1,15 @@
 class Levels {
     
+    function Level loadLevel(int id) {
+        if (id = 0) {
+            return Levels.test();
+        }
+
+        do Output.printInt(id);
+        do Exception.throw("Levels: Unknown level id");
+        return 0;
+    }
+
     function Level test() {
         var Array strArray;
         var Level level;
