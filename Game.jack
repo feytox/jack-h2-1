@@ -45,22 +45,22 @@ class Game {
     }
 
     method void handleKey(char key){
-        if ((key = 131) | (key = 57)){ // up or 'W' = move up
+        if ((key = 131) | (key = 87)){ // up or 'W' = move up
             do handleMovement(0);
             return;
         }
 
-        if ((key = 133) | (key = 53)){ // down or 'S' = move down
+        if ((key = 133) | (key = 83)){ // down or 'S' = move down
             do handleMovement(1);
             return;
         }
 
-        if ((key = 130) | (key = 41)){ // left or 'A' = move up
+        if ((key = 130) | (key = 65)){ // left or 'A' = move up
             do handleMovement(2);
             return;
         }
 
-        if ((key = 132) | (key = 44)){ // right or 'D' = move up
+        if ((key = 132) | (key = 68)){ // right or 'D' = move up
             do handleMovement(3);
             return;
         }
