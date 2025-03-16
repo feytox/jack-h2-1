@@ -16,6 +16,13 @@ class Score {
         return;
     }
 
+    method void ResetScore() {
+        let _coins = 0;
+        let _keys = 0;
+        do render();
+        return;
+    }
+
     method void IncrementKeys() {
         let _keys = _keys + 1;
         do render();

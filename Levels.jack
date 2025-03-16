@@ -1,4 +1,8 @@
 class Levels {
+    // W - шипы вверх
+    // E - шипы вправо
+    // R - шипы вниз
+    // T - шипы влево
     
     function Level test() {
         var Array strArray;
@@ -6,13 +10,13 @@ class Levels {
 
         let strArray = Array.new(10);
         let strArray[0] = "##########";
-        let strArray[1] = "# #K    ##";
+        let strArray[1] = "# #K W T##";
         let strArray[2] = "# # ### ##";
         let strArray[3] = "#   ### ##";
         let strArray[4] = "#C#P### ##";
-        let strArray[5] = "#   ##  ##";
+        let strArray[5] = "#   ##E ##";
         let strArray[6] = "# # ## ###";
-        let strArray[7] = "# # ## # #";
+        let strArray[7] = "# # ## #R#";
         let strArray[8] = "#   #  F #";
         let strArray[9] = "##########";
 
