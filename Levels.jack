@@ -4,6 +4,12 @@ class Levels {
         if (id = 0) {
             return Levels.test();
         }
+        if (id = 1) {
+            return Levels.medium();
+        }
+        if (id = 2) {
+            return Levels.hard();
+        }
 
         do Output.printInt(id);
         do Exception.throw("Levels: Unknown level id");
@@ -37,7 +43,7 @@ class Levels {
 
         let strArray = Array.new(10);
         let strArray[0] = "##########";
-        let strArray[1] = "#P  #   K#";
+        let strArray[1] = "#P      K#";
         let strArray[2] = "#### ### #";
         let strArray[3] = "#    ##  #";
         let strArray[4] = "# ##C## ##";

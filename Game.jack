@@ -23,6 +23,7 @@ class Game {
     }
 
     method void render(){
+        do Screen.clearScreen();
         do _currentLevel.render(_startX, _startY);
         return;
     }
