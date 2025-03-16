@@ -1,8 +1,9 @@
 class Player {
-    field int _gameX;
-    field int _gameY;
-    field int _legsDirection;
+    field int _gameX;         // X-координата на карте
+    field int _gameY;         // Y-координата на карте
+    field int _legsDirection; // направление ног (0-вверх, 1-вниз, 2-влево, 3-вправо)
 
+    /** Создает игрока на определенной позиции */
     constructor Player new(int gameX, int gameY){
         let _gameX = gameX;
         let _gameY = gameY;
@@ -10,8 +11,9 @@ class Player {
     }
 
     /** 
-    Обрабатывает движение игрока в сторону.
-    0 - up, 1 - down, 2 - left, 3 - right    
+    * Обрабатывает движение игрока в указанном направлении
+    * Direction: 0-вверх, 1-вниз, 2-влево, 3-вправо
+    * Проверяет столкновения и собирает предметы по пути
     */
     method void tryMove(Level level, int direction, int startX, int startY){
         var Map map;
@@ -30,26 +32,19 @@ class Player {
             do map.reRender(startX, startY, _gameX, _gameY);
             let _gameX = x;
             let _gameY = y;
+
             do render(startX, startY);
             do Sys.wait(15);
 
-            if (direction = 0){
-                let y = y - 1;
-            }
-            if (direction = 1){
-                let y = y + 1;
-            }
-            if (direction = 2){
-                let x = x - 1;
-            }
-            if (direction = 3){
-                let x = x + 1;
-            }
+            if (direction = 0){ let y = y - 1; } 
+            if (direction = 1){ let y = y + 1; } 
+            if (direction = 2){ let x = x - 1; } 
+            if (direction = 3){ let x = x + 1; } 
+
 
             let block = map.getBlock(x, y);
-            if (block = -1){
-                return;
-            }
+            if (block = -1){ return; } 
+
 
             if (~block.canMoveThrough() & ~block.onTryMove(level,map,x,y)){
                 return;
@@ -61,27 +56,20 @@ class Player {
         return;
     }
 
-
+    /** Рисует спрайт игрока в определенном направлении */
     method void render(int mapStartX, int mapStartY){
         var int memAddress;
         let memAddress = 16384 + ((_gameY * 16 + mapStartY) * 32) + (_gameX * 16 + mapStartX / 16);
 
-        if (_legsDirection = 0) {
-            do renderUp(memAddress);
-        }
-        if (_legsDirection = 1) {
-            do renderDown(memAddress);
-        }
-        if (_legsDirection = 2) {
-            do renderLeft(memAddress);
-        }
-        if (_legsDirection = 3) {
-            do renderRight(memAddress);
-        }
+        if (_legsDirection = 0) { do renderUp(memAddress); }
+        if (_legsDirection = 1) { do renderDown(memAddress); }
+        if (_legsDirection = 2) { do renderLeft(memAddress); }
+        if (_legsDirection = 3) { do renderRight(memAddress); }
 
         return;
     }
 
+    /** Спрайт игрока смотрящего вверх */
     method void renderUp(int memAddress) {
         do Memory.poke(memAddress + 0, 14392);
         do Memory.poke(memAddress + 32, 26664);
@@ -102,6 +90,7 @@ class Player {
         return;
     }
 
+    /** Спрайт игрока смотрящего вниз */
     method void renderDown(int memAddress) {
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 0);
@@ -122,6 +111,7 @@ class Player {
         return;
     }
 
+    /** Спрайт игрока смотрящего влево */
     method void renderLeft(int memAddress) {
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 62);
@@ -142,6 +132,7 @@ class Player {
         return;
     }
 
+    /** Спрайт игрока смотрящего вправо */
     method void renderRight(int memAddress) {
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 0);

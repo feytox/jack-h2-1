@@ -1,8 +1,9 @@
 class Level {
-    field Map _map;
-    field Player _player;
-    field Score _score;
+    field Map _map;        // карта уровня
+    field Player _player;  // игрок на уровне
+    field Score _score;    // счет уровня
 
+    /** Создает новый уровень с указанной картой и игроком */
     constructor Level new(int levelId, Map map, Player player){
         let _map = map;
         let _player = player;

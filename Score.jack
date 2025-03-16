@@ -1,8 +1,9 @@
 class Score {
-    field int _levelId;
-    field int _coins;
-    field int _keys;
+    field int _levelId;  // Номер текущего уровня
+    field int _coins;    // Количество собранных монет
+    field int _keys;     // Количество собранных ключей
 
+    /** Создает новый счетчик для указанного уровня */
     constructor Score new(int levelId) {
         let _coins = 0;
         let _keys = 0;
@@ -28,10 +29,12 @@ class Score {
         return;
     }
 
+    /** Проверяет, есть ли у игрока ключ */
     method boolean hasKey() {
         return _keys > 0;
     }
 
+    /** Отображает текущий счет на экране */
     method void render() {
         do Output.moveCursor(0, 0);
         do Output.printString("Level ");

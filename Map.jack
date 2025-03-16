@@ -1,9 +1,9 @@
-/** Игровая карта, состоящая из отдельных блоков */
 class Map {
-    field Array _blockArray;
-    field int _width;
-    field int _height;
+    field Array _blockArray;  // массив блоков карты
+    field int _width;        // ширина карты в блоках
+    field int _height;       // высота карты в блоках
 
+    /** Создает новую карту с указанными размерами и массивом блоков */
     constructor Map new(Array blockArray, int width, int height){
         let _blockArray = blockArray;
         let _width = width;
@@ -11,7 +11,10 @@ class Map {
         return this;
     }
 
-    /** Возвращает блок по координатам. Если блок не найден или произошёл выход за пределы, возвращает -1 */
+    /** 
+    * Возвращает блок по координатам на карте
+    * Если координаты вне карты, возвращает -1 
+    */
     method Block getBlock(int x, int y){
         if ((x < 0) | (y < 0) | (x + 1 > _width) | (y + 1 > _height)){
             return -1;
@@ -20,12 +23,13 @@ class Map {
         return _blockArray[y * _width + x];
     }
 
+    /** Заменяет блок на указанной позиции на air (пустота) */
     method void removeBlock(int x, int y) {
         let _blockArray[y * _width + x] = Block.getAir();
         return;
     }
 
-    /** Отрисовывает карту с определённым началом координат (левый верхний угол) и размерами блоков */
+    /** Рисует всю карту с указанным смещением и размером блоков */
     method void render(int startX, int startY, int blockWidth, int blockHeight){
         // TODO: убрать размеры блока, они же точно уже 16 на 16
         var Block block;
@@ -48,7 +52,10 @@ class Map {
         return;
     }
 
-    /** Перерисовывает блок на указанной позиции */
+    /** 
+    * Перерисовывает один блок на определенной позиции
+    * Используется для оптимизации отрисовки при изменении одного блока
+    */
     method void reRender(int startX, int startY, int gameX, int gameY) {
         var int x;
         var int y;
