@@ -56,13 +56,13 @@ class Block {
     /** Рендерит полностью закрашенный квадрат */
     method void _renderFull(int x, int y, int width, int height){
         // TODO: оптимизировать
-        do Screen.drawRectangle(x, y, x + width, y + height);
+        do Screen.drawRectangle(x, y, x + width - 1, y + height - 1);
         return;
     }
 
     method void _renderCoin(int x, int y, int width, int height){
         // TODO: оптимизировать
-        do Screen.drawRectangle(x, y, x + width, y + height);
+        do Screen.drawRectangle(x, y, x + width - 1, y + height - 1);
         return;
     }
     

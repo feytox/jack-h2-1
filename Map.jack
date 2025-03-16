@@ -53,7 +53,7 @@ class Map {
         let y = startY + (gameY * 16);
 
         do Screen.setColor(false);
-        do Screen.drawRectangle(x, y, x + 16, y + 16);
+        do Screen.drawRectangle(x, y, x + 15, y + 15);
         do Screen.setColor(true);
 
         let block = getBlock(gameX, gameY);

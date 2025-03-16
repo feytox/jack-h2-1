@@ -13,7 +13,7 @@ class Player {
     Обрабатывает движение игрока в сторону.
     0 - up, 1 - down, 2 - left, 3 - right    
     */
-    method void tryMove(Map map, int direction){
+    method void tryMove(Map map, int direction, int startX, int startY){
         var Block block;
         var int dx;
         var int dy;
@@ -25,9 +25,10 @@ class Player {
         let _legsDirection = direction;
 
         while (true){
+            do map.reRender(startX, startY, _gameX, _gameY);
             let _gameX = x;
             let _gameY = y;
-            do Main.reRender();
+            do render(startX, startY);
 
             if (direction = 0){
                 let y = y - 1;
@@ -43,7 +44,7 @@ class Player {
             }
 
             let block = map.getBlock(x, y);
-            if (block = -1) {
+            if (block = -1){
                 return;
             }
 
@@ -58,7 +59,7 @@ class Player {
 
     method void render(int mapStartX, int mapStartY){
         // TODO: player render
-        do Screen.drawCircle(mapStartX + (_gameX * 16) + 8, mapStartY + (_gameY * 16) + 8, 4);
+        do Screen.drawCircle(mapStartX + (_gameX * 16) + 7, mapStartY + (_gameY * 16) + 7, 4);
         return;
     }
 

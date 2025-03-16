@@ -11,6 +11,7 @@ class Main {
         return;
     }
 
+    /** Deprecated */
     function void reRender() {
         do Screen.clearScreen();
         do game.render();
