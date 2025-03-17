@@ -68,7 +68,7 @@ class Levels {
         let strArray[11] = "#EC                     LF#";
         let strArray[12] = "###########################";
 
-        let level = Level.parse(1, strArray, 27, 13);
+        let level = Level.parse(2, strArray, 27, 13);
         do strArray.dispose();
         return level;
     }
@@ -90,7 +90,7 @@ class Levels {
         let strArray[8] = "#        C#         T   #   #";
         let strArray[9] = "#############################";
 
-        let level = Level.parse(1, strArray, 29, 10);
+        let level = Level.parse(3, strArray, 29, 10);
         do strArray.dispose();
         return level;
     }
@@ -114,7 +114,7 @@ class Levels {
         let strArray[11] = "#               C      L F#";
         let strArray[12] = "###########################";
 
-        let level = Level.parse(2, strArray, 27, 13);
+        let level = Level.parse(4, strArray, 27, 13);
         do strArray.dispose();
         return level;
     }
@@ -138,7 +138,7 @@ class Levels {
         let strArray[11] = "#M              C      L F#";
         let strArray[12] = "###########################";
 
-        let level = Level.parse(3, strArray, 27, 13);
+        let level = Level.parse(5, strArray, 27, 13);
         do strArray.dispose();
         return level;
     }
@@ -161,7 +161,7 @@ class Levels {
         let strArray[8] = "#       TCCE        K       #";
         let strArray[9] = "#########################M###";
 
-        let level = Level.parse(1, strArray, 29, 10);
+        let level = Level.parse(6, strArray, 29, 10);
         do strArray.dispose();
         return level;
     }
