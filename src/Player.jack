@@ -22,7 +22,7 @@ class Player {
         var int dy;
         var int x;
         var int y;
-        
+
         let map = level.getMap();
         let x = _gameX;
         let y = _gameY;
@@ -36,17 +36,27 @@ class Player {
             do render(startX, startY);
             do Sys.wait(15);
 
-            if (direction = 0){ let y = y - 1; } 
-            if (direction = 1){ let y = y + 1; } 
-            if (direction = 2){ let x = x - 1; } 
-            if (direction = 3){ let x = x + 1; } 
+            if (direction = 0){
+                let y = y - 1;
+            }
+            if (direction = 1){
+                let y = y + 1;
+            }
+            if (direction = 2){
+                let x = x - 1;
+            }
+            if (direction = 3){
+                let x = x + 1;
+            } 
 
 
             let block = map.getBlock(x, y);
-            if (block = -1){ return; } 
+            if (block = -1){
+                return;
+            } 
 
 
-            if (~block.canMoveThrough() & ~block.onTryMove(level,map,x,y)){
+            if (~block.canMoveThrough() & ~block.onTryMove(level, map, x, y)){
                 return;
             }
 
@@ -61,16 +71,28 @@ class Player {
         var int memAddress;
         let memAddress = 16384 + ((_gameY * 16 + mapStartY) * 32) + (_gameX * 16 + mapStartX / 16);
 
-        if (_legsDirection = 0) { do renderUp(memAddress); }
-        if (_legsDirection = 1) { do renderDown(memAddress); }
-        if (_legsDirection = 2) { do renderLeft(memAddress); }
-        if (_legsDirection = 3) { do renderRight(memAddress); }
+        if (_legsDirection = 0){
+            do renderUp(memAddress);
+            return;
+        }
+        if (_legsDirection = 1){
+            do renderDown(memAddress);
+            return;
+        }
+        if (_legsDirection = 2){
+            do renderLeft(memAddress);
+            return;
+        }
+        if (_legsDirection = 3){
+            do renderRight(memAddress);
+            return;
+        }
 
         return;
     }
 
     /** Спрайт игрока смотрящего вверх */
-    method void renderUp(int memAddress) {
+    method void renderUp(int memAddress){
         do Memory.poke(memAddress + 0, 14392);
         do Memory.poke(memAddress + 32, 26664);
         do Memory.poke(memAddress + 64, 20456);
@@ -91,7 +113,7 @@ class Player {
     }
 
     /** Спрайт игрока смотрящего вниз */
-    method void renderDown(int memAddress) {
+    method void renderDown(int memAddress){
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 0);
         do Memory.poke(memAddress + 64, 0);
@@ -112,7 +134,7 @@ class Player {
     }
 
     /** Спрайт игрока смотрящего влево */
-    method void renderLeft(int memAddress) {
+    method void renderLeft(int memAddress){
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 62);
         do Memory.poke(memAddress + 64, 4067);
@@ -133,7 +155,7 @@ class Player {
     }
 
     /** Спрайт игрока смотрящего вправо */
-    method void renderRight(int memAddress) {
+    method void renderRight(int memAddress){
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 0);
         do Memory.poke(memAddress + 64, 4080);

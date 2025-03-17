@@ -107,29 +107,35 @@ class Block {
         return false;
     }
 
-    /** Обрабатывает нахождение игрока на блоке */
+    /** 
+    * Обрабатывает нахождение игрока на блоке 
+    * Note: чтобы на каждом блоке не было получения Score, код дублирован в тело нужных IF
+    */
     method void onStepped(Level level, Map map, int x, int y){
-        // TODO: добавить return в if ветках, возможно даже везде, чтобы ОПТИМИЗАЦИЯ
         var Score score;
 
         if (this = coin){
             let score = level.getScore();
             do score.incrementCoins();
             do map.removeBlock(x, y);
+            return;
         }
 
         if (this = key){
             let score = level.getScore();
             do score.incrementKeys();
             do map.removeBlock(x, y);
+            return;
         }
 
         if (this = finish){
             do Main.nextLevel();
+            return;
         }
 
         if ((this = spikesUp) | (this = spikesDown) | (this = spikesLeft) | (this = spikesRight)){
             do Main.setDead();
+            return;
         }
 
         return;
@@ -153,30 +159,39 @@ class Block {
 
         if ((this = wall) | (this = fakeWall)){
             do _renderWall(memAddress);
+            return;
         }
         if (this = coin){
             do _renderCoin(memAddress);
+            return;
         }
         if (this = key){
             do _renderKey(memAddress);
+            return;
         }
         if (this = finish){
             do _renderFinish(memAddress);
+            return;
         }
         if (this = lock){
             do _renderLock(memAddress);
+            return;
         }
         if (this = spikesUp){
             do _renderSpikesUp(memAddress);
+            return;
         }
         if (this = spikesRight){
             do _renderSpikesRight(memAddress);
+            return;
         }
         if (this = spikesDown){
             do _renderSpikesDown(memAddress);
+            return;
         }
         if (this = spikesLeft){
             do _renderSpikesLeft(memAddress);
+            return;
         }
 
         return;

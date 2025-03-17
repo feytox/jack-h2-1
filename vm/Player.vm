@@ -162,6 +162,8 @@ push pointer 0
 push local 0
 call Player.renderUp 2
 pop temp 0
+push constant 0
+return
 label IF_FALSE0
 push this 2
 push constant 1
@@ -173,6 +175,8 @@ push pointer 0
 push local 0
 call Player.renderDown 2
 pop temp 0
+push constant 0
+return
 label IF_FALSE1
 push this 2
 push constant 2
@@ -184,6 +188,8 @@ push pointer 0
 push local 0
 call Player.renderLeft 2
 pop temp 0
+push constant 0
+return
 label IF_FALSE2
 push this 2
 push constant 3
@@ -195,6 +201,8 @@ push pointer 0
 push local 0
 call Player.renderRight 2
 pop temp 0
+push constant 0
+return
 label IF_FALSE3
 push constant 0
 return
