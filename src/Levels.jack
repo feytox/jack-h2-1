@@ -2,20 +2,29 @@ class Levels {
     
     function Level loadLevel(int id) {
         if (id = 0) {
-            return Levels.first();
+            return Levels.lvl1();
         }
         if (id = 1) {
-            return Levels.medium();
+            return Levels.lvl2();
         }
         if (id = 2) {
-            return Levels.hard();
+            return Levels.lvl3();
         }
-        do Main.waitForContinue("YOU WIN, IDI C# delay!!!");
+        if (id = 3) {
+            return Levels.lvl4();
+        }
+        if (id = 4) {
+            return Levels.lvl5();
+        }
+        if (id = 5) {
+            return Levels.lvl6();
+        }
+        do Main.waitForContinue("YOU WIN!");
         do Sys.halt();
         return 0;
     }
 
-    function Level first() {
+    function Level lvl1() {
         var Array strArray;
         var Level level;
 
@@ -40,7 +49,32 @@ class Levels {
         return level;
     }
 
-    function Level medium() {
+    function Level lvl2() {
+        var Array strArray;
+        var Level level;
+
+        let strArray = Array.new(13);
+        let strArray[0]  = "###########################";
+        let strArray[1]  = "#P    C     C     C       #";
+        let strArray[2]  = "######################### #";
+        let strArray[3]  = "#             C           #";
+        let strArray[4]  = "# #########################";
+        let strArray[5]  = "#                  C#    T#";
+        let strArray[6]  = "################### #######";
+        let strArray[7]  = "#C        #              K#";
+        let strArray[8]  = "######### # ###############";
+        let strArray[9]  = "#CCCCCCC#                W#";
+        let strArray[10] = "######### #################";
+        let strArray[11] = "#EC                     LF#";
+        let strArray[12] = "###########################";
+
+        let level = Level.parse(1, strArray, 27, 13);
+        do strArray.dispose();
+        return level;
+    }
+
+
+    function Level lvl3() {
         var Array strArray;
         var Level level;
 
@@ -61,7 +95,57 @@ class Levels {
         return level;
     }
 
-    function Level hard() {
+    function Level lvl4() {
+        var Array strArray;
+        var Level level;
+
+        let strArray = Array.new(13);
+        let strArray[0]  = "###########################";
+        let strArray[1]  = "#P        C       C       #";
+        let strArray[2]  = "######################### ##";
+        let strArray[3]  = "#         # C             #";
+        let strArray[4]  = "########### ###############";
+        let strArray[5]  = "#CCCCCCC#       WC#########";
+        let strArray[6]  = "######### #################";
+        let strArray[7]  = "#                  K      #";
+        let strArray[8]  = "# ####### ############### #";
+        let strArray[9]  = "#   CT###                 #";
+        let strArray[10] = "# #########################";
+        let strArray[11] = "#               C      L F#";
+        let strArray[12] = "###########################";
+
+        let level = Level.parse(2, strArray, 27, 13);
+        do strArray.dispose();
+        return level;
+    }
+
+    function Level lvl5() {
+        var Array strArray;
+        var Level level;
+
+        let strArray = Array.new(13);
+        let strArray[0]  = "###########################";
+        let strArray[1]  = "#        #E   C#         K#";
+        let strArray[2]  = "############ # # #######E #";
+        let strArray[3]  = "#        #  C#   #E       #";
+        let strArray[4]  = "########## ########C      #";
+        let strArray[5]  = "##       #   #  WC# #######";
+        let strArray[6]  = "## #### #### ###### #######";
+        let strArray[7]  = "#E    #   T#P#E      C#####";
+        let strArray[8]  = "## ###### ########### ###W#";
+        let strArray[9]  = "#   C  C#                C#";
+        let strArray[10] = "# ##### ###################";
+        let strArray[11] = "#M              C      L F#";
+        let strArray[12] = "###########################";
+
+        let level = Level.parse(3, strArray, 27, 13);
+        do strArray.dispose();
+        return level;
+    }
+
+
+
+    function Level lvl6() {
         var Array strArray; 
         var Level level;
 
