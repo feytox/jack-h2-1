@@ -31,6 +31,7 @@ class Score {
 
     method void setCoins(int coins) {
         let _coins = coins;
+        do render();
         return;
     }
 
