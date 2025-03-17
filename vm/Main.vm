@@ -76,7 +76,7 @@ push argument 0
 call Output.printString 1
 pop temp 0
 push constant 11
-push constant 19
+push constant 21
 call Output.moveCursor 2
 pop temp 0
 push constant 23
