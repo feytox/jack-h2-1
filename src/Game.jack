@@ -22,6 +22,7 @@ class Game {
         if (~(_currentLevel = 0)) {
             let score = _currentLevel.getScore();
             let oldCoins = score.getCoins();
+            do _currentLevel.dispose();
         }
 
         // TODO: dispose old level

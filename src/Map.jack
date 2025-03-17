@@ -74,4 +74,10 @@ class Map {
 
         return;
     }
+
+    method void dispose() {
+        do _blockArray.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
 }

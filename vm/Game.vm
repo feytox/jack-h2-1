@@ -28,6 +28,9 @@ pop local 0
 push local 0
 call Score.getCoins 1
 pop local 1
+push this 1
+call Level.dispose 1
+pop temp 0
 label IF_FALSE0
 push this 0
 call Levels.loadLevel 1

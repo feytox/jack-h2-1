@@ -61,4 +61,12 @@ class Level {
         let map = Map.new(blockArray, width, height);
         return Level.new(levelId, map, player);
     }
+
+    method void dispose() {
+        do _map.dispose();
+        do _player.dispose();
+        do _score.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
 }
