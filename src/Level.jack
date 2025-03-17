@@ -12,7 +12,7 @@ class Level {
     }
 
     method void render(int startX, int startY){
-        do _map.render(startX, startY, 16, 16);
+        do _map.render(startX, startY);
         do _player.render(startX, startY);
         do _score.render();
         return;

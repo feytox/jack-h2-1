@@ -30,8 +30,7 @@ class Map {
     }
 
     /** Рисует всю карту с указанным смещением и размером блоков */
-    method void render(int startX, int startY, int blockWidth, int blockHeight){
-        // TODO: убрать размеры блока, они же точно уже 16 на 16
+    method void render(int startX, int startY){
         var Block block;
         var int mapSize;
         var int x;
@@ -40,7 +39,7 @@ class Map {
         while (y < _height){
             while (x < _width){
                 let block = _blockArray[y * _width + x];
-                do block.render(startX + (x * blockWidth), startY + (y * blockHeight), blockWidth, blockHeight);
+                do block.render(startX + (x * 16), startY + (y * 16));
 
                 let x = x + 1;
             }
@@ -70,7 +69,7 @@ class Map {
 
         let block = getBlock(gameX, gameY);
         if (~(block = -1)) {
-            do block.render(x, y, 16, 16);
+            do block.render(x, y);
         }
 
         return;

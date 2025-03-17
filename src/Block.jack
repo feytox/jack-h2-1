@@ -152,7 +152,7 @@ class Block {
     }
 
     /** Рисует блок на экране (по координатам) */
-    method void render(int x, int y, int width, int height){
+    method void render(int x, int y){
         var int memAddress;
 
         let memAddress = 16384 + (y * 32) + (x / 16);
