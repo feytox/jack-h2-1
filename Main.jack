@@ -17,6 +17,11 @@ class Main {
         return;
     }
 
+    function void setDead() {
+        do game.setDead();
+        return;
+    }
+
     function void waitForContinue(String message) {
         var int textX;
         var char key;
@@ -28,7 +33,7 @@ class Main {
         do Output.printString(message);
         do Output.moveCursor(11, 20);
         do Output.printString("Press any key to continue");
-
+        
         while (key = 0) {
             let key = Keyboard.keyPressed();
         }

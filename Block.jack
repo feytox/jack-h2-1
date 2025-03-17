@@ -123,7 +123,7 @@ class Block {
         }
 
         if ((this = spikesUp) | (this = spikesDown) | (this = spikesLeft) | (this = spikesRight)){
-            // TODO restart level
+            do Main.setDead();
         }
 
         return;

@@ -23,13 +23,13 @@ class Levels {
         let strArray = Array.new(10);
         let strArray[0] = "##########";
         let strArray[1] = "#W#K    ##";
-        let strArray[2] = "# # ### ##";
+        let strArray[2] = "#E# ### ##";
         let strArray[3] = "#   ### ##";
         let strArray[4] = "#C#P### ##";
         let strArray[5] = "#   ## M##";
         let strArray[6] = "# # ## ###";
-        let strArray[7] = "# # ## # #";
-        let strArray[8] = "#   L  FT#";
+        let strArray[7] = "# # ## #T#";
+        let strArray[8] = "#   L  F #";
         let strArray[9] = "##########";
 
         let level = Level.parse(1, strArray, 10, 10);
@@ -49,8 +49,8 @@ class Levels {
         let strArray[4] = "### ### ##";
         let strArray[5] = "#C  ###  #";
         let strArray[6] = "# # ####L#";
-        let strArray[7] = "#   ###  #";
-        let strArray[8] = "##### # F#";
+        let strArray[7] = "#   ###W #";
+        let strArray[8] = "##### #EF#";
         let strArray[9] = "##########";
 
         let level = Level.parse(2, strArray, 10, 10);
@@ -68,9 +68,9 @@ class Levels {
         let strArray[2] = "##   #####";
         let strArray[3] = "#    #####";
         let strArray[4] = "# ##C#####";
-        let strArray[5] = "# #   ## #";
-        let strArray[6] = "### ### ##";
-        let strArray[7] = "#L  #    #";
+        let strArray[5] = "#M#  K## #";
+        let strArray[6] = "### ###W##";
+        let strArray[7] = "#LW #    #";
         let strArray[8] = "#     # F#";
         let strArray[9] = "##########";
 

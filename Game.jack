@@ -34,6 +34,12 @@ class Game {
         return;
     }
 
+    method void setDead() {
+        let _levelId = 0;
+        let _stopLevel = true;
+        return;
+    }
+
     method void run(){
         while (true){
             let _stopLevel = false;
@@ -41,7 +47,7 @@ class Game {
             do runLevel();
             if (_levelId = 0) // игрок умер
             {
-                return;
+                do Main.waitForContinue("GAME OVER");
             }
         }
 
