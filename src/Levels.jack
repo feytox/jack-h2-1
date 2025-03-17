@@ -10,9 +10,8 @@ class Levels {
         if (id = 2) {
             return Levels.hard();
         }
-
-        do Output.printInt(id);
-        do Exception.throw("Levels: Unknown level id");
+        do Main.waitForContinue("YOU WIN, IDI C# delay!!!");
+        do Sys.halt();
         return 0;
     }
 
