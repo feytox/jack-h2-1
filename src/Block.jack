@@ -6,6 +6,7 @@ class Block {
     static Block key;      // ключ
     static Block finish;   // финиш
     static Block lock;     // замок
+    static Block fakeWall; // поддельная стена
 
     static Block spikesUp;    // шипы вверх
     static Block spikesRight; // шипы вправо
@@ -28,6 +29,7 @@ class Block {
         let key = Block.new(true);      // ключ - проходимый
         let finish = Block.new(true);   // финиш - проходимый
         let lock = Block.new(false);    // замок - непроходимый
+        let fakeWall = Block.new(true); // поддельная стена - проходимый
 
         let spikesUp = Block.new(true);    // шипы - проходимые
         let spikesRight = Block.new(true);
@@ -62,6 +64,10 @@ class Block {
             return lock;
         }
 
+        if (blockChar = 79){ // 'O' = spikesLeft
+            return fakeWall;
+        }
+
         if (blockChar = 77){ // 'M' = шипы вверх
             return spikesUp;
         }
@@ -74,7 +80,7 @@ class Block {
             return spikesDown;
         }
 
-        if (blockChar = 84){ // 'T' = spikesLeft
+        if (blockChar = 84){ // 'T' = шипы влево
             return spikesLeft;
         }
 
@@ -145,7 +151,7 @@ class Block {
 
         let memAddress = 16384 + (y * 32) + (x / 16);
 
-        if (this = stone){
+        if ((this = stone) | (this = fakeWall)){
             do _renderFull(memAddress);
         }
         if (this = coin){

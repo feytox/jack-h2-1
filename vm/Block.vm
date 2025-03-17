@@ -46,6 +46,10 @@ not
 call Block.new 1
 pop static 9
 push constant 0
+not
+call Block.new 1
+pop static 10
+push constant 0
 return
 function Block.parse 0
 push argument 0
@@ -107,7 +111,7 @@ push static 5
 return
 label IF_FALSE5
 push argument 0
-push constant 77
+push constant 79
 eq
 if-goto IF_TRUE6
 goto IF_FALSE6
@@ -116,7 +120,7 @@ push static 6
 return
 label IF_FALSE6
 push argument 0
-push constant 69
+push constant 77
 eq
 if-goto IF_TRUE7
 goto IF_FALSE7
@@ -125,7 +129,7 @@ push static 7
 return
 label IF_FALSE7
 push argument 0
-push constant 87
+push constant 69
 eq
 if-goto IF_TRUE8
 goto IF_FALSE8
@@ -134,7 +138,7 @@ push static 8
 return
 label IF_FALSE8
 push argument 0
-push constant 84
+push constant 87
 eq
 if-goto IF_TRUE9
 goto IF_FALSE9
@@ -142,6 +146,15 @@ label IF_TRUE9
 push static 9
 return
 label IF_FALSE9
+push argument 0
+push constant 84
+eq
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push static 10
+return
+label IF_FALSE10
 push constant 20
 call String.new 1
 push constant 66
@@ -269,18 +282,18 @@ call Main.nextLevel 0
 pop temp 0
 label IF_FALSE2
 push pointer 0
-push static 6
+push static 7
 eq
-push pointer 0
-push static 8
-eq
-or
 push pointer 0
 push static 9
 eq
 or
 push pointer 0
-push static 7
+push static 10
+eq
+or
+push pointer 0
+push static 8
 eq
 or
 if-goto IF_TRUE3
@@ -315,6 +328,10 @@ pop local 0
 push pointer 0
 push static 1
 eq
+push pointer 0
+push static 6
+eq
+or
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
@@ -368,7 +385,7 @@ call Block._renderLock 2
 pop temp 0
 label IF_FALSE4
 push pointer 0
-push static 6
+push static 7
 eq
 if-goto IF_TRUE5
 goto IF_FALSE5
@@ -379,7 +396,7 @@ call Block._renderSpikesUp 2
 pop temp 0
 label IF_FALSE5
 push pointer 0
-push static 7
+push static 8
 eq
 if-goto IF_TRUE6
 goto IF_FALSE6
@@ -390,7 +407,7 @@ call Block._renderSpikesRight 2
 pop temp 0
 label IF_FALSE6
 push pointer 0
-push static 8
+push static 9
 eq
 if-goto IF_TRUE7
 goto IF_FALSE7
@@ -401,7 +418,7 @@ call Block._renderSpikesDown 2
 pop temp 0
 label IF_FALSE7
 push pointer 0
-push static 9
+push static 10
 eq
 if-goto IF_TRUE8
 goto IF_FALSE8

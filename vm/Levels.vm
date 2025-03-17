@@ -26,7 +26,7 @@ label IF_TRUE2
 call Levels.hard 0
 return
 label IF_FALSE2
-push constant 22
+push constant 19
 call String.new 1
 push constant 84
 call String.appendChar 2
@@ -65,12 +65,6 @@ call String.appendChar 2
 push constant 103
 call String.appendChar 2
 push constant 33
-call String.appendChar 2
-push constant 32
-call String.appendChar 2
-push constant 60
-call String.appendChar 2
-push constant 51
 call String.appendChar 2
 call Main.waitForContinue 1
 pop temp 0
