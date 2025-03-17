@@ -337,7 +337,7 @@ goto IF_FALSE0
 label IF_TRUE0
 push pointer 0
 push local 0
-call Block._renderFull 2
+call Block._renderWall 2
 pop temp 0
 label IF_FALSE0
 push pointer 0
@@ -430,7 +430,7 @@ pop temp 0
 label IF_FALSE8
 push constant 0
 return
-function Block._renderFull 0
+function Block._renderWall 0
 push argument 0
 pop pointer 0
 push argument 1

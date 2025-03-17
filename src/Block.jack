@@ -1,7 +1,7 @@
 /** Класс, отвечающий за типы блоков. */
 class Block {
     static Block air;      // пустота
-    static Block stone;    // стена
+    static Block wall;     // стена
     static Block coin;     // монета
     static Block key;      // ключ
     static Block finish;   // финиш
@@ -24,7 +24,7 @@ class Block {
     /** Инициализирует все типы блоков */
     function void initBlocks(){
         let air = Block.new(true);      // пустота - проходимый
-        let stone = Block.new(false);   // стена - непроходимая
+        let wall = Block.new(false);    // стена - непроходимая
         let coin = Block.new(true);     // монета - проходимая
         let key = Block.new(true);      // ключ - проходимый
         let finish = Block.new(true);   // финиш - проходимый
@@ -45,7 +45,7 @@ class Block {
         }
 
         if (blockChar = 35){ // '#' = стена
-            return stone;
+            return wall;
         }
 
         if (blockChar = 67){ // 'C' = монета
@@ -151,8 +151,8 @@ class Block {
 
         let memAddress = 16384 + (y * 32) + (x / 16);
 
-        if ((this = stone) | (this = fakeWall)){
-            do _renderFull(memAddress);
+        if ((this = wall) | (this = fakeWall)){
+            do _renderWall(memAddress);
         }
         if (this = coin){
             do _renderCoin(memAddress);
@@ -183,7 +183,7 @@ class Block {
     }
 
     /** Отрисовка стены */
-    method void _renderFull(int memAddress){
+    method void _renderWall(int memAddress){
         do Memory.poke(memAddress + 0, -1);
         do Memory.poke(memAddress + 32, -1);
         do Memory.poke(memAddress + 64, -1);
