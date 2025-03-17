@@ -7,6 +7,7 @@ class Player {
     constructor Player new(int gameX, int gameY){
         let _gameX = gameX;
         let _gameY = gameY;
+        let _legsDirection = 0;
         return this;
     }
 
@@ -175,7 +176,7 @@ class Player {
         return;
     }
 
-    method void dispose() {
+    method void dispose(){
         do Memory.deAlloc(this);
         return;
     }

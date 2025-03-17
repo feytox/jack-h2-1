@@ -51,6 +51,9 @@ push argument 0
 pop pointer 0
 push argument 1
 pop this 1
+push pointer 0
+call Score.render 1
+pop temp 0
 push constant 0
 return
 function Score.getCoins 0

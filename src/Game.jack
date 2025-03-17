@@ -8,6 +8,7 @@ class Game {
     // TODO: sort methods
 
     constructor Game new(int startX, int startY){
+        let _levelId = 0;
         let _startX = startX;
         let _startY = startY;
         let _currentLevel = 0;
