@@ -11,6 +11,22 @@ class Score {
         return this;
     }
 
+    /** Отображает текущий счет на экране */
+    method void render() {
+        do Output.moveCursor(0, 0);
+        do Output.printString("Level ");
+        do Output.printInt(_levelId);
+
+        do Output.moveCursor(0, 15);
+        do Output.printString("Coins: ");
+        do Output.printInt(_coins);
+        
+        do Output.moveCursor(0, 31);
+        do Output.printString("Keys: ");
+        do Output.printInt(_keys);
+        return;
+    }
+
     method void incrementCoins() {
         let _coins = _coins + 1;
         do render();
@@ -42,22 +58,6 @@ class Score {
     /** Проверяет, есть ли у игрока ключ */
     method boolean hasKey() {
         return _keys > 0;
-    }
-
-    /** Отображает текущий счет на экране */
-    method void render() {
-        do Output.moveCursor(0, 0);
-        do Output.printString("Level ");
-        do Output.printInt(_levelId);
-
-        do Output.moveCursor(0, 15);
-        do Output.printString("Coins: ");
-        do Output.printInt(_coins);
-        
-        do Output.moveCursor(0, 31);
-        do Output.printString("Keys: ");
-        do Output.printInt(_keys);
-        return;
     }
 
     method void dispose() {

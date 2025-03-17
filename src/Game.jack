@@ -5,8 +5,6 @@ class Game {
     field int _startY;
     field boolean _stopLevel;
 
-    // TODO: sort methods
-
     constructor Game new(int startX, int startY){
         let _levelId = 0;
         let _startX = startX;
@@ -16,7 +14,39 @@ class Game {
         return this;
     }
 
-    method void loadLevel(){
+    method void render(){
+        do Screen.clearScreen();
+        do _currentLevel.render(_startX, _startY);
+        return;
+    }
+
+    method void run(){
+        while (true){
+            let _stopLevel = false;
+            do _loadLevel();
+            do _runLevel();
+            if (_levelId = 0) // т.е. игрок умер
+            {
+                do Main.waitForContinue("GAME OVER");
+            }
+        }
+
+        return;
+    }
+
+    method void nextLevel() {
+        let _levelId = _levelId + 1;
+        let _stopLevel = true;
+        return;
+    }
+
+    method void setDead() {
+        let _levelId = 0;
+        let _stopLevel = true;
+        return;
+    }
+
+    method void _loadLevel(){
         var Score score;
         var int oldCoins;
 
@@ -33,39 +63,7 @@ class Game {
         return;
     }
 
-    method void render(){
-        do Screen.clearScreen();
-        do _currentLevel.render(_startX, _startY);
-        return;
-    }
-
-    method void nextLevel() {
-        let _levelId = _levelId + 1;
-        let _stopLevel = true;
-        return;
-    }
-
-    method void setDead() {
-        let _levelId = 0;
-        let _stopLevel = true;
-        return;
-    }
-
-    method void run(){
-        while (true){
-            let _stopLevel = false;
-            do loadLevel();
-            do runLevel();
-            if (_levelId = 0) // т.е. игрок умер
-            {
-                do Main.waitForContinue("GAME OVER");
-            }
-        }
-
-        return;
-    }
-
-    method void runLevel(){
+    method void _runLevel(){
         var char key;
 
         do render();
@@ -74,7 +72,7 @@ class Game {
                 let key = Keyboard.keyPressed();
             }
 
-            do handleKey(key);
+            do _handleKey(key);
             if (_stopLevel){
                 return;
             }
@@ -87,24 +85,24 @@ class Game {
         return;
     }
 
-    method void handleKey(char key){
+    method void _handleKey(char key){
         if ((key = 131) | (key = 87)){ // up or 'W' = move up
-            do handleMovement(0);
+            do _handleMovement(0);
             return;
         }
 
         if ((key = 133) | (key = 83)){ // down or 'S' = move down
-            do handleMovement(1);
+            do _handleMovement(1);
             return;
         }
 
         if ((key = 130) | (key = 65)){ // left or 'A' = move up
-            do handleMovement(2);
+            do _handleMovement(2);
             return;
         }
 
         if ((key = 132) | (key = 68)){ // right or 'D' = move up
-            do handleMovement(3);
+            do _handleMovement(3);
             return;
         }
 
@@ -115,7 +113,7 @@ class Game {
     Обрабатывает движение игрока в сторону.
     0 - up, 1 - down, 2 - left, 3 - right    
     */
-    method void handleMovement(int direction){
+    method void _handleMovement(int direction){
         var Player player;
 
         let player = _currentLevel.getPlayer();

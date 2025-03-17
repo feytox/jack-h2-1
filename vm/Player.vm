@@ -162,7 +162,7 @@ goto IF_FALSE0
 label IF_TRUE0
 push pointer 0
 push local 0
-call Player.renderUp 2
+call Player._renderUp 2
 pop temp 0
 push constant 0
 return
@@ -175,7 +175,7 @@ goto IF_FALSE1
 label IF_TRUE1
 push pointer 0
 push local 0
-call Player.renderDown 2
+call Player._renderDown 2
 pop temp 0
 push constant 0
 return
@@ -188,7 +188,7 @@ goto IF_FALSE2
 label IF_TRUE2
 push pointer 0
 push local 0
-call Player.renderLeft 2
+call Player._renderLeft 2
 pop temp 0
 push constant 0
 return
@@ -201,14 +201,14 @@ goto IF_FALSE3
 label IF_TRUE3
 push pointer 0
 push local 0
-call Player.renderRight 2
+call Player._renderRight 2
 pop temp 0
 push constant 0
 return
 label IF_FALSE3
 push constant 0
 return
-function Player.renderUp 0
+function Player._renderUp 0
 push argument 0
 pop pointer 0
 push argument 1
@@ -309,7 +309,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function Player.renderDown 0
+function Player._renderDown 0
 push argument 0
 pop pointer 0
 push argument 1
@@ -410,7 +410,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function Player.renderLeft 0
+function Player._renderLeft 0
 push argument 0
 pop pointer 0
 push argument 1
@@ -511,7 +511,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function Player.renderRight 0
+function Player._renderRight 0
 push argument 0
 pop pointer 0
 push argument 1

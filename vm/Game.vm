@@ -14,38 +14,6 @@ push constant 0
 pop this 4
 push pointer 0
 return
-function Game.loadLevel 2
-push argument 0
-pop pointer 0
-push this 1
-push constant 0
-eq
-not
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push this 1
-call Level.getScore 1
-pop local 0
-push local 0
-call Score.getCoins 1
-pop local 1
-push this 1
-call Level.dispose 1
-pop temp 0
-label IF_FALSE0
-push this 0
-call Levels.loadLevel 1
-pop this 1
-push this 1
-call Level.getScore 1
-pop local 0
-push local 0
-push local 1
-call Score.setCoins 2
-pop temp 0
-push constant 0
-return
 function Game.render 0
 push argument 0
 pop pointer 0
@@ -56,28 +24,6 @@ push this 2
 push this 3
 call Level.render 3
 pop temp 0
-push constant 0
-return
-function Game.nextLevel 0
-push argument 0
-pop pointer 0
-push this 0
-push constant 1
-add
-pop this 0
-push constant 0
-not
-pop this 4
-push constant 0
-return
-function Game.setDead 0
-push argument 0
-pop pointer 0
-push constant 0
-pop this 0
-push constant 0
-not
-pop this 4
 push constant 0
 return
 function Game.run 0
@@ -91,10 +37,10 @@ if-goto WHILE_END0
 push constant 0
 pop this 4
 push pointer 0
-call Game.loadLevel 1
+call Game._loadLevel 1
 pop temp 0
 push pointer 0
-call Game.runLevel 1
+call Game._runLevel 1
 pop temp 0
 push this 0
 push constant 0
@@ -129,7 +75,61 @@ goto WHILE_EXP0
 label WHILE_END0
 push constant 0
 return
-function Game.runLevel 1
+function Game.nextLevel 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 1
+add
+pop this 0
+push constant 0
+not
+pop this 4
+push constant 0
+return
+function Game.setDead 0
+push argument 0
+pop pointer 0
+push constant 0
+pop this 0
+push constant 0
+not
+pop this 4
+push constant 0
+return
+function Game._loadLevel 2
+push argument 0
+pop pointer 0
+push this 1
+push constant 0
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+call Level.getScore 1
+pop local 0
+push local 0
+call Score.getCoins 1
+pop local 1
+push this 1
+call Level.dispose 1
+pop temp 0
+label IF_FALSE0
+push this 0
+call Levels.loadLevel 1
+pop this 1
+push this 1
+call Level.getScore 1
+pop local 0
+push local 0
+push local 1
+call Score.setCoins 2
+pop temp 0
+push constant 0
+return
+function Game._runLevel 1
 push argument 0
 pop pointer 0
 push pointer 0
@@ -152,7 +152,7 @@ goto WHILE_EXP1
 label WHILE_END1
 push pointer 0
 push local 0
-call Game.handleKey 2
+call Game._handleKey 2
 pop temp 0
 push this 4
 if-goto IF_TRUE0
@@ -176,7 +176,7 @@ goto WHILE_EXP0
 label WHILE_END0
 push constant 0
 return
-function Game.handleKey 0
+function Game._handleKey 0
 push argument 0
 pop pointer 0
 push argument 1
@@ -191,7 +191,7 @@ goto IF_FALSE0
 label IF_TRUE0
 push pointer 0
 push constant 0
-call Game.handleMovement 2
+call Game._handleMovement 2
 pop temp 0
 push constant 0
 return
@@ -208,7 +208,7 @@ goto IF_FALSE1
 label IF_TRUE1
 push pointer 0
 push constant 1
-call Game.handleMovement 2
+call Game._handleMovement 2
 pop temp 0
 push constant 0
 return
@@ -225,7 +225,7 @@ goto IF_FALSE2
 label IF_TRUE2
 push pointer 0
 push constant 2
-call Game.handleMovement 2
+call Game._handleMovement 2
 pop temp 0
 push constant 0
 return
@@ -242,14 +242,14 @@ goto IF_FALSE3
 label IF_TRUE3
 push pointer 0
 push constant 3
-call Game.handleMovement 2
+call Game._handleMovement 2
 pop temp 0
 push constant 0
 return
 label IF_FALSE3
 push constant 0
 return
-function Game.handleMovement 1
+function Game._handleMovement 1
 push argument 0
 pop pointer 0
 push this 1

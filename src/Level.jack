@@ -18,18 +18,6 @@ class Level {
         return;
     }
 
-    method Map getMap() {
-        return _map;
-    }
-
-    method Player getPlayer() {
-        return _player;
-    }
-
-    method Score getScore() {
-        return _score;
-    }
-
     /** Парсит карту и игрока из массива строк */
     function Level parse(int levelId, Array strArray, int width, int height){
         var Map map;
@@ -60,6 +48,18 @@ class Level {
 
         let map = Map.new(blockArray, width, height);
         return Level.new(levelId, map, player);
+    }
+
+    method Map getMap() {
+        return _map;
+    }
+
+    method Player getPlayer() {
+        return _player;
+    }
+
+    method Score getScore() {
+        return _score;
     }
 
     method void dispose() {

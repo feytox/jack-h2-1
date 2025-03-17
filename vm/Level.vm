@@ -29,21 +29,6 @@ call Score.render 1
 pop temp 0
 push constant 0
 return
-function Level.getMap 0
-push argument 0
-pop pointer 0
-push this 0
-return
-function Level.getPlayer 0
-push argument 0
-pop pointer 0
-push this 1
-return
-function Level.getScore 0
-push argument 0
-pop pointer 0
-push this 2
-return
 function Level.parse 7
 push argument 2
 push argument 3
@@ -119,6 +104,21 @@ push argument 0
 push local 0
 push local 1
 call Level.new 3
+return
+function Level.getMap 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Level.getPlayer 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Level.getScore 0
+push argument 0
+pop pointer 0
+push this 2
 return
 function Level.dispose 0
 push argument 0
