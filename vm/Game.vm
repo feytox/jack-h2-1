@@ -12,12 +12,33 @@ push constant 0
 pop this 4
 push pointer 0
 return
-function Game.loadLevel 0
+function Game.loadLevel 2
 push argument 0
 pop pointer 0
+push this 1
+push constant 0
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+call Level.getScore 1
+pop local 0
+push local 0
+call Score.getCoins 1
+pop local 1
+label IF_FALSE0
 push this 0
 call Levels.loadLevel 1
 pop this 1
+push this 1
+call Level.getScore 1
+pop local 0
+push local 0
+push local 1
+call Score.setCoins 2
+pop temp 0
 push constant 0
 return
 function Game.render 0

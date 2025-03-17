@@ -29,6 +29,15 @@ class Score {
         return;
     }
 
+    method void setCoins(int coins) {
+        let _coins = coins;
+        return;
+    }
+
+    method int getCoins() {
+        return _coins;
+    }
+
     /** Проверяет, есть ли у игрока ключ */
     method boolean hasKey() {
         return _keys > 0;

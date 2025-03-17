@@ -16,9 +16,18 @@ class Game {
     }
 
     method void loadLevel(){
+        var Score score;
+        var int oldCoins;
+
+        if (~(_currentLevel = 0)) {
+            let score = _currentLevel.getScore();
+            let oldCoins = score.getCoins();
+        }
+
         // TODO: dispose old level
-        // TODO: переносить количество монеток на новый уровень
         let _currentLevel = Levels.loadLevel(_levelId);
+        let score = _currentLevel.getScore();
+        do score.setCoins(oldCoins);
         return;
     }
 
