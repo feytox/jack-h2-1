@@ -40,6 +40,7 @@ class Levels {
     function Level medium() {
         var Array strArray;
         var Level level;
+
         let strArray = Array.new(10);
         let strArray[0] = "##########";
         let strArray[1] = "#P#    K #";
@@ -60,6 +61,8 @@ class Levels {
     function Level hard() {
         var Array strArray; 
         var Level level;
+
+        let strArray = Array.new(10);
         let strArray[0] = "##########";
         let strArray[1] = "#P   #####";
         let strArray[2] = "##   #####";
