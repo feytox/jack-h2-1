@@ -2,7 +2,7 @@ class Levels {
     
     function Level loadLevel(int id) {
         if (id = 0) {
-            return Levels.test();
+            return Levels.first();
         }
         if (id = 1) {
             return Levels.medium();
@@ -15,23 +15,27 @@ class Levels {
         return 0;
     }
 
-    function Level test() {
+    function Level first() {
         var Array strArray;
         var Level level;
 
-        let strArray = Array.new(10);
-        let strArray[0] = "##########";
-        let strArray[1] = "#W#K    ##";
-        let strArray[2] = "#E# ### ##";
-        let strArray[3] = "#   ### ##";
-        let strArray[4] = "#C#P### ##";
-        let strArray[5] = "#   ## M##";
-        let strArray[6] = "# # ## ###";
-        let strArray[7] = "# # ## #T#";
-        let strArray[8] = "#   L  F #";
-        let strArray[9] = "##########";
+        let strArray = Array.new(13); // maxHEIGHT = 13, maxWidth = 29
+        let strArray[0] =  "#W###########################";
+        let strArray[1] =  "#P   #F#                    #";
+        let strArray[2] =  "#C#  #L#                   ##";
+        let strArray[3] =  "#K                          #";
+        let strArray[4] =  "#E#                         #";
+        let strArray[5] =  "#C                          #";
+        let strArray[6] =  "#C                          #";
+        let strArray[7] =  "#C                          #";
+        let strArray[8] =  "#C  C                       #";
+        let strArray[9] =  "#C  #                       #";
+        let strArray[10] = "#C                         ##";
+        let strArray[11] = "#C   CC#                    #";
+        let strArray[12] = "#############################";
+        
 
-        let level = Level.parse(1, strArray, 10, 10);
+        let level = Level.parse(1, strArray, 29, 13);
         do strArray.dispose();
         return level;
     }
@@ -40,19 +44,19 @@ class Levels {
         var Array strArray;
         var Level level;
 
-        let strArray = Array.new(10);
-        let strArray[0] = "##########";
-        let strArray[1] = "#P#    K #";
-        let strArray[2] = "# #   #  #";
-        let strArray[3] = "#   ### ##";
-        let strArray[4] = "### ### ##";
-        let strArray[5] = "#C  ###  #";
-        let strArray[6] = "# # ####L#";
-        let strArray[7] = "#   ###W #";
-        let strArray[8] = "##### #EF#";
-        let strArray[9] = "##########";
+        let strArray = Array.new(10); // maxHEIGHT = 13, maxWidth = 29
+        let strArray[0] = "#############################";
+        let strArray[1] = "#         #                 #";
+        let strArray[2] = "# ##### # # ###W# # # ##### #";
+        let strArray[3] = "# #  P# # C C   # # #  F    #";
+        let strArray[4] = "# # # # # # # # # # # # #   #";
+        let strArray[5] = "# # # # # # # # # # # # #   #";
+        let strArray[6] = "# #           #   #   #     #";
+        let strArray[7] = "# ##### ##### ##### ##### # #";
+        let strArray[8] = "#        C#         T   #   #";
+        let strArray[9] = "#############################";
 
-        let level = Level.parse(2, strArray, 10, 10);
+        let level = Level.parse(1, strArray, 29, 10);
         do strArray.dispose();
         return level;
     }
@@ -61,19 +65,19 @@ class Levels {
         var Array strArray; 
         var Level level;
 
-        let strArray = Array.new(10);
-        let strArray[0] = "##########";
-        let strArray[1] = "#P   #####";
-        let strArray[2] = "##   #####";
-        let strArray[3] = "#    #####";
-        let strArray[4] = "# ##C#####";
-        let strArray[5] = "#M#  K## #";
-        let strArray[6] = "### ###W##";
-        let strArray[7] = "#LW #    #";
-        let strArray[8] = "#     # F#";
-        let strArray[9] = "##########";
+        let strArray = Array.new(10); // maxHEIGHT = 13, maxWidth = 29
+        let strArray[0] = "#############################";
+        let strArray[1] = "#F#       P               #F#";
+        let strArray[2] = "#L# ### ### ###W# # # ### #L#";
+        let strArray[3] = "E   CCL  KC C       #     # #";
+        let strArray[4] = "# # # # # # # # # # # # # # #";
+        let strArray[5] = "# # # # # # # # # # # # #   #";
+        let strArray[6] = "# #       #   #   # # #  K# #";
+        let strArray[7] = "# ##### ##### ##### #####L# #";
+        let strArray[8] = "#       TCCE        K       #";
+        let strArray[9] = "#########################M###";
 
-        let level = Level.parse(3, strArray, 10, 10);
+        let level = Level.parse(1, strArray, 29, 10);
         do strArray.dispose();
         return level;
     }
