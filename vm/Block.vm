@@ -1,0 +1,1362 @@
+function Block.new 0
+push constant 1
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push pointer 0
+return
+function Block.initBlocks 0
+push constant 0
+not
+call Block.new 1
+pop static 0
+push constant 0
+call Block.new 1
+pop static 1
+push constant 0
+not
+call Block.new 1
+pop static 2
+push constant 0
+not
+call Block.new 1
+pop static 3
+push constant 0
+not
+call Block.new 1
+pop static 4
+push constant 0
+call Block.new 1
+pop static 5
+push constant 0
+not
+call Block.new 1
+pop static 6
+push constant 0
+not
+call Block.new 1
+pop static 7
+push constant 0
+not
+call Block.new 1
+pop static 8
+push constant 0
+not
+call Block.new 1
+pop static 9
+push constant 0
+return
+function Block.parse 0
+push argument 0
+push constant 32
+eq
+push argument 0
+push constant 80
+eq
+or
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push static 0
+return
+label IF_FALSE0
+push argument 0
+push constant 35
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push static 1
+return
+label IF_FALSE1
+push argument 0
+push constant 67
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push static 2
+return
+label IF_FALSE2
+push argument 0
+push constant 75
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push static 3
+return
+label IF_FALSE3
+push argument 0
+push constant 70
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push static 4
+return
+label IF_FALSE4
+push argument 0
+push constant 76
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push static 5
+return
+label IF_FALSE5
+push argument 0
+push constant 77
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push static 6
+return
+label IF_FALSE6
+push argument 0
+push constant 69
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push static 7
+return
+label IF_FALSE7
+push argument 0
+push constant 87
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push static 8
+return
+label IF_FALSE8
+push argument 0
+push constant 84
+eq
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push static 9
+return
+label IF_FALSE9
+push constant 20
+call String.new 1
+push constant 66
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 98
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+call Exception.throw 1
+pop temp 0
+push constant 0
+return
+function Block.onTryMove 1
+push argument 0
+pop pointer 0
+push pointer 0
+push static 5
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+call Level.getScore 1
+pop local 0
+push local 0
+call Score.hasKey 1
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+call Score.decrementKeys 1
+pop temp 0
+push argument 2
+push argument 3
+push argument 4
+call Map.removeBlock 3
+pop temp 0
+push constant 0
+not
+return
+label IF_FALSE1
+label IF_FALSE0
+push constant 0
+return
+function Block.onStepped 1
+push argument 0
+pop pointer 0
+push pointer 0
+push static 2
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+call Level.getScore 1
+pop local 0
+push local 0
+call Score.incrementCoins 1
+pop temp 0
+push argument 2
+push argument 3
+push argument 4
+call Map.removeBlock 3
+pop temp 0
+label IF_FALSE0
+push pointer 0
+push static 3
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push argument 1
+call Level.getScore 1
+pop local 0
+push local 0
+call Score.incrementKeys 1
+pop temp 0
+push argument 2
+push argument 3
+push argument 4
+call Map.removeBlock 3
+pop temp 0
+label IF_FALSE1
+push pointer 0
+push static 4
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+call Main.nextLevel 0
+pop temp 0
+label IF_FALSE2
+push pointer 0
+push static 6
+eq
+push pointer 0
+push static 8
+eq
+or
+push pointer 0
+push static 9
+eq
+or
+push pointer 0
+push static 7
+eq
+or
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+call Main.setDead 0
+pop temp 0
+label IF_FALSE3
+push constant 0
+return
+function Block.canMoveThrough 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Block.getAir 0
+push static 0
+return
+function Block.render 1
+push argument 0
+pop pointer 0
+push constant 16384
+push argument 2
+push constant 32
+call Math.multiply 2
+add
+push argument 1
+push constant 16
+call Math.divide 2
+add
+pop local 0
+push pointer 0
+push static 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push local 0
+call Block._renderFull 2
+pop temp 0
+label IF_FALSE0
+push pointer 0
+push static 2
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+push local 0
+call Block._renderCoin 2
+pop temp 0
+label IF_FALSE1
+push pointer 0
+push static 3
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push pointer 0
+push local 0
+call Block._renderKey 2
+pop temp 0
+label IF_FALSE2
+push pointer 0
+push static 4
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push pointer 0
+push local 0
+call Block._renderFinish 2
+pop temp 0
+label IF_FALSE3
+push pointer 0
+push static 5
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push pointer 0
+push local 0
+call Block._renderLock 2
+pop temp 0
+label IF_FALSE4
+push pointer 0
+push static 6
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push pointer 0
+push local 0
+call Block._renderSpikesUp 2
+pop temp 0
+label IF_FALSE5
+push pointer 0
+push static 7
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push pointer 0
+push local 0
+call Block._renderSpikesRight 2
+pop temp 0
+label IF_FALSE6
+push pointer 0
+push static 8
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push pointer 0
+push local 0
+call Block._renderSpikesDown 2
+pop temp 0
+label IF_FALSE7
+push pointer 0
+push static 9
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push pointer 0
+push local 0
+call Block._renderSpikesLeft 2
+pop temp 0
+label IF_FALSE8
+push constant 0
+return
+function Block._renderFull 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 0
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 32
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 64
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 96
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 128
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 160
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 192
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 224
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 256
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 288
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 320
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 352
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 384
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 416
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 448
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 480
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Block._renderCoin 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 32
+add
+push constant 960
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 64
+add
+push constant 4080
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 96
+add
+push constant 7224
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 128
+add
+push constant 15324
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 160
+add
+push constant 12876
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 192
+add
+push constant 25158
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 224
+add
+push constant 25542
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 256
+add
+push constant 24646
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 288
+add
+push constant 24646
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 320
+add
+push constant 12364
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 352
+add
+push constant 14428
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 384
+add
+push constant 7224
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 416
+add
+push constant 4080
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 448
+add
+push constant 960
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 480
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Block._renderKey 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 64
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 96
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 128
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 160
+add
+push constant 28
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 192
+add
+push constant 38
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 224
+add
+push constant 13814
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 256
+add
+push constant 32766
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 288
+add
+push constant 62
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 320
+add
+push constant 28
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 352
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 384
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 416
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 448
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 480
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Block._renderFinish 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 64
+add
+push constant 16380
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 96
+add
+push constant 11468
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 128
+add
+push constant 11468
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 160
+add
+push constant 13116
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 192
+add
+push constant 13116
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 224
+add
+push constant 11468
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 256
+add
+push constant 11468
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 288
+add
+push constant 13116
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 320
+add
+push constant 13116
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 352
+add
+push constant 11468
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 384
+add
+push constant 11468
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 416
+add
+push constant 16380
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 448
+add
+push constant 12
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 480
+add
+push constant 12
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Block._renderLock 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 32
+add
+push constant 2016
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 64
+add
+push constant 3120
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 96
+add
+push constant 2448
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 128
+add
+push constant 2640
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 160
+add
+push constant 2640
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 192
+add
+push constant 2640
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 224
+add
+push constant 2640
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 256
+add
+push constant 8184
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 288
+add
+push constant 12300
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 320
+add
+push constant 8196
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 352
+add
+push constant 8196
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 384
+add
+push constant 8196
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 416
+add
+push constant 8196
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 448
+add
+push constant 12300
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 480
+add
+push constant 8184
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Block._renderSpikesUp 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 64
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 96
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 128
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 160
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 192
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 224
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 256
+add
+push constant 8456
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 288
+add
+push constant 8456
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 320
+add
+push constant 29596
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 352
+add
+push constant 29596
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 384
+add
+push constant 32766
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 416
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 448
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 480
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Block._renderSpikesRight 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 0
+add
+push constant 7
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 32
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 64
+add
+push constant 63
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 96
+add
+push constant 255
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 128
+add
+push constant 63
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 160
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 192
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 224
+add
+push constant 63
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 256
+add
+push constant 255
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 288
+add
+push constant 63
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 320
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 352
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 384
+add
+push constant 63
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 416
+add
+push constant 255
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 448
+add
+push constant 63
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 480
+add
+push constant 7
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Block._renderSpikesDown 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 0
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 32
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 64
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 96
+add
+push constant 32766
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 128
+add
+push constant 14798
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 160
+add
+push constant 14798
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 192
+add
+push constant 4228
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 224
+add
+push constant 4228
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 256
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 288
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 320
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 352
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 384
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 416
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 448
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 480
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Block._renderSpikesLeft 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 0
+add
+push constant 8192
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 32
+add
+push constant 1024
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 64
+add
+push constant 256
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 96
+add
+push constant 1024
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 128
+add
+push constant 4096
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 160
+add
+push constant 4096
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 192
+add
+push constant 1024
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 224
+add
+push constant 256
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 256
+add
+push constant 1024
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 288
+add
+push constant 4096
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 320
+add
+push constant 4096
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 352
+add
+push constant 1024
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 384
+add
+push constant 256
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 416
+add
+push constant 1024
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 448
+add
+push constant 4096
+neg
+call Memory.poke 2
+pop temp 0
+push argument 1
+push constant 480
+add
+push constant 8192
+neg
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
