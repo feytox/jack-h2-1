@@ -21,12 +21,16 @@ class Game {
     }
 
     method void run(){
+        var Score score;
+
         while (true){
             let _stopLevel = false;
             do _loadLevel();
             do _runLevel();
             if (_levelId = 0) // т.е. игрок умер
             {
+                let score = _currentLevel.getScore();
+                do score.setCoins(0);
                 do Main.waitForContinue("GAME OVER");
             }
         }

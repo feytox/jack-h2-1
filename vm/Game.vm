@@ -26,7 +26,7 @@ call Level.render 3
 pop temp 0
 push constant 0
 return
-function Game.run 0
+function Game.run 1
 push argument 0
 pop pointer 0
 label WHILE_EXP0
@@ -48,6 +48,13 @@ eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
+push this 1
+call Level.getScore 1
+pop local 0
+push local 0
+push constant 0
+call Score.setCoins 2
+pop temp 0
 push constant 9
 call String.new 1
 push constant 71
