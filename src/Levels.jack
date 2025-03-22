@@ -256,7 +256,7 @@ class Levels {
         let strArray[1] = "#FOOOOEKOOOO###OOOCOOOOOOOOT#";
         let strArray[2] = "###OOOOOOOOOOOOO#O#O#O###O#O#";
         let strArray[3] = "#L#OOOCOOOOOOOO#OOOO#OOOOO#O#";
-        let strArray[4] = "#O#M#O#O#O#OOPOOOOOOOOOCOOOO#";
+        let strArray[4] = "#OOM#O#O#O#OOPOOOOOOOOOCOOOO#";
         let strArray[5] = "#O###O#O#O#O#O#O#O#O#O#OOOOC#";
         let strArray[6] = "#OOOOOOOOOOOOO#COO#O#O#OOK###";
         let strArray[7] = "#O#####O#####O#####O###O#L#O#";
