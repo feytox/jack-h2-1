@@ -3,7 +3,6 @@ class Player {
     field int _gameY;         // Y-координата на карте
     field int _legsDirection; // направление ног (0-вверх, 1-вниз, 2-влево, 3-вправо)
 
-    /** Создает игрока на определенной позиции */
     constructor Player new(int gameX, int gameY){
         let _gameX = gameX;
         let _gameY = gameY;

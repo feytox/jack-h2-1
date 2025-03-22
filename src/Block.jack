@@ -295,7 +295,7 @@ class Block {
         return;
     }
 
-    /** Отрисовка шипов вверх */
+    /** Отрисовка шипов направленных вверх */
     method void _renderSpikesUp(int memAddress){
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 0);
@@ -316,7 +316,7 @@ class Block {
         return;
     }
 
-    /** Отрисовка шипов вправо */
+    /** Отрисовка шипов направленных вправо */
     method void _renderSpikesRight(int memAddress){
         do Memory.poke(memAddress + 0, 7);
         do Memory.poke(memAddress + 32, 15);
@@ -337,7 +337,7 @@ class Block {
         return;
     }
 
-    /** Отрисовка шипов вниз */
+    /** Отрисовка шипов направленных вниз */
     method void _renderSpikesDown(int memAddress){
         do Memory.poke(memAddress + 0, -1);
         do Memory.poke(memAddress + 32, -1);
@@ -358,7 +358,7 @@ class Block {
         return;
     }
 
-    /** Отрисовка шипов влево */
+    /** Отрисовка шипов направленных влево */
     method void _renderSpikesLeft(int memAddress){
         do Memory.poke(memAddress + 0, -8192);
         do Memory.poke(memAddress + 32, -1024);
