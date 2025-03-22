@@ -13,15 +13,15 @@ class Score {
 
     method void renderScore() {
         do Output.moveCursor(0, 0);
-        do Output.printString("Level ");
+        do Util.printInline("Level ");
         do Output.printInt(_levelId);
 
         do Output.moveCursor(0, 15);
-        do Output.printString("Coins: ");
+        do Util.printInline("Coins: ");
         do Output.printInt(_coins);
         
         do Output.moveCursor(0, 31);
-        do Output.printString("Keys: ");
+        do Util.printInline("Keys: ");
         do Output.printInt(_keys);
         return;
     }

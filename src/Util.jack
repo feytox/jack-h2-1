@@ -1,0 +1,8 @@
+class Util {
+
+    function void printInline(String text) {
+        do Output.printString(text);
+        do text.dispose();
+        return;
+    }
+}
