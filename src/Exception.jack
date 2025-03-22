@@ -1,9 +1,0 @@
-class Exception {
-    
-    function void throw(String message) {
-        do Output.printString(message);
-        do Output.println();
-        do Sys.error(42);
-        return;
-    }
-}

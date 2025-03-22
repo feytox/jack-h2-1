@@ -6,7 +6,7 @@ class Block {
     static Block key;      // ключ
     static Block finish;   // финиш
     static Block lock;     // замок
-    static Block fakeWall; // поддельная стена
+    static Block fakeWall; // фейк стена
 
     static Block spikesUp;    // шипы вверх
     static Block spikesRight; // шипы вправо
@@ -64,7 +64,7 @@ class Block {
             return lock;
         }
 
-        if (blockChar = 79){ // 'O' = spikesLeft
+        if (blockChar = 79){ // 'O' = фейк стена
             return fakeWall;
         }
 
@@ -84,7 +84,6 @@ class Block {
             return spikesLeft;
         }
 
-        do Exception.throw("Block: invalid block");
         return 0;
     }
 

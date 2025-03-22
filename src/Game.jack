@@ -60,7 +60,6 @@ class Game {
             do _currentLevel.dispose();
         }
 
-        // TODO: dispose old level
         let _currentLevel = Levels.loadLevel(_levelId);
         let score = _currentLevel.getScore();
         do score.setCoins(oldCoins);

@@ -3,7 +3,6 @@ class Main {
 
     function void main(){
         do Block.initBlocks();
-
         do Main.waitForContinue("Tomb of the NAND");
 
         let game = Game.new(32, 32);

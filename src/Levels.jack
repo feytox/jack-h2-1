@@ -32,6 +32,9 @@ class Levels {
         if (id = 8) {
             return Levels.lvl9();
         }
+        if (id = 9) {
+            return Levels.lvl10();
+        }
 
         do Main.waitForContinue("Thanks for playing!");
         do Sys.halt();
@@ -227,7 +230,7 @@ class Levels {
         var Array strArray; 
         var Level level;
 
-        let strArray = Array.new(10); // maxHEIGHT = 13, maxWidth = 29
+        let strArray = Array.new(10);
         let strArray[0] = "#############################";
         let strArray[1] = "#F#       P               #F#";
         let strArray[2] = "#L# ### ### ###W# # # ### #L#";
@@ -238,6 +241,27 @@ class Levels {
         let strArray[7] = "# ##### ##### ##### #####L# #";
         let strArray[8] = "#       TCCE        K       #";
         let strArray[9] = "#########################M###";
+
+        let level = Level.parse(9, strArray, 29, 10);
+        do strArray.dispose();
+        return level;
+    }
+
+    function Level lvl10() {
+        var Array strArray; 
+        var Level level;
+
+        let strArray = Array.new(10);
+        let strArray[0] = "#############################";
+        let strArray[1] = "#FOOOOEKOOOO###OOOCOOOOOOOOT#";
+        let strArray[2] = "###OOOOOOOOOOOOO#O#O#O###O#O#";
+        let strArray[3] = "#L#OOOCOOOOOOOO#OOOO#OOOOO#O#";
+        let strArray[4] = "#O#M#O#O#O#OOPOOOOOOOOOCOOOO#";
+        let strArray[5] = "#O###O#O#O#O#O#O#O#O#O#OOOOC#";
+        let strArray[6] = "#OOOOOOOOOOOOO#COO#O#O#OOK###";
+        let strArray[7] = "#O#####O#####O#####O###O#L#O#";
+        let strArray[8] = "#OCOO#OOOOOOO######OOOOO#####";
+        let strArray[9] = "#############################";
 
         let level = Level.parse(9, strArray, 29, 10);
         do strArray.dispose();

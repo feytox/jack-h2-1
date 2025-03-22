@@ -1,7 +1,7 @@
 class Map {
     field Array _blockArray;  // массив блоков карты
-    field int _width;        // ширина карты в блоках
-    field int _height;       // высота карты в блоках
+    field int _width;         // ширина карты в блоках
+    field int _height;        // высота карты в блоках
 
     /** Создает новую карту с указанными размерами и массивом блоков */
     constructor Map new(Array blockArray, int width, int height){

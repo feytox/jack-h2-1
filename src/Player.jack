@@ -50,12 +50,10 @@ class Player {
                 let x = x + 1;
             } 
 
-
             let block = map.getBlock(x, y);
             if (block = -1){
                 return;
             } 
-
 
             if (~block.canMoveThrough() & ~block.onTryMove(level, map, x, y)){
                 return;
