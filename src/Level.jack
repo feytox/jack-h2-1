@@ -1,3 +1,4 @@
+/** Класс уровня игры */
 class Level {
     field Map _map;
     field Player _player;
