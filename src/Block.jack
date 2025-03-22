@@ -8,10 +8,10 @@ class Block {
     static Block lock;
     static Block fakeWall;
 
-    static Block spikesUp;    // шипы вверх
-    static Block spikesRight; // шипы вправо
-    static Block spikesDown;  // шипы вниз
-    static Block spikesLeft;  // шипы влево
+    static Block spikesUp;    // шипы, направленные вверх
+    static Block spikesRight; // шипы, направленные вправо
+    static Block spikesDown;  // шипы, направленные вниз
+    static Block spikesLeft;  // шипы, направленные влево
 
     field boolean _moveThrough;
 
@@ -21,7 +21,6 @@ class Block {
         return this;
     }
 
-    /** Инициализирует все типы блоков */
     function void initBlocks(){
         let air = Block.new(true);      // пустота - проходимый
         let wall = Block.new(false);    // стена - непроходимая
