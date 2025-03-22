@@ -5,7 +5,8 @@ eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-call Levels.lvl1 0
+push argument 0
+call Levels.lvl1 1
 return
 label IF_FALSE0
 push argument 0
@@ -14,7 +15,8 @@ eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-call Levels.lvl2 0
+push argument 0
+call Levels.lvl2 1
 return
 label IF_FALSE1
 push argument 0
@@ -23,7 +25,8 @@ eq
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
-call Levels.lvl3 0
+push argument 0
+call Levels.lvl3 1
 return
 label IF_FALSE2
 push argument 0
@@ -32,7 +35,8 @@ eq
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
-call Levels.lvl4 0
+push argument 0
+call Levels.lvl4 1
 return
 label IF_FALSE3
 push argument 0
@@ -41,7 +45,8 @@ eq
 if-goto IF_TRUE4
 goto IF_FALSE4
 label IF_TRUE4
-call Levels.lvl5 0
+push argument 0
+call Levels.lvl5 1
 return
 label IF_FALSE4
 push argument 0
@@ -50,7 +55,8 @@ eq
 if-goto IF_TRUE5
 goto IF_FALSE5
 label IF_TRUE5
-call Levels.lvl6 0
+push argument 0
+call Levels.lvl6 1
 return
 label IF_FALSE5
 push argument 0
@@ -59,7 +65,8 @@ eq
 if-goto IF_TRUE6
 goto IF_FALSE6
 label IF_TRUE6
-call Levels.lvl7 0
+push argument 0
+call Levels.lvl7 1
 return
 label IF_FALSE6
 push argument 0
@@ -68,7 +75,8 @@ eq
 if-goto IF_TRUE7
 goto IF_FALSE7
 label IF_TRUE7
-call Levels.lvl8 0
+push argument 0
+call Levels.lvl8 1
 return
 label IF_FALSE7
 push argument 0
@@ -77,7 +85,8 @@ eq
 if-goto IF_TRUE8
 goto IF_FALSE8
 label IF_TRUE8
-call Levels.lvl9 0
+push argument 0
+call Levels.lvl9 1
 return
 label IF_FALSE8
 push argument 0
@@ -86,7 +95,8 @@ eq
 if-goto IF_TRUE9
 goto IF_FALSE9
 label IF_TRUE9
-call Levels.lvl10 0
+push argument 0
+call Levels.lvl10 1
 return
 label IF_FALSE9
 push constant 19
@@ -135,8 +145,12 @@ call Sys.halt 0
 pop temp 0
 push constant 0
 return
-function Levels.lvl1 2
+function Levels.lvl1 4
+push constant 29
+pop local 2
 push constant 4
+pop local 3
+push local 3
 call Array.new 1
 pop local 0
 push constant 0
@@ -407,19 +421,24 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 3
+push argument 0
 push local 0
-push constant 29
-push constant 4
+push local 2
+push local 3
 call Level.parse 4
 pop local 1
 push local 0
-call Array.dispose 1
+push local 3
+call Levels.cleanArray 2
 pop temp 0
 push local 1
 return
-function Levels.lvl2 2
+function Levels.lvl2 4
+push constant 29
+pop local 2
 push constant 13
+pop local 3
+push local 3
 call Array.new 1
 pop local 0
 push constant 0
@@ -1293,19 +1312,24 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 1
+push argument 0
 push local 0
-push constant 29
-push constant 13
+push local 2
+push local 3
 call Level.parse 4
 pop local 1
 push local 0
-call Array.dispose 1
+push local 3
+call Levels.cleanArray 2
 pop temp 0
 push local 1
 return
-function Levels.lvl3 2
+function Levels.lvl3 4
+push constant 27
+pop local 2
 push constant 13
+pop local 3
+push local 3
 call Array.new 1
 pop local 0
 push constant 0
@@ -2127,19 +2151,24 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 2
+push argument 0
 push local 0
-push constant 27
-push constant 13
+push local 2
+push local 3
 call Level.parse 4
 pop local 1
 push local 0
-call Array.dispose 1
+push local 3
+call Levels.cleanArray 2
 pop temp 0
 push local 1
 return
-function Levels.lvl4 2
+function Levels.lvl4 4
+push constant 27
+pop local 2
 push constant 13
+pop local 3
+push local 3
 call Array.new 1
 pop local 0
 push constant 0
@@ -2961,19 +2990,24 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 8
+push argument 0
 push local 0
-push constant 27
-push constant 13
+push local 2
+push local 3
 call Level.parse 4
 pop local 1
 push local 0
-call Array.dispose 1
+push local 3
+call Levels.cleanArray 2
 pop temp 0
 push local 1
 return
-function Levels.lvl5 2
+function Levels.lvl5 4
+push constant 29
+pop local 2
 push constant 13
+pop local 3
+push local 3
 call Array.new 1
 pop local 0
 push constant 0
@@ -3847,19 +3881,24 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 4
+push argument 0
 push local 0
-push constant 29
-push constant 13
+push local 2
+push local 3
 call Level.parse 4
 pop local 1
 push local 0
-call Array.dispose 1
+push local 3
+call Levels.cleanArray 2
 pop temp 0
 push local 1
 return
-function Levels.lvl6 2
+function Levels.lvl6 4
+push constant 29
+pop local 2
 push constant 10
+pop local 3
+push local 3
 call Array.new 1
 pop local 0
 push constant 0
@@ -4532,19 +4571,24 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 5
+push argument 0
 push local 0
-push constant 29
-push constant 10
+push local 2
+push local 3
 call Level.parse 4
 pop local 1
 push local 0
-call Array.dispose 1
+push local 3
+call Levels.cleanArray 2
 pop temp 0
 push local 1
 return
-function Levels.lvl7 2
+function Levels.lvl7 4
+push constant 27
+pop local 2
 push constant 13
+pop local 3
+push local 3
 call Array.new 1
 pop local 0
 push constant 0
@@ -5366,19 +5410,24 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 6
+push argument 0
 push local 0
-push constant 27
-push constant 13
+push local 2
+push local 3
 call Level.parse 4
 pop local 1
 push local 0
-call Array.dispose 1
+push local 3
+call Levels.cleanArray 2
 pop temp 0
 push local 1
 return
-function Levels.lvl8 2
+function Levels.lvl8 4
+push constant 29
+pop local 2
 push constant 13
+pop local 3
+push local 3
 call Array.new 1
 pop local 0
 push constant 0
@@ -6252,19 +6301,24 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 7
+push argument 0
 push local 0
-push constant 29
-push constant 13
+push local 2
+push local 3
 call Level.parse 4
 pop local 1
 push local 0
-call Array.dispose 1
+push local 3
+call Levels.cleanArray 2
 pop temp 0
 push local 1
 return
-function Levels.lvl9 2
+function Levels.lvl9 4
+push constant 29
+pop local 2
 push constant 10
+pop local 3
+push local 3
 call Array.new 1
 pop local 0
 push constant 0
@@ -6937,19 +6991,24 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 9
+push argument 0
 push local 0
-push constant 29
-push constant 10
+push local 2
+push local 3
 call Level.parse 4
 pop local 1
 push local 0
-call Array.dispose 1
+push local 3
+call Levels.cleanArray 2
 pop temp 0
 push local 1
 return
-function Levels.lvl10 2
+function Levels.lvl10 4
+push constant 29
+pop local 2
 push constant 10
+pop local 3
+push local 3
 call Array.new 1
 pop local 0
 push constant 0
@@ -7622,14 +7681,42 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 9
+push argument 0
 push local 0
-push constant 29
-push constant 10
+push local 2
+push local 3
 call Level.parse 4
 pop local 1
 push local 0
-call Array.dispose 1
+push local 3
+call Levels.cleanArray 2
 pop temp 0
 push local 1
+return
+function Levels.cleanArray 2
+label WHILE_EXP0
+push local 1
+push argument 1
+lt
+not
+if-goto WHILE_END0
+push local 1
+push argument 0
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call String.dispose 1
+pop temp 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push argument 0
+call Array.dispose 1
+pop temp 0
+push constant 0
 return
