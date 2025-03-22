@@ -34,7 +34,7 @@ class Player {
             let _gameX = x;
             let _gameY = y;
 
-            do render(startX, startY);
+            do renderPlayer(startX, startY);
             do Sys.wait(15);
 
             if (direction = 0){
@@ -66,7 +66,7 @@ class Player {
     }
 
     /** Рисует спрайт игрока в определенном направлении */
-    method void render(int mapStartX, int mapStartY){
+    method void renderPlayer(int mapStartX, int mapStartY){
         var int memAddress;
         let memAddress = 16384 + ((_gameY * 16 + mapStartY) * 32) + (_gameX * 16 + mapStartX / 16);
 

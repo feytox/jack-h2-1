@@ -3,7 +3,6 @@ class Level {
     field Player _player;
     field Score _score;
 
-    /** Создает новый уровень с указанной картой и игроком */
     constructor Level new(int levelId, Map map, Player player){
         let _map = map;
         let _player = player;
@@ -12,9 +11,9 @@ class Level {
     }
 
     method void render(int startX, int startY){
-        do _map.render(startX, startY);
-        do _player.render(startX, startY);
-        do _score.render();
+        do _map.renderMap(startX, startY);
+        do _player.renderPlayer(startX, startY);
+        do _score.renderScore();
         return;
     }
 

@@ -10,7 +10,7 @@ push argument 0
 pop this 0
 push pointer 0
 return
-function Score.render 0
+function Score.renderScore 0
 push argument 0
 pop pointer 0
 push constant 0
@@ -94,7 +94,7 @@ push constant 1
 add
 pop this 1
 push pointer 0
-call Score.render 1
+call Score.renderScore 1
 pop temp 0
 push constant 0
 return
@@ -106,7 +106,7 @@ push constant 1
 add
 pop this 2
 push pointer 0
-call Score.render 1
+call Score.renderScore 1
 pop temp 0
 push constant 0
 return
@@ -118,7 +118,7 @@ push constant 1
 sub
 pop this 2
 push pointer 0
-call Score.render 1
+call Score.renderScore 1
 pop temp 0
 push constant 0
 return
@@ -128,7 +128,7 @@ pop pointer 0
 push argument 1
 pop this 1
 push pointer 0
-call Score.render 1
+call Score.renderScore 1
 pop temp 0
 push constant 0
 return

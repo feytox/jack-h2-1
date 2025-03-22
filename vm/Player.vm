@@ -41,7 +41,7 @@ pop this 1
 push pointer 0
 push argument 3
 push argument 4
-call Player.render 3
+call Player.renderPlayer 3
 pop temp 0
 push constant 15
 call Sys.wait 1
@@ -133,7 +133,7 @@ goto WHILE_EXP0
 label WHILE_END0
 push constant 0
 return
-function Player.render 1
+function Player.renderPlayer 1
 push argument 0
 pop pointer 0
 push constant 16384

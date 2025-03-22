@@ -30,7 +30,7 @@ class Map {
     }
 
     /** Рисует всю карту с указанным смещением и размером блоков */
-    method void render(int startX, int startY){
+    method void renderMap(int startX, int startY){
         var Block block;
         var int mapSize;
         var int x;

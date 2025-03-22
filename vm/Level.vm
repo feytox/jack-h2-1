@@ -17,15 +17,15 @@ pop pointer 0
 push this 0
 push argument 1
 push argument 2
-call Map.render 3
+call Map.renderMap 3
 pop temp 0
 push this 1
 push argument 1
 push argument 2
-call Player.render 3
+call Player.renderPlayer 3
 pop temp 0
 push this 2
-call Score.render 1
+call Score.renderScore 1
 pop temp 0
 push constant 0
 return
