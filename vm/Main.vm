@@ -73,7 +73,7 @@ push local 0
 call Output.moveCursor 2
 pop temp 0
 push argument 0
-call Output.printString 1
+call Util.printInline 1
 pop temp 0
 push constant 11
 push constant 21
@@ -127,7 +127,7 @@ push constant 117
 call String.appendChar 2
 push constant 101
 call String.appendChar 2
-call Output.printString 1
+call Util.printInline 1
 pop temp 0
 label WHILE_EXP0
 push local 1
