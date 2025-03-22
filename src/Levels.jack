@@ -45,6 +45,22 @@ class Levels {
         var Array strArray;
         var Level level;
 
+        let strArray = Array.new(4); 
+        let strArray[0] =  "#############################";
+        let strArray[1] =  "#P         C K C           T#";
+        let strArray[2] =  "#                         LF#";
+        let strArray[3] =  "#############################";
+        
+
+        let level = Level.parse(3, strArray, 29, 4);
+        do strArray.dispose();
+        return level;
+    }
+
+    function Level lvl2() {
+        var Array strArray;
+        var Level level;
+
         let strArray = Array.new(13); 
         let strArray[0] =  "#############################";
         let strArray[1] =  "#F                          #";
@@ -66,7 +82,7 @@ class Levels {
         return level;
     }
 
-    function Level lvl2() {
+    function Level lvl3() {
         var Array strArray;
         var Level level;
 
@@ -90,23 +106,31 @@ class Levels {
         return level;
     }
 
-    function Level lvl3() {
+    function Level lvl4() {
         var Array strArray;
         var Level level;
 
-        let strArray = Array.new(4); 
-        let strArray[0] =  "#############################";
-        let strArray[1] =  "#P         C K C           T#";
-        let strArray[2] =  "#                         LF#";
-        let strArray[3] =  "#############################";
-        
+        let strArray = Array.new(13);
+        let strArray[0]  = "###########################";
+        let strArray[1]  = "#        #E   C#         K#";
+        let strArray[2]  = "############ # # #######E #";
+        let strArray[3]  = "#        #  C#   #E       #";
+        let strArray[4]  = "########## ########C      #";
+        let strArray[5]  = "##       #   #  WC# #######";
+        let strArray[6]  = "## #### #### ###### #######";
+        let strArray[7]  = "#E    #   T#P#E      C#####";
+        let strArray[8]  = "## ###### ########### ###W#";
+        let strArray[9]  = "#   C  C#                C#";
+        let strArray[10] = "# ##### ###################";
+        let strArray[11] = "#M              C      L F#";
+        let strArray[12] = "###########################";
 
-        let level = Level.parse(3, strArray, 29, 4);
+        let level = Level.parse(8, strArray, 27, 13);
         do strArray.dispose();
         return level;
     }
 
-    function Level lvl4() {
+    function Level lvl5() {
         var Array strArray;
         var Level level;
 
@@ -132,7 +156,7 @@ class Levels {
     }
 
 
-    function Level lvl5() {
+    function Level lvl6() {
         var Array strArray;
         var Level level;
 
@@ -153,7 +177,7 @@ class Levels {
         return level;
     }
 
-    function Level lvl6() {
+    function Level lvl7() {
         var Array strArray;
         var Level level;
 
@@ -177,7 +201,7 @@ class Levels {
         return level;
     }
 
-    function Level lvl7() {
+    function Level lvl8() {
         var Array strArray;
         var Level level;
 
@@ -198,30 +222,6 @@ class Levels {
         
 
         let level = Level.parse(7, strArray, 29, 13);
-        do strArray.dispose();
-        return level;
-    }
-
-    function Level lvl8() {
-        var Array strArray;
-        var Level level;
-
-        let strArray = Array.new(13);
-        let strArray[0]  = "###########################";
-        let strArray[1]  = "#        #E   C#         K#";
-        let strArray[2]  = "############ # # #######E #";
-        let strArray[3]  = "#        #  C#   #E       #";
-        let strArray[4]  = "########## ########C      #";
-        let strArray[5]  = "##       #   #  WC# #######";
-        let strArray[6]  = "## #### #### ###### #######";
-        let strArray[7]  = "#E    #   T#P#E      C#####";
-        let strArray[8]  = "## ###### ########### ###W#";
-        let strArray[9]  = "#   C  C#                C#";
-        let strArray[10] = "# ##### ###################";
-        let strArray[11] = "#M              C      L F#";
-        let strArray[12] = "###########################";
-
-        let level = Level.parse(8, strArray, 27, 13);
         do strArray.dispose();
         return level;
     }
