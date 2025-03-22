@@ -17,8 +17,8 @@
 ## 📸 Скриншоты
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/c7f4ad98-0dbf-4d76-a410-df0fadb6595f" alt="Пример уровня" width="300"/>
-  <img src="https://github.com/user-attachments/assets/a953d894-167f-47f7-9521-03cee274bf7a" alt="Ещё один уровень" width="300"/>
+  <img src="https://github.com/user-attachments/assets/c7f4ad98-0dbf-4d76-a410-df0fadb6595f" alt="Пример уровня" width="400"/>
+  <img src="https://github.com/user-attachments/assets/a953d894-167f-47f7-9521-03cee274bf7a" alt="Ещё один уровень" width="400"/>
 </div>
 
 ## ✨ Особенности
