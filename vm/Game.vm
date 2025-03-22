@@ -1,5 +1,5 @@
 function Game.new 0
-push constant 5
+push constant 6
 call Memory.alloc 1
 pop pointer 0
 push constant 1
@@ -12,6 +12,8 @@ push constant 0
 pop this 1
 push constant 0
 pop this 4
+push constant 0
+pop this 5
 push pointer 0
 return
 function Game.render 0
@@ -42,9 +44,7 @@ pop temp 0
 push pointer 0
 call Game._runLevel 1
 pop temp 0
-push this 0
-push constant 1
-eq
+push this 5
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
@@ -93,6 +93,8 @@ push constant 0
 not
 pop this 4
 push constant 0
+pop this 5
+push constant 0
 return
 function Game.setDead 0
 push argument 0
@@ -102,6 +104,9 @@ pop this 0
 push constant 0
 not
 pop this 4
+push constant 0
+not
+pop this 5
 push constant 0
 return
 function Game._loadLevel 2
