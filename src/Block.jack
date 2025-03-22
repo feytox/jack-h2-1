@@ -1,12 +1,12 @@
 /** Класс, отвечающий за типы блоков. */
 class Block {
-    static Block air;      // пустота
-    static Block wall;     // стена
-    static Block coin;     // монета
-    static Block key;      // ключ
-    static Block finish;   // финиш
-    static Block lock;     // замок
-    static Block fakeWall; // фейк стена
+    static Block air;
+    static Block wall;
+    static Block coin;
+    static Block key;
+    static Block finish;
+    static Block lock;
+    static Block fakeWall;
 
     static Block spikesUp;    // шипы вверх
     static Block spikesRight; // шипы вправо

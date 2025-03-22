@@ -11,8 +11,7 @@ class Score {
         return this;
     }
 
-    /** Отображает текущий счет на экране */
-    method void render() {
+    method void renderScore() {
         do Output.moveCursor(0, 0);
         do Output.printString("Level ");
         do Output.printInt(_levelId);
@@ -29,25 +28,25 @@ class Score {
 
     method void incrementCoins() {
         let _coins = _coins + 1;
-        do render();
+        do renderScore();
         return;
     }
 
     method void incrementKeys() {
         let _keys = _keys + 1;
-        do render();
+        do renderScore();
         return;
     }
 
     method void decrementKeys() {
         let _keys = _keys - 1;
-        do render();
+        do renderScore();
         return;
     }
 
     method void setCoins(int coins) {
         let _coins = coins;
-        do render();
+        do renderScore();
         return;
     }
 
