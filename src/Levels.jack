@@ -18,34 +18,34 @@
 class Levels {
     
     function Level loadLevel(int id) {
-        if (id = 0) {
+        if (id = 1) {
             return Levels.lvl1(id);
         }
-        if (id = 1) {
+        if (id = 2) {
             return Levels.lvl2(id);
         }
-        if (id = 2) {
+        if (id = 3) {
             return Levels.lvl3(id);
         }
-        if (id = 3) {
+        if (id = 4) {
             return Levels.lvl4(id);
         }
-        if (id = 4) {
+        if (id = 5) {
             return Levels.lvl5(id);
         }
-        if (id = 5) {
+        if (id = 6) {
             return Levels.lvl6(id);
         }
-        if (id = 6) {
+        if (id = 7) {
             return Levels.lvl7(id);
         }
-        if (id = 7) {
+        if (id = 8) {
             return Levels.lvl8(id);
         }
-        if (id = 8) {
+        if (id = 9) {
             return Levels.lvl9(id);
         }
-        if (id = 9) {
+        if (id = 10) {
             return Levels.lvl10(id);
         }
 

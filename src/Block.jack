@@ -145,7 +145,6 @@ class Block {
         return _moveThrough;
     }
 
-    /** Возвращает блок air (пустой блок) */
     function Block getAir(){
         return air;
     }
@@ -196,7 +195,6 @@ class Block {
         return;
     }
 
-    /** Отрисовка стены */
     method void _renderWall(int memAddress){
         do Memory.poke(memAddress + 0, -1);
         do Memory.poke(memAddress + 32, -1);
@@ -217,7 +215,6 @@ class Block {
         return;
     }
 
-    /** Отрисовка монеты */
     method void _renderCoin(int memAddress){
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 960);
@@ -238,7 +235,6 @@ class Block {
         return;
     }
 
-    /** Отрисовка ключа */
     method void _renderKey(int memAddress){
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 0);
@@ -259,7 +255,6 @@ class Block {
         return;
     }
 
-    /** Отрисовка финиша */
     method void _renderFinish(int memAddress){
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 0);
@@ -280,7 +275,6 @@ class Block {
         return;
     }
 
-    /** Отрисовка замка */
     method void _renderLock(int memAddress){
         do Memory.poke(memAddress + 0, 0);
         do Memory.poke(memAddress + 32, 2016);

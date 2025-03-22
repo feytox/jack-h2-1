@@ -11,7 +11,7 @@ class Game {
     field boolean _stopLevel;
 
     constructor Game new(int startX, int startY){
-        let _levelId = 0;
+        let _levelId = 1;
         let _startX = startX;
         let _startY = startY;
         let _currentLevel = 0;
@@ -32,7 +32,7 @@ class Game {
             let _stopLevel = false;
             do _loadLevel();
             do _runLevel();
-            if (_levelId = 0) // т.е. игрок умер
+            if (_levelId = 1) // т.е. игрок умер
             {
                 let score = _currentLevel.getScore();
                 do score.setCoins(0);
@@ -50,7 +50,7 @@ class Game {
     }
 
     method void setDead() {
-        let _levelId = 0;
+        let _levelId = 1;
         let _stopLevel = true;
         return;
     }

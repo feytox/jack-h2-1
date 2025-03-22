@@ -1,6 +1,6 @@
 function Levels.loadLevel 0
 push argument 0
-push constant 0
+push constant 1
 eq
 if-goto IF_TRUE0
 goto IF_FALSE0
@@ -10,7 +10,7 @@ call Levels.lvl1 1
 return
 label IF_FALSE0
 push argument 0
-push constant 1
+push constant 2
 eq
 if-goto IF_TRUE1
 goto IF_FALSE1
@@ -20,7 +20,7 @@ call Levels.lvl2 1
 return
 label IF_FALSE1
 push argument 0
-push constant 2
+push constant 3
 eq
 if-goto IF_TRUE2
 goto IF_FALSE2
@@ -30,7 +30,7 @@ call Levels.lvl3 1
 return
 label IF_FALSE2
 push argument 0
-push constant 3
+push constant 4
 eq
 if-goto IF_TRUE3
 goto IF_FALSE3
@@ -40,7 +40,7 @@ call Levels.lvl4 1
 return
 label IF_FALSE3
 push argument 0
-push constant 4
+push constant 5
 eq
 if-goto IF_TRUE4
 goto IF_FALSE4
@@ -50,7 +50,7 @@ call Levels.lvl5 1
 return
 label IF_FALSE4
 push argument 0
-push constant 5
+push constant 6
 eq
 if-goto IF_TRUE5
 goto IF_FALSE5
@@ -60,7 +60,7 @@ call Levels.lvl6 1
 return
 label IF_FALSE5
 push argument 0
-push constant 6
+push constant 7
 eq
 if-goto IF_TRUE6
 goto IF_FALSE6
@@ -70,7 +70,7 @@ call Levels.lvl7 1
 return
 label IF_FALSE6
 push argument 0
-push constant 7
+push constant 8
 eq
 if-goto IF_TRUE7
 goto IF_FALSE7
@@ -80,7 +80,7 @@ call Levels.lvl8 1
 return
 label IF_FALSE7
 push argument 0
-push constant 8
+push constant 9
 eq
 if-goto IF_TRUE8
 goto IF_FALSE8
@@ -90,7 +90,7 @@ call Levels.lvl9 1
 return
 label IF_FALSE8
 push argument 0
-push constant 9
+push constant 10
 eq
 if-goto IF_TRUE9
 goto IF_FALSE9
