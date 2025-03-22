@@ -31,7 +31,7 @@ push constant 108
 call String.appendChar 2
 push constant 32
 call String.appendChar 2
-call Output.printString 1
+call Util.printInline 1
 pop temp 0
 push this 0
 call Output.printInt 1
@@ -56,7 +56,7 @@ push constant 58
 call String.appendChar 2
 push constant 32
 call String.appendChar 2
-call Output.printString 1
+call Util.printInline 1
 pop temp 0
 push this 1
 call Output.printInt 1
@@ -79,7 +79,7 @@ push constant 58
 call String.appendChar 2
 push constant 32
 call String.appendChar 2
-call Output.printString 1
+call Util.printInline 1
 pop temp 0
 push this 2
 call Output.printInt 1
